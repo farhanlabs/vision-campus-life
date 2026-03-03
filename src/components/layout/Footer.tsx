@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import mecLogo from '@/assets/mec-logo.png';
 
 const Footer = () => (
   <footer className="bg-primary text-cream">
@@ -9,7 +10,7 @@ const Footer = () => (
         {/* Brand */}
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-heading text-navy-dark text-sm font-bold shadow-md">M</div>
+            <img src={mecLogo} alt="MEC Logo" className="h-12 w-auto object-contain" />
             <div>
               <h3 className="font-heading text-lg leading-tight">Mewat Engineering College</h3>
               <p className="text-[10px] text-cream/50 tracking-wide uppercase">Top Engineering College in Haryana</p>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Mail, LogIn } from 'lucide-react';
+import mecLogo from '@/assets/mec-logo.png';
 
 interface NavChild { label: string; path: string; }
 interface NavItem { label: string; path?: string; children?: NavChild[]; }
@@ -110,12 +111,10 @@ const Navbar = () => {
       <div className={`bg-primary py-3 px-4 transition-shadow duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
         <div className="container flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-full bg-gold flex items-center justify-center font-heading text-navy-dark text-lg font-bold shadow-md group-hover:shadow-lg transition-shadow">
-              M
-            </div>
-            <div className="text-cream">
+            <img src={mecLogo} alt="MEC Logo" className="h-12 md:h-14 w-auto object-contain" />
+            <div className="text-cream hidden sm:block">
               <h1 className="font-heading text-lg md:text-xl leading-tight tracking-normal">Mewat Engineering College</h1>
-              <p className="text-[11px] text-cream/60 font-light tracking-wide">Wakf · Palla, District Nuh, Haryana</p>
+              <p className="text-[11px] text-cream/60 font-light tracking-wide">Haryana Waqf Board, Govt. of Haryana</p>
             </div>
           </Link>
           <button className="lg:hidden text-cream p-2 rounded-md hover:bg-navy-light/50 transition-colors" onClick={() => setMobileOpen(!mobileOpen)}>
