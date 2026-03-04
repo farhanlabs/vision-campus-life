@@ -80,6 +80,7 @@ const entities: Record<string, EntityConfig> = {
     { name: 'username', label: 'Username', type: 'text' },
     { name: 'password', label: 'Password', type: 'password' },
     { name: 'rollNo', label: 'Roll No', type: 'text' },
+    { name: 'phone', label: 'Contact Number', type: 'text' },
     { name: 'branch', label: 'Branch', type: 'select', options: ['CSE', 'ECE', 'EEE', 'ME', 'CE'] },
     { name: 'semester', label: 'Semester', type: 'select', options: ['1', '2', '3', '4', '5', '6', '7', '8'] },
     { name: 'division', label: 'Division', type: 'select', options: ['A', 'B', 'C'] },
