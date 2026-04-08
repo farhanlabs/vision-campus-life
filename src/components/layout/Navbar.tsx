@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail, LogIn } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Mail, LogIn, Clock } from 'lucide-react';
 import mecLogo from '@/assets/mec-logo.png';
 
 interface NavChild { label: string; path: string; }
@@ -90,41 +90,55 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Top info bar */}
-      <div className="bg-foreground py-2 px-4 text-xs text-white/70 hidden md:block">
+      {/* Top slim bar - dark */}
+      <div className="bg-navy py-1.5 px-4 text-[11px] text-white/60 hidden md:block">
         <div className="container flex justify-between items-center">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
             <a href="tel:+919588356609" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Phone size={11} /> +91-9588356609
+              <Phone size={10} /> +91-9588356609
             </a>
             <a href="mailto:director@mecw.ac.in" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Mail size={11} /> director@mecw.ac.in
+              <Mail size={10} /> director@mecw.ac.in
             </a>
+            <span className="flex items-center gap-1.5">
+              <Clock size={10} /> Mon-Sat: 9AM - 5PM
+            </span>
           </div>
-          <Link to="/login" className="flex items-center gap-1.5 hover:text-accent transition-colors font-medium">
-            <LogIn size={11} /> Login
+          <Link to="/login" className="flex items-center gap-1.5 hover:text-gold transition-colors font-medium">
+            <LogIn size={10} /> Student / Faculty Login
           </Link>
         </div>
       </div>
 
-      {/* College identity bar */}
-      <div className={`bg-primary py-3 px-4 transition-shadow duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
+      {/* White logo bar */}
+      <div className={`bg-white py-3 px-4 border-b border-border transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
         <div className="container flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={mecLogo} alt="MEC Logo" className="h-12 md:h-14 w-auto object-contain" />
-            <div className="text-primary-foreground hidden sm:block">
-              <h1 className="font-heading text-lg md:text-xl leading-tight tracking-normal">Mewat Engineering College</h1>
-              <p className="text-[11px] text-primary-foreground/55 font-light tracking-wide">Haryana Waqf Board, Govt. of Haryana</p>
+            <img src={mecLogo} alt="MEC Logo" className="h-14 md:h-16 w-auto object-contain" />
+            <div>
+              <h1 className="font-heading text-xl md:text-2xl leading-tight tracking-normal text-foreground">Mewat Engineering College</h1>
+              <p className="text-[11px] text-muted-foreground font-normal tracking-wide">(Waqf) — Haryana Waqf Board, Govt. of Haryana</p>
             </div>
           </Link>
-          <button className="lg:hidden text-primary-foreground p-2 rounded-md hover:bg-white/10 transition-colors" onClick={() => setMobileOpen(!mobileOpen)}>
+          <div className="hidden lg:flex items-center gap-4">
+            <div className="text-right">
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">Affiliated to</p>
+              <p className="text-xs font-semibold text-foreground">Gurugram University</p>
+            </div>
+            <div className="w-px h-8 bg-border" />
+            <div className="text-right">
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium">Approved by</p>
+              <p className="text-xs font-semibold text-foreground">AICTE, New Delhi</p>
+            </div>
+          </div>
+          <button className="lg:hidden text-foreground p-2 rounded-md hover:bg-muted transition-colors" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Desktop navigation */}
-      <nav className="bg-foreground hidden lg:block shadow-xl border-t border-white/10">
+      {/* Green navigation strip */}
+      <nav className="bg-primary hidden lg:block shadow-lg">
         <div className="container">
           <div className="flex items-center">
             {navItems.map((item) => (
@@ -136,17 +150,17 @@ const Navbar = () => {
               >
                 {item.children ? (
                   <>
-                    <button className="px-3 xl:px-4 py-3.5 text-[13px] font-medium text-white/85 flex items-center gap-1 hover:text-accent transition-colors whitespace-nowrap uppercase tracking-wider">
+                    <button className="px-3 xl:px-4 py-3 text-[12.5px] font-medium text-white/90 flex items-center gap-1 hover:text-gold hover:bg-white/10 transition-all whitespace-nowrap uppercase tracking-wider">
                       {item.label}
-                      <ChevronDown size={12} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
+                      <ChevronDown size={11} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
                     </button>
                     {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 bg-card shadow-2xl border border-border/50 rounded-b-lg py-2 min-w-[260px] z-50 animate-slide-down">
+                      <div className="absolute top-full left-0 bg-white shadow-2xl border border-border rounded-b-lg py-1.5 min-w-[260px] z-50 animate-slide-down">
                         {item.children.map((child) => (
                           <Link
                             key={child.path}
                             to={child.path}
-                            className="block px-5 py-2.5 text-sm text-foreground/80 hover:bg-accent/10 hover:text-accent-foreground hover:pl-6 transition-all duration-200"
+                            className="block px-5 py-2.5 text-[13px] text-foreground/75 hover:bg-primary/5 hover:text-primary hover:pl-6 transition-all duration-200 border-l-2 border-transparent hover:border-primary"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {child.label}
@@ -156,13 +170,13 @@ const Navbar = () => {
                     )}
                   </>
                 ) : (
-                  <Link to={item.path!} className="px-3 xl:px-4 py-3.5 text-[13px] font-medium text-white/85 hover:text-accent transition-colors whitespace-nowrap block uppercase tracking-wider">
+                  <Link to={item.path!} className="px-3 xl:px-4 py-3 text-[12.5px] font-medium text-white/90 hover:text-gold hover:bg-white/10 transition-all whitespace-nowrap block uppercase tracking-wider">
                     {item.label}
                   </Link>
                 )}
               </div>
             ))}
-            <Link to="/login" className="ml-auto px-5 py-2 text-xs font-bold bg-accent text-accent-foreground rounded-md hover:brightness-110 transition-all uppercase tracking-widest shadow-md">
+            <Link to="/login" className="ml-auto px-5 py-1.5 text-[11px] font-bold bg-gold text-white rounded hover:brightness-110 transition-all uppercase tracking-widest shadow-md">
               Login
             </Link>
           </div>
@@ -171,25 +185,25 @@ const Navbar = () => {
 
       {/* Mobile navigation */}
       {mobileOpen && (
-        <div className="lg:hidden bg-primary border-t border-white/10 max-h-[75vh] overflow-y-auto animate-slide-down">
+        <div className="lg:hidden bg-white border-t border-border max-h-[75vh] overflow-y-auto animate-slide-down shadow-xl">
           {navItems.map((item) => (
             <div key={item.label}>
               {item.children ? (
                 <>
                   <button
-                    className="w-full flex items-center justify-between px-5 py-3.5 text-sm text-primary-foreground/85 border-b border-white/10 font-medium"
+                    className="w-full flex items-center justify-between px-5 py-3 text-sm text-foreground border-b border-border/50 font-medium"
                     onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
                   >
                     {item.label}
-                    <ChevronDown size={14} className={`transition-transform duration-200 ${mobileExpanded === item.label ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={14} className={`text-muted-foreground transition-transform duration-200 ${mobileExpanded === item.label ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileExpanded === item.label && (
-                    <div className="bg-black/20">
+                    <div className="bg-muted/50">
                       {item.children.map((child) => (
                         <Link
                           key={child.path}
                           to={child.path}
-                          className="block px-8 py-2.5 text-sm text-primary-foreground/65 hover:text-accent border-b border-white/5 transition-colors"
+                          className="block px-8 py-2.5 text-sm text-muted-foreground hover:text-primary border-b border-border/30 transition-colors"
                           onClick={() => setMobileOpen(false)}
                         >
                           {child.label}
@@ -201,7 +215,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   to={item.path!}
-                  className="block px-5 py-3.5 text-sm text-primary-foreground/85 border-b border-white/10 font-medium hover:text-accent transition-colors"
+                  className="block px-5 py-3 text-sm text-foreground border-b border-border/50 font-medium hover:text-primary transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
@@ -210,7 +224,7 @@ const Navbar = () => {
             </div>
           ))}
           <div className="p-4">
-            <Link to="/login" className="block py-2.5 text-sm font-bold bg-accent text-accent-foreground rounded-md text-center uppercase tracking-wider" onClick={() => setMobileOpen(false)}>
+            <Link to="/login" className="block py-2.5 text-sm font-bold bg-primary text-primary-foreground rounded text-center uppercase tracking-wider" onClick={() => setMobileOpen(false)}>
               Login
             </Link>
           </div>
