@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Mail, LogIn, Clock } from 'lucide-react';
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 import mecLogo from '@/assets/mec-logo.png';
 
 interface NavChild { label: string; path: string; }
@@ -74,14 +75,8 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
+  const { hidden, scrolled } = useScrollDirection();
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -89,9 +84,12 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* Top slim bar - dark */}
-      <div className="bg-navy py-1.5 px-4 text-[11px] text-white/60 hidden md:block">
+    <header
+      className="sticky top-0 z-50 transition-transform duration-300"
+      style={{ transform: hidden ? 'translateY(-100%)' : 'translateY(0)' }}
+    >
+      {/* AMU-style top bar — dark maroon/red */}
+      <div className="bg-maroon py-1 px-4 text-[11px] text-white/80 hidden md:block">
         <div className="container flex justify-between items-center">
           <div className="flex items-center gap-5">
             <a href="tel:+919588356609" className="flex items-center gap-1.5 hover:text-white transition-colors">
@@ -111,7 +109,7 @@ const Navbar = () => {
       </div>
 
       {/* White logo bar */}
-      <div className={`bg-white py-3 px-4 border-b border-border transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
+      <div className={`bg-white py-2.5 px-4 border-b border-border transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
         <div className="container flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
             <img src={mecLogo} alt="MEC Logo" className="h-14 md:h-16 w-auto object-contain" />
@@ -137,7 +135,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Green navigation strip */}
+      {/* AMU-style green navigation strip */}
       <nav className="bg-primary hidden lg:block shadow-lg">
         <div className="container">
           <div className="flex items-center">
@@ -150,7 +148,7 @@ const Navbar = () => {
               >
                 {item.children ? (
                   <>
-                    <button className="px-3 xl:px-4 py-3 text-[12.5px] font-medium text-white/90 flex items-center gap-1 hover:text-gold hover:bg-white/10 transition-all whitespace-nowrap uppercase tracking-wider">
+                    <button className="px-3 xl:px-3.5 py-3 text-[12px] font-medium text-white/90 flex items-center gap-1 hover:text-gold hover:bg-white/10 transition-all whitespace-nowrap uppercase tracking-wider">
                       {item.label}
                       <ChevronDown size={11} className={`transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
                     </button>
@@ -170,7 +168,7 @@ const Navbar = () => {
                     )}
                   </>
                 ) : (
-                  <Link to={item.path!} className="px-3 xl:px-4 py-3 text-[12.5px] font-medium text-white/90 hover:text-gold hover:bg-white/10 transition-all whitespace-nowrap block uppercase tracking-wider">
+                  <Link to={item.path!} className="px-3 xl:px-3.5 py-3 text-[12px] font-medium text-white/90 hover:text-gold hover:bg-white/10 transition-all whitespace-nowrap block uppercase tracking-wider">
                     {item.label}
                   </Link>
                 )}
