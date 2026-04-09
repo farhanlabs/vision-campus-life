@@ -16,6 +16,7 @@ import heroCampus from '@/assets/hero-campus.jpg';
 import aboutCampus from '@/assets/about-campus.jpg';
 import campusLife from '@/assets/campus-life.jpg';
 import mecLogo from '@/assets/mec-logo.png';
+import directorImg from '@/assets/director.jpg';
 
 const Index = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
@@ -122,11 +123,11 @@ const Index = () => {
       <AnimatedSection>
         <section className="bg-primary py-3">
           <div className="container">
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
               {quickLinks.map(ql => (
                 <Link key={ql.label} to={ql.path} className="flex items-center gap-2 px-3 py-2.5 text-white/80 hover:text-gold hover:bg-white/10 rounded transition-all text-[11px] md:text-xs font-medium">
                   <ql.icon size={14} className="shrink-0 text-gold" />
-                  <span className="truncate">{ql.label}</span>
+                  <span className="leading-tight">{ql.label}</span>
                 </Link>
               ))}
             </div>
@@ -535,14 +536,8 @@ const Index = () => {
                 </Link>
               </div>
               <div className="md:col-span-2 flex justify-center">
-                <div className="w-56 h-64 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
-                      <GraduationCap size={36} className="text-gold" />
-                    </div>
-                    <h3 className="font-heading text-lg">Director</h3>
-                    <p className="text-white/40 text-xs">MEC (Waqf)</p>
-                  </div>
+                <div className="w-56 h-72 rounded-lg overflow-hidden shadow-xl border-4 border-white/10">
+                  <img src={directorImg} alt="Director, MEC (Waqf)" className="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
             </div>
