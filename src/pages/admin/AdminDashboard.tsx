@@ -52,8 +52,13 @@ const entities: Record<string, EntityConfig> = {
     { name: 'title', label: 'Title', type: 'text' },
     { name: 'content', label: 'Content', type: 'textarea' },
     { name: 'date', label: 'Date', type: 'text' },
+    { name: 'pdfLink', label: 'PDF Link (Notice PDF)', type: 'url' },
     { name: 'branch', label: 'Branch', type: 'select', options: ['All', 'CSE', 'ECE', 'EEE', 'ME', 'CE', 'ASH'] },
     { name: 'semester', label: 'Semester', type: 'select', options: ['All', '1', '2', '3', '4', '5', '6', '7', '8'] },
+  ]},
+  marqueeTexts: { title: 'Marquee Texts', path: 'marqueeTexts', fields: [
+    { name: 'text', label: 'Marquee Text', type: 'text' },
+    { name: 'active', label: 'Active', type: 'select', options: ['true', 'false'] },
   ]},
   timetable: { title: 'Timetable', path: 'timetable', fields: [
     { name: 'title', label: 'Title', type: 'text' },
@@ -106,7 +111,7 @@ const entities: Record<string, EntityConfig> = {
 };
 
 const sidebarSections = [
-  'notifications', 'events', 'news', 'gallery', 'achievers', 'notices',
+  'notifications', 'marqueeTexts', 'events', 'news', 'gallery', 'achievers', 'notices',
   'timetable', 'studyMaterials', 'examChair', 'oldPapers', 'faculty', 'students',
 ];
 
