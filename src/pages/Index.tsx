@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import AdmissionPopup from '@/components/AdmissionPopup';
@@ -10,13 +10,22 @@ import {
   Calendar, ArrowRight, Megaphone, ImageIcon, Trophy, Building2,
   Cpu, Zap, Cog, HardHat, FlaskConical, ChevronRight, Clock,
   CheckCircle2, Star, Shield, Target, FileText, Bell, Newspaper,
-  ExternalLink, BookMarked, Briefcase
+  ExternalLink, BookMarked, Briefcase, Download, X, ChevronLeft,
+  MessageCircle
 } from 'lucide-react';
 import heroCampus from '@/assets/hero-campus.jpg';
+import heroCampus2 from '@/assets/hero-campus-2.jpg';
+import heroCampus3 from '@/assets/hero-campus-3.jpg';
 import aboutCampus from '@/assets/about-campus.jpg';
 import campusLife from '@/assets/campus-life.jpg';
 import mecLogo from '@/assets/mec-logo.png';
 import directorImg from '@/assets/director.jpg';
+
+const heroSlides = [
+  { img: heroCampus, title: 'Mewat Engineering College', subtitle: 'Shaping Tomorrow\'s Engineers Today' },
+  { img: heroCampus2, title: 'World-Class Infrastructure', subtitle: 'Modern Labs · Smart Classrooms · Digital Library' },
+  { img: heroCampus3, title: 'Industry-Ready Education', subtitle: 'Practical Learning · Research · Innovation' },
+];
 
 const Index = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
@@ -25,6 +34,9 @@ const Index = () => {
   const [achievers, setAchievers] = useState<any[]>([]);
   const [notices, setNotices] = useState<any[]>([]);
   const [news, setNews] = useState<any[]>([]);
+  const [marqueeTexts, setMarqueeTexts] = useState<any[]>([]);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [showAllNotices, setShowAllNotices] = useState(false);
 
   useEffect(() => {
     const unsubs = [
@@ -34,9 +46,23 @@ const Index = () => {
       subscribeToData('achievers', setAchievers),
       subscribeToData('notices', setNotices),
       subscribeToData('news', setNews),
+      subscribeToData('marqueeTexts', setMarqueeTexts),
     ];
     return () => unsubs.forEach(u => u());
   }, []);
+
+  // Hero auto-slide
+  useEffect(() => {
+    const timer = setInterval(() => setHeroIndex(p => (p + 1) % heroSlides.length), 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const prevSlide = useCallback(() => setHeroIndex(p => (p - 1 + heroSlides.length) % heroSlides.length), []);
+  const nextSlide = useCallback(() => setHeroIndex(p => (p + 1) % heroSlides.length), []);
+
+  const marqueeItems = marqueeTexts.length > 0
+    ? marqueeTexts.filter((m: any) => m.active !== 'false')
+    : notifications;
 
   const departments = [
     { icon: Cpu, name: 'Computer Science & Engineering', code: 'cse', seats: '60' },
@@ -61,27 +87,62 @@ const Index = () => {
       <AdmissionPopup />
       <ScrollToTop />
 
+      {/* ===== STICKY SOCIAL ICONS ===== */}
+      <div className="fixed right-3 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2.5">
+        <a href="https://wa.me/919588356609" target="_blank" rel="noreferrer"
+          className="w-11 h-11 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform" title="WhatsApp">
+          <MessageCircle size={20} />
+        </a>
+        <a href="tel:+919588356609"
+          className="w-11 h-11 rounded-full bg-[#2196F3] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform" title="Call Us">
+          <Phone size={20} />
+        </a>
+        <a href="mailto:director@mecw.ac.in"
+          className="w-11 h-11 rounded-full bg-[#EA4335] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform" title="Email">
+          <Mail size={20} />
+        </a>
+        <a href="https://gurugramuniversity.ac.in/" target="_blank" rel="noreferrer"
+          className="w-11 h-11 rounded-full bg-gold text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform" title="Gurugram University">
+          <GraduationCap size={20} />
+        </a>
+      </div>
+
       {/* ===== MARQUEE ===== */}
-      {notifications.length > 0 && (
-        <div className="bg-maroon text-white py-2 overflow-hidden relative">
-          <div className="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-maroon to-transparent z-10" />
-          <div className="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-maroon to-transparent z-10" />
+      {marqueeItems.length > 0 && (
+        <div className="bg-gold py-2 overflow-hidden relative">
+          <div className="absolute left-0 inset-y-0 w-20 bg-gradient-to-r from-[hsl(var(--gold))] to-transparent z-10" />
+          <div className="absolute right-0 inset-y-0 w-20 bg-gradient-to-l from-[hsl(var(--gold))] to-transparent z-10" />
           <div className="flex animate-marquee whitespace-nowrap">
-            {[...notifications, ...notifications].map((n, i) => (
-              <span key={i} className="mx-10 text-sm font-medium flex items-center gap-2">
-                <Megaphone size={13} className="shrink-0 text-gold" />
-                {n.title}{n.content ? ` — ${n.content}` : ''}
+            {[...marqueeItems, ...marqueeItems].map((n, i) => (
+              <span key={i} className="mx-10 text-sm font-semibold flex items-center gap-2 text-white">
+                <Megaphone size={13} className="shrink-0 text-white" />
+                {n.title || n.text}{n.content ? ` — ${n.content}` : ''}
               </span>
             ))}
           </div>
         </div>
       )}
 
-      {/* ===== HERO ===== */}
+      {/* ===== HERO SLIDER ===== */}
       <section className="relative h-[80vh] min-h-[520px] flex items-center overflow-hidden">
-        <img src={heroCampus} alt="MEC Campus" className="absolute inset-0 w-full h-full object-cover" />
+        {heroSlides.map((slide, i) => (
+          <img
+            key={i}
+            src={slide.img}
+            alt={slide.title}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === heroIndex ? 'opacity-100' : 'opacity-0'}`}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/90 via-navy/70 to-navy/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 to-transparent" />
+
+        {/* Slider arrows */}
+        <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 transition-colors flex items-center justify-center">
+          <ChevronLeft size={22} />
+        </button>
+        <button onClick={nextSlide} className="absolute right-16 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 transition-colors flex items-center justify-center">
+          <ChevronRight size={22} />
+        </button>
 
         <div className="relative container z-10">
           <div className="max-w-2xl">
@@ -89,16 +150,16 @@ const Index = () => {
               <Star size={12} /> NAAC Accredited · AICTE Approved · NBA Accredited
             </div>
 
-            <h2 className="font-heading text-[2.5rem] md:text-5xl lg:text-[3.5rem] leading-[1.1] text-white mb-4 animate-fade-in-up">
-              Mewat Engineering<br />College <span className="text-gold">(Waqf)</span>
+            <h2 className="font-heading text-[2.5rem] md:text-5xl lg:text-[3.5rem] leading-[1.1] text-white mb-4 animate-fade-in-up" key={`title-${heroIndex}`}>
+              {heroSlides[heroIndex].title} {heroIndex === 0 && <span className="text-gold">(Waqf)</span>}
             </h2>
 
             <p className="text-white/50 text-xs uppercase tracking-[0.2em] font-medium mb-4 animate-fade-in-up" style={{ animationDelay: '.05s' }}>
               Haryana Waqf Board · Government of Haryana
             </p>
 
-            <p className="text-white/60 text-[15px] leading-relaxed mb-8 max-w-lg animate-fade-in-up" style={{ animationDelay: '.1s' }}>
-              Affiliated to Gurugram University · Approved by AICTE, New Delhi · Recognized by DTE, Haryana. Shaping future engineers since over a decade.
+            <p className="text-white/70 text-[15px] leading-relaxed mb-8 max-w-lg animate-fade-in-up" style={{ animationDelay: '.1s' }}>
+              {heroSlides[heroIndex].subtitle}
             </p>
 
             <div className="flex flex-wrap gap-3 animate-fade-in-up" style={{ animationDelay: '.18s' }}>
@@ -109,17 +170,28 @@ const Index = () => {
                 Explore College
               </Link>
             </div>
+
+            {/* Slide features */}
+            <div className="flex flex-wrap gap-6 mt-8 animate-fade-in-up" style={{ animationDelay: '.25s' }}>
+              {['Industry Focused', 'Modern Labs', 'Expert Faculty'].map(f => (
+                <span key={f} className="flex items-center gap-1.5 text-white/70 text-sm">
+                  <CheckCircle2 size={14} className="text-gold" /> {f}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
-          <div className="w-5 h-9 rounded-full border-2 border-white/30 flex justify-center pt-1.5">
-            <div className="w-0.5 h-2.5 rounded-full bg-white/50" />
-          </div>
+        {/* Slide indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {heroSlides.map((_, i) => (
+            <button key={i} onClick={() => setHeroIndex(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${i === heroIndex ? 'w-8 bg-gold' : 'w-4 bg-white/30 hover:bg-white/50'}`} />
+          ))}
         </div>
       </section>
 
-      {/* ===== QUICK LINKS BAR (AMU-style) ===== */}
+      {/* ===== QUICK LINKS BAR ===== */}
       <AnimatedSection>
         <section className="bg-primary py-3">
           <div className="container">
@@ -159,37 +231,43 @@ const Index = () => {
         </section>
       </AnimatedSection>
 
-      {/* ===== NOTICES + NEWS + EVENTS (AMU-style 3-column) ===== */}
+      {/* ===== NOTICES + NEWS + EVENTS (Professional scrolling) ===== */}
       <AnimatedSection>
         <section className="py-14 bg-cream">
           <div className="container">
             <div className="grid lg:grid-cols-3 gap-6">
-              {/* Notices */}
+              {/* Notices - scrolling ticker */}
               <div className="bg-white rounded-lg border border-border shadow-sm overflow-hidden">
                 <div className="bg-maroon px-5 py-3 flex items-center justify-between">
                   <h3 className="text-white font-semibold text-sm flex items-center gap-2">
                     <Bell size={15} className="text-gold" /> Important Notices
                   </h3>
-                  <span className="text-gold text-[10px] font-bold uppercase tracking-wider">New</span>
+                  <button onClick={() => setShowAllNotices(true)} className="text-gold text-[10px] font-bold uppercase tracking-wider hover:underline">See All</button>
                 </div>
-                <div className="divide-y divide-border max-h-[360px] overflow-y-auto">
-                  {notices.length > 0 ? notices.slice(0, 8).map((n, i) => (
-                    <div key={n.id || i} className="px-5 py-3 hover:bg-cream/50 transition-colors group cursor-pointer">
-                      <div className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-maroon/10 text-maroon text-[10px] font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
-                        <div className="min-w-0">
-                          <p className="text-sm text-foreground font-medium line-clamp-2 group-hover:text-maroon transition-colors">{n.title || n.content}</p>
-                          {n.pdfLink && (
-                            <a href={n.pdfLink} target="_blank" rel="noreferrer" className="text-[11px] text-primary hover:underline mt-1 inline-flex items-center gap-1">
-                              <FileText size={10} /> View PDF
-                            </a>
-                          )}
-                          {n.date && <p className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1"><Calendar size={9} /> {n.date}</p>}
-                        </div>
+                <div className="relative h-[360px] overflow-hidden">
+                  {notices.length > 0 ? (
+                    <div className="notice-scroll-container">
+                      <div className="notice-scroll">
+                        {[...notices, ...notices].map((n, i) => (
+                          <div key={`${n.id}-${i}`} className="px-5 py-3 border-b border-border/50 hover:bg-cream/50 transition-colors group cursor-pointer">
+                            <div className="flex items-start gap-3">
+                              <span className="flex-shrink-0 w-2 h-2 rounded-full bg-maroon mt-2 animate-pulse" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm text-foreground font-medium line-clamp-2 group-hover:text-maroon transition-colors">{n.title || n.content}</p>
+                                {n.date && <p className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1"><Calendar size={9} /> {n.date}</p>}
+                              </div>
+                              {n.pdfLink && (
+                                <a href={n.pdfLink} target="_blank" rel="noreferrer" className="flex-shrink-0 w-8 h-8 rounded bg-maroon/10 hover:bg-maroon/20 flex items-center justify-center transition-colors" title="Download PDF">
+                                  <Download size={14} className="text-maroon" />
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  )) : (
-                    <div className="px-5 py-10 text-center">
+                  ) : (
+                    <div className="px-5 py-10 text-center h-full flex flex-col items-center justify-center">
                       <Bell className="mx-auto mb-2 text-muted-foreground/30" size={28} />
                       <p className="text-sm text-muted-foreground">No notices yet.</p>
                     </div>
@@ -259,6 +337,39 @@ const Index = () => {
           </div>
         </section>
       </AnimatedSection>
+
+      {/* ===== NOTICE MODAL (See All) ===== */}
+      {showAllNotices && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={() => setShowAllNotices(false)}>
+          <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="bg-maroon px-6 py-4 flex items-center justify-between">
+              <h3 className="text-white font-heading text-lg flex items-center gap-2">
+                <Bell size={18} className="text-gold" /> All Notices
+              </h3>
+              <button onClick={() => setShowAllNotices(false)} className="text-white/70 hover:text-white"><X size={20} /></button>
+            </div>
+            <div className="divide-y divide-border overflow-y-auto max-h-[60vh]">
+              {notices.length > 0 ? notices.map((n, i) => (
+                <div key={n.id || i} className="px-6 py-4 hover:bg-cream/50 transition-colors flex items-start gap-4">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-maroon/10 text-maroon text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-foreground">{n.title || n.content}</p>
+                    {n.content && n.title && <p className="text-xs text-muted-foreground mt-1">{n.content}</p>}
+                    {n.date && <p className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1"><Calendar size={9} /> {n.date}</p>}
+                  </div>
+                  {n.pdfLink && (
+                    <a href={n.pdfLink} target="_blank" rel="noreferrer" className="flex-shrink-0 px-3 py-1.5 rounded bg-maroon text-white text-xs font-medium hover:bg-maroon-light transition-colors flex items-center gap-1.5">
+                      <Download size={12} /> PDF
+                    </a>
+                  )}
+                </div>
+              )) : (
+                <div className="px-6 py-12 text-center text-muted-foreground">No notices available.</div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ===== WELCOME ===== */}
       <AnimatedSection>

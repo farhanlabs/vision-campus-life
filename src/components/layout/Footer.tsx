@@ -96,6 +96,20 @@ const Footer = () => (
         </div>
       </div>
 
+      {/* Affiliations bar */}
+      <div className="border-t border-white/8 py-3">
+        <div className="container flex flex-col sm:flex-row items-center justify-center gap-4 text-[11px] text-white/50">
+          <span>Affiliated to</span>
+          <a href="https://gurugramuniversity.ac.in/" target="_blank" rel="noreferrer" className="text-gold hover:text-gold-light font-semibold transition-colors">
+            Gurugram University →
+          </a>
+          <span className="text-white/15 hidden sm:inline">|</span>
+          <span>Approved by AICTE, New Delhi</span>
+          <span className="text-white/15 hidden sm:inline">|</span>
+          <span>DTE, Haryana</span>
+        </div>
+      </div>
+
       {/* Bottom bar */}
       <div className="border-t border-white/8 py-4">
         <div className="container flex flex-col md:flex-row justify-between items-center text-[11px] text-white/30 gap-2">

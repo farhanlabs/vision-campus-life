@@ -154,3 +154,20 @@ html {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Notice vertical scroll animation */
+.notice-scroll-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.notice-scroll {
+  animation: noticeScroll 20s linear infinite;
+}
+.notice-scroll:hover {
+  animation-play-state: paused;
+}
+@keyframes noticeScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
