@@ -99,6 +99,13 @@
   animation: marquee 30s linear infinite;
 }
 
+.animate-marquee-fast {
+  animation: marquee 15s linear infinite;
+}
+.animate-marquee-fast:hover {
+  animation-play-state: paused;
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
