@@ -36,6 +36,7 @@ const entities: Record<string, EntityConfig> = {
     { name: 'title', label: 'Title', type: 'text' },
     { name: 'content', label: 'Content', type: 'textarea' },
     { name: 'date', label: 'Date', type: 'text' },
+    { name: 'pdfLink', label: 'PDF Link (News PDF)', type: 'url' },
   ]},
   gallery: { title: 'Gallery', path: 'gallery', fields: [
     { name: 'title', label: 'Title', type: 'text' },
