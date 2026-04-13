@@ -46,6 +46,7 @@ const entities: Record<string, EntityConfig> = {
   achievers: { title: 'Achievers', path: 'achievers', fields: [
     { name: 'name', label: 'Name', type: 'text' },
     { name: 'achievement', label: 'Achievement', type: 'textarea' },
+    { name: 'description', label: 'Full Description', type: 'textarea' },
     { name: 'imageUrl', label: 'Image URL', type: 'url' },
     { name: 'year', label: 'Year', type: 'text' },
   ]},
@@ -60,6 +61,12 @@ const entities: Record<string, EntityConfig> = {
   marqueeTexts: { title: 'Marquee Texts', path: 'marqueeTexts', fields: [
     { name: 'text', label: 'Marquee Text', type: 'text' },
     { name: 'active', label: 'Active', type: 'select', options: ['true', 'false'] },
+  ]},
+  downloads: { title: 'Downloads', path: 'downloads', fields: [
+    { name: 'title', label: 'Title (e.g. Semester Exam Form)', type: 'text' },
+    { name: 'category', label: 'Category', type: 'select', options: ['Results', 'Exam Date Sheet', 'Fee Dues', 'Hostel', 'Forms', 'Notifications', 'Circulars', 'Others'] },
+    { name: 'pdfLink', label: 'PDF Link', type: 'url' },
+    { name: 'date', label: 'Date', type: 'text' },
   ]},
   timetable: { title: 'Timetable', path: 'timetable', fields: [
     { name: 'title', label: 'Title', type: 'text' },
@@ -97,6 +104,8 @@ const entities: Record<string, EntityConfig> = {
     { name: 'designation', label: 'Designation', type: 'text' },
     { name: 'email', label: 'Email', type: 'text' },
     { name: 'phone', label: 'Contact Number', type: 'text' },
+    { name: 'description', label: 'Description / Bio', type: 'textarea' },
+    { name: 'imageUrl', label: 'Photo URL', type: 'url' },
   ]},
   students: { title: 'Students', path: 'students', fields: [
     { name: 'name', label: 'Name', type: 'text' },
@@ -112,7 +121,7 @@ const entities: Record<string, EntityConfig> = {
 };
 
 const sidebarSections = [
-  'notifications', 'marqueeTexts', 'events', 'news', 'gallery', 'achievers', 'notices',
+  'notifications', 'marqueeTexts', 'events', 'news', 'gallery', 'achievers', 'notices', 'downloads',
   'timetable', 'studyMaterials', 'examChair', 'oldPapers', 'faculty', 'students',
 ];
 
