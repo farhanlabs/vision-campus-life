@@ -770,7 +770,6 @@ const Index = () => {
                 <button onClick={() => setSelectedAchiever(achievers[0])} className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded hover:bg-maroon-light transition-all font-semibold text-sm">
                   See More Achievers <ArrowRight size={14} />
                 </button>
-                </Link>
               </div>
             )}
           </div>
