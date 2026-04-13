@@ -711,12 +711,10 @@ const Index = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industryPartners.map((partner, i) => (
-                <AnimatedSection key={partner} delay={i * 0.06}>
-                  <div className="bg-white rounded-lg p-6 border border-border shadow-sm text-center premium-card flex items-center justify-center min-h-[100px]">
-                    <div>
-                      <Building2 size={28} className="text-navy/30 mx-auto mb-2" />
-                      <h4 className="font-semibold text-foreground text-sm">{partner}</h4>
-                    </div>
+                <AnimatedSection key={partner.name} delay={i * 0.06}>
+                  <div className="bg-white rounded-lg p-6 border border-border shadow-sm text-center premium-card flex flex-col items-center justify-center min-h-[120px]">
+                    <img src={partner.logo} alt={partner.name} className="h-10 w-auto object-contain mb-3" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} loading="lazy" />
+                    <h4 className="font-semibold text-foreground text-sm">{partner.name}</h4>
                   </div>
                 </AnimatedSection>
               ))}
@@ -740,7 +738,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {achievers.slice(0, 3).map((a, i) => (
                   <AnimatedSection key={a.id} delay={i * 0.1}>
-                    <div className="rounded-lg overflow-hidden bg-navy shadow-lg premium-card relative">
+                    <div className="rounded-lg overflow-hidden bg-navy shadow-lg premium-card relative cursor-pointer" onClick={() => setSelectedAchiever(a)}>
                       {a.imageUrl ? (
                         <img src={a.imageUrl} alt={a.name} className="w-full h-56 object-cover" loading="lazy" />
                       ) : (
@@ -752,7 +750,10 @@ const Index = () => {
                       <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
                         <h3 className="font-heading text-lg text-gold">{a.name}</h3>
                         <p className="text-white/70 text-sm mt-1 line-clamp-2">{a.achievement}</p>
-                        {a.year && <span className="inline-block mt-2 text-[10px] bg-gold/20 text-gold px-2 py-0.5 rounded font-bold">{a.year}</span>}
+                        <div className="flex items-center justify-between mt-2">
+                          {a.year && <span className="text-[10px] bg-gold/20 text-gold px-2 py-0.5 rounded font-bold">{a.year}</span>}
+                          <span className="text-gold text-xs font-semibold flex items-center gap-1">See More <ChevronRight size={12} /></span>
+                        </div>
                       </div>
                     </div>
                   </AnimatedSection>
@@ -766,8 +767,9 @@ const Index = () => {
             )}
             {achievers.length > 3 && (
               <div className="text-center mt-8">
-                <Link to="/about/achievers" className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded hover:bg-maroon-light transition-all font-semibold text-sm">
+                <button onClick={() => setSelectedAchiever(achievers[0])} className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded hover:bg-maroon-light transition-all font-semibold text-sm">
                   See More Achievers <ArrowRight size={14} />
+                </button>
                 </Link>
               </div>
             )}
