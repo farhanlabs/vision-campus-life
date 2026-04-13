@@ -41,9 +41,11 @@ const Index = () => {
   const [notices, setNotices] = useState<any[]>([]);
   const [news, setNews] = useState<any[]>([]);
   const [marqueeTexts, setMarqueeTexts] = useState<any[]>([]);
+  const [downloads, setDownloads] = useState<any[]>([]);
   const [heroIndex, setHeroIndex] = useState(0);
   const [showAllNotices, setShowAllNotices] = useState(false);
   const [showAllNews, setShowAllNews] = useState(false);
+  const [selectedAchiever, setSelectedAchiever] = useState<any>(null);
 
   useEffect(() => {
     const unsubs = [
@@ -54,6 +56,7 @@ const Index = () => {
       subscribeToData('notices', setNotices),
       subscribeToData('news', setNews),
       subscribeToData('marqueeTexts', setMarqueeTexts),
+      subscribeToData('downloads', setDownloads),
     ];
     return () => unsubs.forEach(u => u());
   }, []);
