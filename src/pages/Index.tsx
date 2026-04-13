@@ -906,6 +906,64 @@ const Index = () => {
           </div>
         </section>
       </AnimatedSection>
+
+      {/* ===== DOWNLOADS SECTION ===== */}
+      {downloads.length > 0 && (
+        <AnimatedSection>
+          <section className="py-16 bg-white">
+            <div className="container">
+              <div className="text-center mb-10">
+                <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Resources</span>
+                <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Downloads</h2>
+                <div className="section-divider mx-auto" />
+              </div>
+              <div className="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+                {downloads.slice(0, 10).map((d, i) => (
+                  <a key={d.id || i} href={d.pdfLink} target="_blank" rel="noreferrer"
+                    className="flex items-center gap-3 bg-cream rounded-lg p-4 border border-border hover:border-maroon/30 hover:shadow-md transition-all group">
+                    <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center shrink-0">
+                      <Download size={18} className="text-maroon" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-semibold text-foreground group-hover:text-maroon transition-colors truncate">{d.title}</h4>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        {d.category && <span className="text-[10px] bg-maroon/10 text-maroon px-2 py-0.5 rounded font-bold">{d.category}</span>}
+                        {d.date && <span className="text-[10px] text-muted-foreground">{d.date}</span>}
+                      </div>
+                    </div>
+                    <FileText size={16} className="text-maroon/40 group-hover:text-maroon shrink-0 transition-colors" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+      )}
+
+      {/* ===== ACHIEVER POPUP ===== */}
+      {selectedAchiever && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={() => setSelectedAchiever(null)}>
+          <div className="bg-white rounded-lg shadow-2xl max-w-lg w-full overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="bg-navy px-6 py-4 flex items-center justify-between">
+              <h3 className="text-gold font-heading text-lg flex items-center gap-2"><Trophy size={18} className="text-gold" /> Achiever Details</h3>
+              <button onClick={() => setSelectedAchiever(null)} className="text-white/70 hover:text-white"><X size={20} /></button>
+            </div>
+            <div className="p-6">
+              {selectedAchiever.imageUrl && (
+                <img src={selectedAchiever.imageUrl} alt={selectedAchiever.name} className="w-full h-48 object-cover rounded-lg mb-4" />
+              )}
+              <h4 className="font-heading text-xl text-foreground mb-1">{selectedAchiever.name}</h4>
+              {selectedAchiever.year && <span className="text-xs bg-gold/20 text-gold-dark px-2 py-0.5 rounded font-bold">{selectedAchiever.year}</span>}
+              <p className="text-sm text-maroon font-medium mt-3 mb-2">{selectedAchiever.achievement}</p>
+              {selectedAchiever.description && (
+                <div className="bg-cream rounded-lg p-4 mt-3">
+                  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{selectedAchiever.description}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };
