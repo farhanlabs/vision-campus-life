@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
 import AdmissionPage from "./pages/AdmissionPage";
 import DepartmentPage from "./pages/DepartmentPage";
+import FacultyPage from "./pages/FacultyPage";
 import ExaminationPage from "./pages/ExaminationPage";
 import PlacementsPage from "./pages/PlacementsPage";
 import FeePayment from "./pages/FeePayment";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/admission/:section" element={<AdmissionPage />} />
             <Route path="/department" element={<DepartmentPage />} />
             <Route path="/department/:dept" element={<DepartmentPage />} />
+            <Route path="/faculty" element={<FacultyPage />} />
             <Route path="/examination" element={<ExaminationPage />} />
             <Route path="/examination/:section" element={<ExaminationPage />} />
             <Route path="/placements" element={<PlacementsPage />} />

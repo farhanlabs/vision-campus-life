@@ -41,9 +41,11 @@ const Index = () => {
   const [notices, setNotices] = useState<any[]>([]);
   const [news, setNews] = useState<any[]>([]);
   const [marqueeTexts, setMarqueeTexts] = useState<any[]>([]);
+  const [downloads, setDownloads] = useState<any[]>([]);
   const [heroIndex, setHeroIndex] = useState(0);
   const [showAllNotices, setShowAllNotices] = useState(false);
   const [showAllNews, setShowAllNews] = useState(false);
+  const [selectedAchiever, setSelectedAchiever] = useState<any>(null);
 
   useEffect(() => {
     const unsubs = [
@@ -54,6 +56,7 @@ const Index = () => {
       subscribeToData('notices', setNotices),
       subscribeToData('news', setNews),
       subscribeToData('marqueeTexts', setMarqueeTexts),
+      subscribeToData('downloads', setDownloads),
     ];
     return () => unsubs.forEach(u => u());
   }, []);
@@ -95,8 +98,14 @@ const Index = () => {
   ];
 
   const industryPartners = [
-    'Tata Consultancy Services', 'Infosys', 'Wipro', 'HCL Technologies',
-    'Tech Mahindra', 'L&T', 'Cognizant', 'Accenture',
+    { name: 'Tata Consultancy Services', logo: 'https://logo.clearbit.com/tcs.com' },
+    { name: 'Infosys', logo: 'https://logo.clearbit.com/infosys.com' },
+    { name: 'Wipro', logo: 'https://logo.clearbit.com/wipro.com' },
+    { name: 'HCL Technologies', logo: 'https://logo.clearbit.com/hcltech.com' },
+    { name: 'Tech Mahindra', logo: 'https://logo.clearbit.com/techmahindra.com' },
+    { name: 'L&T', logo: 'https://logo.clearbit.com/larsentoubro.com' },
+    { name: 'Cognizant', logo: 'https://logo.clearbit.com/cognizant.com' },
+    { name: 'Accenture', logo: 'https://logo.clearbit.com/accenture.com' },
   ];
 
   return (
@@ -702,12 +711,10 @@ const Index = () => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industryPartners.map((partner, i) => (
-                <AnimatedSection key={partner} delay={i * 0.06}>
-                  <div className="bg-white rounded-lg p-6 border border-border shadow-sm text-center premium-card flex items-center justify-center min-h-[100px]">
-                    <div>
-                      <Building2 size={28} className="text-navy/30 mx-auto mb-2" />
-                      <h4 className="font-semibold text-foreground text-sm">{partner}</h4>
-                    </div>
+                <AnimatedSection key={partner.name} delay={i * 0.06}>
+                  <div className="bg-white rounded-lg p-6 border border-border shadow-sm text-center premium-card flex flex-col items-center justify-center min-h-[120px]">
+                    <img src={partner.logo} alt={partner.name} className="h-10 w-auto object-contain mb-3" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} loading="lazy" />
+                    <h4 className="font-semibold text-foreground text-sm">{partner.name}</h4>
                   </div>
                 </AnimatedSection>
               ))}
@@ -731,7 +738,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {achievers.slice(0, 3).map((a, i) => (
                   <AnimatedSection key={a.id} delay={i * 0.1}>
-                    <div className="rounded-lg overflow-hidden bg-navy shadow-lg premium-card relative">
+                    <div className="rounded-lg overflow-hidden bg-navy shadow-lg premium-card relative cursor-pointer" onClick={() => setSelectedAchiever(a)}>
                       {a.imageUrl ? (
                         <img src={a.imageUrl} alt={a.name} className="w-full h-56 object-cover" loading="lazy" />
                       ) : (
@@ -743,7 +750,10 @@ const Index = () => {
                       <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
                         <h3 className="font-heading text-lg text-gold">{a.name}</h3>
                         <p className="text-white/70 text-sm mt-1 line-clamp-2">{a.achievement}</p>
-                        {a.year && <span className="inline-block mt-2 text-[10px] bg-gold/20 text-gold px-2 py-0.5 rounded font-bold">{a.year}</span>}
+                        <div className="flex items-center justify-between mt-2">
+                          {a.year && <span className="text-[10px] bg-gold/20 text-gold px-2 py-0.5 rounded font-bold">{a.year}</span>}
+                          <span className="text-gold text-xs font-semibold flex items-center gap-1">See More <ChevronRight size={12} /></span>
+                        </div>
                       </div>
                     </div>
                   </AnimatedSection>
@@ -757,9 +767,9 @@ const Index = () => {
             )}
             {achievers.length > 3 && (
               <div className="text-center mt-8">
-                <Link to="/about/achievers" className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded hover:bg-maroon-light transition-all font-semibold text-sm">
+                <button onClick={() => setSelectedAchiever(achievers[0])} className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded hover:bg-maroon-light transition-all font-semibold text-sm">
                   See More Achievers <ArrowRight size={14} />
-                </Link>
+                </button>
               </div>
             )}
           </div>
@@ -896,6 +906,64 @@ const Index = () => {
           </div>
         </section>
       </AnimatedSection>
+
+      {/* ===== DOWNLOADS SECTION ===== */}
+      {downloads.length > 0 && (
+        <AnimatedSection>
+          <section className="py-16 bg-white">
+            <div className="container">
+              <div className="text-center mb-10">
+                <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Resources</span>
+                <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Downloads</h2>
+                <div className="section-divider mx-auto" />
+              </div>
+              <div className="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
+                {downloads.slice(0, 10).map((d, i) => (
+                  <a key={d.id || i} href={d.pdfLink} target="_blank" rel="noreferrer"
+                    className="flex items-center gap-3 bg-cream rounded-lg p-4 border border-border hover:border-maroon/30 hover:shadow-md transition-all group">
+                    <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center shrink-0">
+                      <Download size={18} className="text-maroon" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-semibold text-foreground group-hover:text-maroon transition-colors truncate">{d.title}</h4>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        {d.category && <span className="text-[10px] bg-maroon/10 text-maroon px-2 py-0.5 rounded font-bold">{d.category}</span>}
+                        {d.date && <span className="text-[10px] text-muted-foreground">{d.date}</span>}
+                      </div>
+                    </div>
+                    <FileText size={16} className="text-maroon/40 group-hover:text-maroon shrink-0 transition-colors" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        </AnimatedSection>
+      )}
+
+      {/* ===== ACHIEVER POPUP ===== */}
+      {selectedAchiever && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={() => setSelectedAchiever(null)}>
+          <div className="bg-white rounded-lg shadow-2xl max-w-lg w-full overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="bg-navy px-6 py-4 flex items-center justify-between">
+              <h3 className="text-gold font-heading text-lg flex items-center gap-2"><Trophy size={18} className="text-gold" /> Achiever Details</h3>
+              <button onClick={() => setSelectedAchiever(null)} className="text-white/70 hover:text-white"><X size={20} /></button>
+            </div>
+            <div className="p-6">
+              {selectedAchiever.imageUrl && (
+                <img src={selectedAchiever.imageUrl} alt={selectedAchiever.name} className="w-full h-48 object-cover rounded-lg mb-4" />
+              )}
+              <h4 className="font-heading text-xl text-foreground mb-1">{selectedAchiever.name}</h4>
+              {selectedAchiever.year && <span className="text-xs bg-gold/20 text-gold-dark px-2 py-0.5 rounded font-bold">{selectedAchiever.year}</span>}
+              <p className="text-sm text-maroon font-medium mt-3 mb-2">{selectedAchiever.achievement}</p>
+              {selectedAchiever.description && (
+                <div className="bg-cream rounded-lg p-4 mt-3">
+                  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{selectedAchiever.description}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };

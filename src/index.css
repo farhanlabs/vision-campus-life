@@ -100,7 +100,7 @@
 }
 
 .animate-marquee-fast {
-  animation: marquee 15s linear infinite;
+  animation: marquee 8s linear infinite;
 }
 .animate-marquee-fast:hover {
   animation-play-state: paused;
