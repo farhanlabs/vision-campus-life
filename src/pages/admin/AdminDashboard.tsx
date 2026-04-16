@@ -236,7 +236,7 @@ const AdminDashboard = () => {
 
   if (!user || user.role !== 'admin') return null;
 
-  const specialSections = ['admissionPopup', 'submissions', 'grievances', 'leaveRequests'];
+  const specialSections = ['admissionPopup', 'submissions', 'grievances', 'leaveRequests', 'enquiries'];
 
   return (
     <div className="min-h-screen flex bg-muted">
