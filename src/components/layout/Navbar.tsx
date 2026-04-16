@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
     { label: 'Mechanical Engineering', path: '/department/me' },
     { label: 'Civil Engineering', path: '/department/ce' },
     { label: 'Applied Sciences & Humanities', path: '/department/ash' },
-    { label: 'Faculty', path: '/department/faculty' },
+    { label: 'Faculty', path: '/faculty' },
   ]},
   { label: 'Examination', children: [
     { label: 'Exam Chair', path: '/examination/chair' },
