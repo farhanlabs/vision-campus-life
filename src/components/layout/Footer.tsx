@@ -69,6 +69,7 @@ const Footer = () => (
                 { label: 'Conference', path: '/placements/conferences' },
                 { label: 'AICTE Approval', path: '/about/achievements' },
                 { label: 'NBA', path: '/about/achievements' },
+                { label: 'Contact Details', path: '/admission/enquiry' },
               ].map(link => (
                 <Link key={link.label} to={link.path} className="flex items-center gap-1.5 text-white/45 hover:text-gold hover:translate-x-1 transition-all duration-200 py-0.5">
                   <ExternalLink size={10} className="shrink-0" /> {link.label}
@@ -82,12 +83,12 @@ const Footer = () => (
             <h3 className="text-sm font-bold mb-5 text-gold uppercase tracking-wider">Resources</h3>
             <div className="space-y-2 text-sm">
               {[
-                { label: 'Right to Information', path: '/resources/anti-ragging' },
-                { label: 'Mandatory Disclosure', path: '/about/about-mec' },
-                { label: 'Feedback Form', path: '/admission/enquiry' },
                 { label: 'MECW Login', path: '/login' },
+                { label: 'Feedback Form', path: '/admission/enquiry' },
                 { label: 'Margadarshak', path: '/about/about-mec' },
+                { label: 'MAR Form', path: '/admission/downloads' },
                 { label: 'Downloads', path: '/admission/downloads' },
+                { label: 'Fee Structure', path: '/admission/fee-structure' },
               ].map(link => (
                 <Link key={link.label} to={link.path} className="flex items-center gap-1.5 text-white/45 hover:text-gold hover:translate-x-1 transition-all duration-200 py-0.5">
                   <ExternalLink size={10} className="shrink-0" /> {link.label}
