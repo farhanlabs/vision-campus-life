@@ -68,6 +68,17 @@ const entities: Record<string, EntityConfig> = {
     { name: 'pdfLink', label: 'PDF Link', type: 'url' },
     { name: 'date', label: 'Date', type: 'text' },
   ]},
+  feeStructure: { title: 'Fee Structure PDFs', path: 'feeStructure', fields: [
+    { name: 'title', label: 'Title (e.g. Boys Fee 2025-26)', type: 'text' },
+    { name: 'category', label: 'Category', type: 'select', options: ['Boys Fee', 'Girls Fee', 'Hostel Fee', 'Other'] },
+    { name: 'pdfLink', label: 'PDF Link', type: 'url' },
+  ]},
+  footerLinks: { title: 'Footer Links', path: 'footerLinks', fields: [
+    { name: 'label', label: 'Link Label', type: 'text' },
+    { name: 'path', label: 'URL or Path', type: 'text' },
+    { name: 'pdfLink', label: 'PDF Link (if applicable)', type: 'url' },
+    { name: 'section', label: 'Section', type: 'select', options: ['Quick Links', 'Important', 'Resources'] },
+  ]},
   timetable: { title: 'Timetable', path: 'timetable', fields: [
     { name: 'title', label: 'Title', type: 'text' },
     { name: 'branch', label: 'Branch', type: 'select', options: ['CSE', 'ECE', 'EEE', 'ME', 'CE'] },
@@ -122,6 +133,7 @@ const entities: Record<string, EntityConfig> = {
 
 const sidebarSections = [
   'notifications', 'marqueeTexts', 'events', 'news', 'gallery', 'achievers', 'notices', 'downloads',
+  'feeStructure', 'footerLinks',
   'timetable', 'studyMaterials', 'examChair', 'oldPapers', 'faculty', 'students',
 ];
 
@@ -137,10 +149,11 @@ const AdminDashboard = () => {
   const [popupTitle, setPopupTitle] = useState('');
   const [popupContent, setPopupContent] = useState('');
   const [popupImage, setPopupImage] = useState('');
-  // For viewing submissions, grievances, leave requests
+  // For viewing submissions, grievances, leave requests, enquiries
   const [submissions, setSubmissions] = useState<any[]>([]);
   const [grievances, setGrievances] = useState<any[]>([]);
   const [leaveRequests, setLeaveRequests] = useState<any[]>([]);
+  const [enquiries, setEnquiries] = useState<any[]>([]);
 
   useEffect(() => {
     if (!user || user.role !== 'admin') { navigate('/admin/login'); return; }
@@ -163,6 +176,10 @@ const AdminDashboard = () => {
     }
     if (activeSection === 'leaveRequests') {
       const unsub = subscribeToData('leaveRequests', setLeaveRequests);
+      return () => unsub();
+    }
+    if (activeSection === 'enquiries') {
+      const unsub = subscribeToData('enquiries', setEnquiries);
       return () => unsub();
     }
     const config = entities[activeSection];
@@ -219,7 +236,7 @@ const AdminDashboard = () => {
 
   if (!user || user.role !== 'admin') return null;
 
-  const specialSections = ['admissionPopup', 'submissions', 'grievances', 'leaveRequests'];
+  const specialSections = ['admissionPopup', 'submissions', 'grievances', 'leaveRequests', 'enquiries'];
 
   return (
     <div className="min-h-screen flex bg-muted">
@@ -259,6 +276,7 @@ const AdminDashboard = () => {
             { key: 'submissions', label: 'Assignment Submissions' },
             { key: 'grievances', label: 'Student Grievances' },
             { key: 'leaveRequests', label: 'Leave Requests' },
+            { key: 'enquiries', label: 'Contact Enquiries' },
           ].map(s => (
             <button key={s.key} onClick={() => { setActiveSection(s.key); setShowForm(false); }}
               className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeSection === s.key ? 'bg-primary-foreground/20' : 'opacity-70 hover:opacity-100 hover:bg-primary-foreground/10'}`}
@@ -405,6 +423,29 @@ const AdminDashboard = () => {
                   {leaveRequests.length === 0 && <tr><td colSpan={5} className="p-8 text-center text-muted-foreground">No leave requests yet.</td></tr>}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {/* Contact Enquiries Monitoring */}
+        {activeSection === 'enquiries' && (
+          <div>
+            <h2 className="font-heading text-2xl text-primary mb-6">Contact Enquiries</h2>
+            <div className="space-y-3">
+              {enquiries.map(e => (
+                <div key={e.id} className="bg-card border border-border rounded-lg p-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-semibold text-primary text-sm">{e.name}</h3>
+                      <p className="text-xs text-muted-foreground">{e.phone} • {e.email} • {e.date}</p>
+                      {e.course && <p className="text-xs text-gold-dark font-medium mt-1">Course: {e.course}</p>}
+                      <p className="text-sm mt-2">{e.message}</p>
+                    </div>
+                    <button onClick={() => handleDelete('enquiries', e.id)} className="p-1.5 text-muted-foreground hover:text-destructive"><Trash2 size={15} /></button>
+                  </div>
+                </div>
+              ))}
+              {enquiries.length === 0 && <p className="text-center text-muted-foreground py-8">No enquiries yet.</p>}
             </div>
           </div>
         )}

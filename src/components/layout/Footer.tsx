@@ -11,9 +11,9 @@ const Footer = () => (
           <h3 className="font-heading text-xl md:text-2xl">Ready to Begin Your Journey?</h3>
           <p className="text-white/60 text-sm mt-1">Admissions open for the academic year 2025-26.</p>
         </div>
-        <Link to="/admission/apply" className="px-6 py-2.5 bg-gold text-white rounded font-bold text-sm hover:brightness-110 transition-all shadow-lg inline-flex items-center gap-2">
+        <a href="https://mecw-admission.vercel.app/#admission" target="_blank" rel="noreferrer" className="px-6 py-2.5 bg-gold text-white rounded font-bold text-sm hover:brightness-110 transition-all shadow-lg inline-flex items-center gap-2">
           Apply Now <ArrowRight size={14} />
-        </Link>
+        </a>
       </div>
     </div>
 
@@ -44,10 +44,12 @@ const Footer = () => (
               {[
                 { label: 'About', path: '/about/about-mec' },
                 { label: 'Departments', path: '/department/cse' },
-                { label: 'Faculty', path: '/department/faculty' },
+                { label: 'Faculty', path: '/faculty' },
                 { label: 'Admissions', path: '/admission/procedure' },
                 { label: 'Career', path: '/placements/training' },
-                { label: 'Contact Us', path: '/about/about-mec' },
+                { label: 'Contact / Enquiry', path: '/admission/enquiry' },
+                { label: 'Right to Information', path: '/resources/anti-ragging' },
+                { label: 'Mandatory Disclosure', path: '/about/about-mec' },
               ].map(link => (
                 <Link key={link.label} to={link.path} className="flex items-center gap-1.5 text-white/45 hover:text-gold hover:translate-x-1 transition-all duration-200 py-0.5">
                   <ExternalLink size={10} className="shrink-0" /> {link.label}
@@ -67,6 +69,7 @@ const Footer = () => (
                 { label: 'Conference', path: '/placements/conferences' },
                 { label: 'AICTE Approval', path: '/about/achievements' },
                 { label: 'NBA', path: '/about/achievements' },
+                { label: 'Contact Details', path: '/admission/enquiry' },
               ].map(link => (
                 <Link key={link.label} to={link.path} className="flex items-center gap-1.5 text-white/45 hover:text-gold hover:translate-x-1 transition-all duration-200 py-0.5">
                   <ExternalLink size={10} className="shrink-0" /> {link.label}
@@ -80,12 +83,12 @@ const Footer = () => (
             <h3 className="text-sm font-bold mb-5 text-gold uppercase tracking-wider">Resources</h3>
             <div className="space-y-2 text-sm">
               {[
-                { label: 'Right to Information', path: '/resources/anti-ragging' },
-                { label: 'Mandatory Disclosure', path: '/about/about-mec' },
-                { label: 'Feedback Form', path: '/admission/enquiry' },
                 { label: 'MECW Login', path: '/login' },
+                { label: 'Feedback Form', path: '/admission/enquiry' },
                 { label: 'Margadarshak', path: '/about/about-mec' },
+                { label: 'MAR Form', path: '/admission/downloads' },
                 { label: 'Downloads', path: '/admission/downloads' },
+                { label: 'Fee Structure', path: '/admission/fee-structure' },
               ].map(link => (
                 <Link key={link.label} to={link.path} className="flex items-center gap-1.5 text-white/45 hover:text-gold hover:translate-x-1 transition-all duration-200 py-0.5">
                   <ExternalLink size={10} className="shrink-0" /> {link.label}
