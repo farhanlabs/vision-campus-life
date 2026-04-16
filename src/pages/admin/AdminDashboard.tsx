@@ -149,10 +149,11 @@ const AdminDashboard = () => {
   const [popupTitle, setPopupTitle] = useState('');
   const [popupContent, setPopupContent] = useState('');
   const [popupImage, setPopupImage] = useState('');
-  // For viewing submissions, grievances, leave requests
+  // For viewing submissions, grievances, leave requests, enquiries
   const [submissions, setSubmissions] = useState<any[]>([]);
   const [grievances, setGrievances] = useState<any[]>([]);
   const [leaveRequests, setLeaveRequests] = useState<any[]>([]);
+  const [enquiries, setEnquiries] = useState<any[]>([]);
 
   useEffect(() => {
     if (!user || user.role !== 'admin') { navigate('/admin/login'); return; }
@@ -175,6 +176,10 @@ const AdminDashboard = () => {
     }
     if (activeSection === 'leaveRequests') {
       const unsub = subscribeToData('leaveRequests', setLeaveRequests);
+      return () => unsub();
+    }
+    if (activeSection === 'enquiries') {
+      const unsub = subscribeToData('enquiries', setEnquiries);
       return () => unsub();
     }
     const config = entities[activeSection];
