@@ -68,6 +68,17 @@ const entities: Record<string, EntityConfig> = {
     { name: 'pdfLink', label: 'PDF Link', type: 'url' },
     { name: 'date', label: 'Date', type: 'text' },
   ]},
+  feeStructure: { title: 'Fee Structure PDFs', path: 'feeStructure', fields: [
+    { name: 'title', label: 'Title (e.g. Boys Fee 2025-26)', type: 'text' },
+    { name: 'category', label: 'Category', type: 'select', options: ['Boys Fee', 'Girls Fee', 'Hostel Fee', 'Other'] },
+    { name: 'pdfLink', label: 'PDF Link', type: 'url' },
+  ]},
+  footerLinks: { title: 'Footer Links', path: 'footerLinks', fields: [
+    { name: 'label', label: 'Link Label', type: 'text' },
+    { name: 'path', label: 'URL or Path', type: 'text' },
+    { name: 'pdfLink', label: 'PDF Link (if applicable)', type: 'url' },
+    { name: 'section', label: 'Section', type: 'select', options: ['Quick Links', 'Important', 'Resources'] },
+  ]},
   timetable: { title: 'Timetable', path: 'timetable', fields: [
     { name: 'title', label: 'Title', type: 'text' },
     { name: 'branch', label: 'Branch', type: 'select', options: ['CSE', 'ECE', 'EEE', 'ME', 'CE'] },
@@ -122,6 +133,7 @@ const entities: Record<string, EntityConfig> = {
 
 const sidebarSections = [
   'notifications', 'marqueeTexts', 'events', 'news', 'gallery', 'achievers', 'notices', 'downloads',
+  'feeStructure', 'footerLinks',
   'timetable', 'studyMaterials', 'examChair', 'oldPapers', 'faculty', 'students',
 ];
 
