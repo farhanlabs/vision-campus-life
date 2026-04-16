@@ -276,6 +276,7 @@ const AdminDashboard = () => {
             { key: 'submissions', label: 'Assignment Submissions' },
             { key: 'grievances', label: 'Student Grievances' },
             { key: 'leaveRequests', label: 'Leave Requests' },
+            { key: 'enquiries', label: 'Contact Enquiries' },
           ].map(s => (
             <button key={s.key} onClick={() => { setActiveSection(s.key); setShowForm(false); }}
               className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeSection === s.key ? 'bg-primary-foreground/20' : 'opacity-70 hover:opacity-100 hover:bg-primary-foreground/10'}`}
