@@ -427,6 +427,29 @@ const AdminDashboard = () => {
           </div>
         )}
 
+        {/* Contact Enquiries Monitoring */}
+        {activeSection === 'enquiries' && (
+          <div>
+            <h2 className="font-heading text-2xl text-primary mb-6">Contact Enquiries</h2>
+            <div className="space-y-3">
+              {enquiries.map(e => (
+                <div key={e.id} className="bg-card border border-border rounded-lg p-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-semibold text-primary text-sm">{e.name}</h3>
+                      <p className="text-xs text-muted-foreground">{e.phone} • {e.email} • {e.date}</p>
+                      {e.course && <p className="text-xs text-gold-dark font-medium mt-1">Course: {e.course}</p>}
+                      <p className="text-sm mt-2">{e.message}</p>
+                    </div>
+                    <button onClick={() => handleDelete('enquiries', e.id)} className="p-1.5 text-muted-foreground hover:text-destructive"><Trash2 size={15} /></button>
+                  </div>
+                </div>
+              ))}
+              {enquiries.length === 0 && <p className="text-center text-muted-foreground py-8">No enquiries yet.</p>}
+            </div>
+          </div>
+        )}
+
         {/* Generic CRUD entity view */}
         {config && !specialSections.includes(activeSection) && (
           <>
