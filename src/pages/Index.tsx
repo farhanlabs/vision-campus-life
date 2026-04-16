@@ -188,9 +188,9 @@ const Index = () => {
               {heroSlides[heroIndex].subtitle}
             </p>
             <div className="flex flex-wrap gap-3 animate-fade-in-up" style={{ animationDelay: '.18s' }}>
-              <Link to="/admission/apply" className="px-7 py-3 bg-gold text-white font-bold rounded hover:brightness-110 transition-all text-sm tracking-wide shadow-lg shadow-gold-dark/30">
+              <a href="https://mecw-admission.vercel.app/#admission" target="_blank" rel="noreferrer" className="px-7 py-3 bg-gold text-white font-bold rounded hover:brightness-110 transition-all text-sm tracking-wide shadow-lg shadow-gold-dark/30">
                 Apply Now →
-              </Link>
+              </a>
               <Link to="/about/about-mec" className="px-7 py-3 bg-white/10 backdrop-blur-sm text-white rounded hover:bg-white/20 transition-all font-semibold text-sm tracking-wide border border-white/15">
                 Explore College
               </Link>
@@ -352,9 +352,9 @@ const Index = () => {
                   </button>
                 </div>
                 <div className="border-t border-border px-3 py-2 text-center">
-                  <Link to="/resources/notices" className="text-maroon text-xs font-bold hover:underline uppercase tracking-wider">
+                  <button onClick={() => setShowAllNotices(true)} className="text-maroon text-xs font-bold hover:underline uppercase tracking-wider">
                     View All Notices &gt;&gt;&gt;
-                  </Link>
+                  </button>
                 </div>
               </div>
 
