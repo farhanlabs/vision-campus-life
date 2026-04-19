@@ -267,7 +267,7 @@ const Index = () => {
               <div className="lg:col-span-2 bg-white border border-border shadow-sm rounded overflow-hidden">
                 <div className="flex items-center gap-0 border-b-[3px] border-maroon">
                   <div className="w-1.5 h-10 bg-maroon" />
-                  <h3 className="font-bold text-foreground text-sm px-4 py-2.5 uppercase tracking-wide">University News</h3>
+                  <h3 className="font-bold text-foreground text-sm px-4 py-2.5 uppercase tracking-wide">University Updates</h3>
                 </div>
                 <div className="divide-y divide-border max-h-[400px] overflow-y-auto">
                   {news.length > 0 ? news.slice(0, 5).map((n, i) => (
