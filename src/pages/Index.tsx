@@ -19,13 +19,13 @@ import heroCampus3 from '@/assets/hero-campus-3.jpg';
 import aboutCampus from '@/assets/about-campus.jpg';
 import campusLife from '@/assets/campus-life.jpg';
 import mecLogo from '@/assets/mec-logo.png';
-import directorImg from '@/assets/director.jpg';
 import ceoImg from '@/assets/ceo.jpg';
 import deptCse from '@/assets/dept-cse.jpg';
 import deptEce from '@/assets/dept-ece.jpg';
 import deptEee from '@/assets/dept-eee.jpg';
 import deptMe from '@/assets/dept-me.jpg';
 import deptCe from '@/assets/dept-ce.jpg';
+
 
 const heroSlides = [
   { img: heroCampus, title: 'Mewat Engineering College', subtitle: 'Shaping Tomorrow\'s Engineers Today' },
@@ -97,16 +97,16 @@ const Index = () => {
     { name: 'Sana Fatima', branch: 'B.Tech CE, 2023', text: 'MEC gave me opportunities I never imagined. The faculty mentored me throughout and I secured a government job after graduation.', img: null },
   ];
 
-  const industryPartners = [
-    { name: 'Tata Consultancy Services', logo: 'https://logo.clearbit.com/tcs.com' },
-    { name: 'Infosys', logo: 'https://logo.clearbit.com/infosys.com' },
-    { name: 'Wipro', logo: 'https://logo.clearbit.com/wipro.com' },
-    { name: 'HCL Technologies', logo: 'https://logo.clearbit.com/hcltech.com' },
-    { name: 'Tech Mahindra', logo: 'https://logo.clearbit.com/techmahindra.com' },
-    { name: 'L&T', logo: 'https://logo.clearbit.com/larsentoubro.com' },
-    { name: 'Cognizant', logo: 'https://logo.clearbit.com/cognizant.com' },
-    { name: 'Accenture', logo: 'https://logo.clearbit.com/accenture.com' },
-  ];
+const industryPartners = [
+  { name: 'Tata Consultancy Services', logo: 'https://cdn.brandfetch.io/tcs.com/w/400/h/400/logo' },
+  { name: 'Infosys', logo: 'https://cdn.brandfetch.io/infosys.com/w/400/h/400/logo' },
+  { name: 'Wipro', logo: 'https://cdn.brandfetch.io/wipro.com/w/400/h/400/logo' },
+  { name: 'HCL Technologies', logo: 'https://cdn.brandfetch.io/hcltech.com/w/400/h/400/logo' },
+  { name: 'Tech Mahindra', logo: 'https://cdn.brandfetch.io/techmahindra.com/w/400/h/400/logo' },
+  { name: 'Larsen & Toubro', logo: 'https://cdn.brandfetch.io/larsentoubro.com/w/400/h/400/logo' },
+  { name: 'Cognizant', logo: 'https://cdn.brandfetch.io/cognizant.com/w/400/h/400/logo' },
+  { name: 'Accenture', logo: 'https://cdn.brandfetch.io/accenture.com/w/400/h/400/logo' },
+];
 
   return (
     <Layout>
@@ -587,7 +587,7 @@ const Index = () => {
               </div>
               <div className="md:col-span-2 flex justify-center">
                 <div className="w-56 h-72 rounded-lg overflow-hidden shadow-xl border-4 border-white/10">
-                  <img src={directorImg} alt="Director, MEC (Waqf)" className="w-full h-full object-cover" loading="lazy" />
+                  <img src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg" alt="Director, MEC (Waqf)" className="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -596,132 +596,278 @@ const Index = () => {
       </AnimatedSection>
 
       {/* ===== VISION & MISSION ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-white">
-          <div className="container">
-            <div className="text-center mb-12">
-              <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Our Purpose</span>
-              <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Vision & Mission</h2>
-              <div className="section-divider mx-auto" />
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-8 rounded-lg bg-cream border border-border shadow-sm">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center">
-                    <Target size={20} className="text-maroon" />
-                  </div>
-                  <h3 className="font-heading text-xl text-maroon">Our Vision</h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed text-[15px]">
-                  To be a premier institution of engineering education and research, fostering innovation, ethical values, and leadership to serve society and the nation with distinction.
-                </p>
-              </div>
-              <div className="p-8 rounded-lg bg-cream border border-border shadow-sm">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center">
-                    <Shield size={20} className="text-maroon" />
-                  </div>
-                  <h3 className="font-heading text-xl text-maroon">Our Mission</h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed text-[15px]">
-                  To provide quality technical education accessible to all sections of society, develop competent engineers with strong ethical foundation, and contribute to socio-economic development.
-                </p>
-              </div>
-            </div>
+     <AnimatedSection>
+  <section className="relative py-28 overflow-hidden">
+
+    {/* BACKGROUND */}
+    <div className="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1509062522246-3755977927d7"
+        alt="bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    {/* CONTENT */}
+    <div className="relative max-w-7xl mx-auto px-4 text-white">
+
+      {/* Heading */}
+      <div className="text-center mb-20">
+        <span className="text-yellow-400 text-xs uppercase tracking-[0.3em] font-semibold">
+          Our Purpose
+        </span>
+        <h2 className="text-4xl md:text-5xl font-semibold mt-3">
+          Vision & Mission
+        </h2>
+      </div>
+
+      {/* GRID */}
+      <div className="grid md:grid-cols-2 gap-10">
+
+        {/* Vision */}
+        <div className="flex gap-6 p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl hover:bg-white/20 transition">
+
+          {/* BIG IMAGE */}
+          <img
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692"
+            alt="vision"
+            className="w-24 h-24 rounded-xl object-cover border border-white/30 flex-shrink-0"
+          />
+
+          {/* TEXT */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-2">Our Vision</h3>
+            <p className="text-white/80 leading-relaxed text-[15.5px]">
+              To be a premier institution of engineering education and research,
+              fostering innovation, ethical values, and leadership to serve society
+              and the nation with distinction.
+            </p>
           </div>
-        </section>
-      </AnimatedSection>
+
+        </div>
+
+        {/* Mission */}
+        <div className="flex gap-6 p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl hover:bg-white/20 transition">
+
+          {/* BIG IMAGE */}
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+            alt="mission"
+            className="w-24 h-24 rounded-xl object-cover border border-white/30 flex-shrink-0"
+          />
+
+          {/* TEXT */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-2">Our Mission</h3>
+            <p className="text-white/80 leading-relaxed text-[15.5px]">
+              To provide quality technical education accessible to all sections of
+              society, develop competent engineers with strong ethical foundation,
+              and contribute to socio-economic development.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
       {/* ===== WHY CHOOSE MEC ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-cream">
-          <div className="container">
-            <div className="text-center mb-12">
-              <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Why MEC</span>
-              <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Why Choose Us?</h2>
-              <div className="section-divider mx-auto" />
+     <AnimatedSection>
+  <section className="relative py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+
+    {/* Background Glow */}
+    <div className="absolute top-0 left-0 w-72 h-72 bg-maroon/20 blur-[120px] rounded-full"></div>
+    <div className="absolute bottom-0 right-0 w-72 h-72 bg-yellow-400/20 blur-[120px] rounded-full"></div>
+
+    <div className="max-w-7xl mx-auto px-4 relative">
+
+      {/* Heading */}
+      <div className="text-center mb-16">
+        <span className="text-maroon font-semibold text-xs uppercase tracking-[0.3em] mb-4 block">
+          Why MEC
+        </span>
+        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-4">
+          Why Choose Us?
+        </h2>
+        <div className="w-20 h-[2px] bg-gradient-to-r from-maroon to-yellow-500 mx-auto rounded-full"></div>
+      </div>
+
+      {/* GRID */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        {[
+          {
+            icon: Building2,
+            title: 'Modern Infrastructure',
+            desc: 'State-of-the-art labs, smart classrooms, and well-stocked library.',
+          },
+          {
+            icon: Users,
+            title: 'Expert Faculty',
+            desc: 'Highly qualified faculty committed to mentoring and excellence.',
+          },
+          {
+            icon: Award,
+            title: 'Placement Support',
+            desc: 'Dedicated T&P cell with strong industry connections.',
+          },
+          {
+            icon: GraduationCap,
+            title: 'Holistic Growth',
+            desc: 'Technical skills, soft skills, sports, and cultural activities.',
+          },
+        ].map((item, i) => (
+          <AnimatedSection key={item.title} delay={i * 0.08}>
+
+            <div className="group relative p-7 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+
+              {/* Glow Hover Effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-maroon/10 to-yellow-400/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+              {/* Icon */}
+              <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-maroon/10 to-yellow-400/20 flex items-center justify-center mb-5 shadow-inner">
+                <item.icon size={24} className="text-maroon" />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {item.title}
+              </h3>
+
+              {/* Desc */}
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {item.desc}
+              </p>
+
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-                { icon: Building2, title: 'Modern Infrastructure', desc: 'State-of-the-art labs, smart classrooms, and well-stocked library.', accent: 'bg-primary/10 text-primary' },
-                { icon: Users, title: 'Expert Faculty', desc: 'Highly qualified faculty committed to mentoring and excellence.', accent: 'bg-gold/15 text-gold-dark' },
-                { icon: Award, title: 'Placement Support', desc: 'Dedicated T&P cell with strong industry connections.', accent: 'bg-maroon/10 text-maroon' },
-                { icon: GraduationCap, title: 'Holistic Growth', desc: 'Technical skills, soft skills, sports, and cultural activities.', accent: 'bg-navy/10 text-navy' },
-              ].map((item, i) => (
-                <AnimatedSection key={item.title} delay={i * 0.1}>
-                  <div className="p-7 rounded-lg bg-white border border-border premium-card group text-center shadow-sm h-full">
-                    <div className={`w-14 h-14 rounded-lg ${item.accent} flex items-center justify-center mx-auto mb-5 transition-all duration-300`}>
-                      <item.icon size={24} />
-                    </div>
-                    <h3 className="font-heading text-lg text-foreground mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+
+          </AnimatedSection>
+        ))}
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
       {/* ===== TESTIMONIALS ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-white">
-          <div className="container">
-            <div className="text-center mb-12">
-              <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Student Voices</span>
-              <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Testimonials</h2>
-              <div className="section-divider mx-auto" />
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {testimonials.map((t, i) => (
-                <AnimatedSection key={t.name} delay={i * 0.1}>
-                  <div className="bg-cream rounded-lg p-6 border border-border shadow-sm h-full flex flex-col relative">
-                    <Quote size={32} className="text-maroon/10 absolute top-4 right-4" />
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-maroon/10 flex items-center justify-center font-heading text-lg text-maroon ring-2 ring-maroon/20">
-                        {t.name[0]}
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground text-sm">{t.name}</h4>
-                        <p className="text-[11px] text-maroon font-medium">{t.branch}</p>
-                      </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed italic flex-1">"{t.text}"</p>
-                    <div className="flex gap-0.5 mt-3">
-                      {[1,2,3,4,5].map(s => (
-                        <Star key={s} size={12} className="text-gold fill-gold" />
-                      ))}
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+  <AnimatedSection>
+  <section className="py-20 bg-gray-100">
+    <div className="max-w-6xl mx-auto px-4 text-center">
 
+      {/* Heading */}
+       <div className="text-center mb-16">
+        <span className="text-maroon font-semibold text-xs uppercase tracking-[0.3em] mb-4 block">
+          What our students say about us
+        </span>
+        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-4">
+         Testimonials
+        </h2>
+        <div className="w-20 h-[2px] bg-gradient-to-r from-maroon to-yellow-500 mx-auto rounded-full"></div>
+      </div>
+
+
+      {/* BUTTONS */}
+      <div className="flex justify-end gap-2 mb-4">
+        <button
+          onClick={() =>
+            document.getElementById("slider")?.scrollBy({ left: -320, behavior: "smooth" })
+          }
+          className="px-3 py-1 bg-white shadow rounded"
+        >
+          ←
+        </button>
+        <button
+          onClick={() =>
+            document.getElementById("slider")?.scrollBy({ left: 320, behavior: "smooth" })
+          }
+          className="px-3 py-1 bg-white shadow rounded"
+        >
+          →
+        </button>
+      </div>
+
+      {/* SLIDER */}
+      <div
+        id="slider"
+        className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar pt-12"
+      >
+
+        {testimonials.map((t, i) => (
+          <div
+            key={i}
+            className="min-w-[280px] max-w-[300px] bg-white rounded-xl shadow-md p-5 flex-shrink-0 text-center hover:shadow-xl transition duration-300"
+          >
+
+            {/* IMAGE */}
+            <img
+              src={
+                t.img ||
+                `https://randomuser.me/api/portraits/${
+                  i % 2 === 0 ? "men" : "women"
+                }/${i + 10}.jpg`
+              }
+              alt={t.name}
+              className="w-16 h-16 rounded-full object-cover mx-auto -mt-12 mb-3 border-4 border-white shadow"
+            />
+
+            {/* CONTENT */}
+            <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-4">
+              “{t.text}”
+            </p>
+
+            <h4 className="font-semibold text-yellow-600 text-sm">
+              {t.name}
+            </h4>
+            <p className="text-xs text-gray-500">
+              {t.branch}
+            </p>
+
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
       {/* ===== INDUSTRY PARTNERS ===== */}
       <AnimatedSection>
-        <section className="py-16 bg-cream">
-          <div className="container">
-            <div className="text-center mb-10">
-              <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Collaborations</span>
-              <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Industry Partners</h2>
-              <div className="section-divider mx-auto" />
+  <section className="py-16 bg-cream">
+    <div className="container">
+      <div className="text-center mb-10">
+        <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+          Collaborations
+        </span>
+        <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">
+          Industry Partners
+        </h2>
+        <div className="section-divider mx-auto" />
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {industryPartners.map((partner, i) => (
+          <AnimatedSection key={partner.name} delay={i * 0.06}>
+            <div className="bg-white rounded-lg p-6 border border-border shadow-sm text-center premium-card flex items-center justify-center min-h-[120px]">
+              
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="h-12 w-auto object-contain opacity-90"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+                loading="lazy"
+              />
+
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {industryPartners.map((partner, i) => (
-                <AnimatedSection key={partner.name} delay={i * 0.06}>
-                  <div className="bg-white rounded-lg p-6 border border-border shadow-sm text-center premium-card flex flex-col items-center justify-center min-h-[120px]">
-                    <img src={partner.logo} alt={partner.name} className="h-10 w-auto object-contain mb-3" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} loading="lazy" />
-                    <h4 className="font-semibold text-foreground text-sm">{partner.name}</h4>
-                  </div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+          </AnimatedSection>
+        ))}
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
       {/* ===== OUR ACHIEVERS — Banner Style ===== */}
       <AnimatedSection>

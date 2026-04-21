@@ -113,10 +113,6 @@ const Navbar = () => {
         <div className="container flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 group">
             <img src={mecLogo} alt="MEC Logo" className="h-14 md:h-16 w-auto object-contain" />
-            <div>
-              <h1 className="font-heading text-xl md:text-2xl leading-tight tracking-normal text-foreground">Mewat Engineering College</h1>
-              <p className="text-[11px] text-muted-foreground font-normal tracking-wide">(Waqf) — Haryana Waqf Board, Govt. of Haryana</p>
-            </div>
           </Link>
           <div className="hidden lg:flex items-center gap-4">
             <div className="text-right">
