@@ -11,7 +11,7 @@ const deptInfo: Record<string, { name: string; desc: string; syllabus: string[];
     name: 'Computer Science & Engineering',
     desc: 'The CSE department focuses on programming, algorithms, data structures, databases, networking, AI/ML, and software engineering. Students gain hands-on experience with modern technologies and industry-standard tools.',
     syllabus: ['Data Structures & Algorithms', 'Database Management Systems', 'Operating Systems', 'Computer Networks', 'Artificial Intelligence & Machine Learning', 'Web Technologies', 'Software Engineering', 'Cloud Computing'],
-    highlights: ['Modern Computer Labs', 'Industry Partnerships with TCS, Infosys', 'Active Coding Club', 'Regular Hackathons & Workshops'],
+    highlights: ['', 'Industry Partnerships with TCS, Infosys', 'Active Coding Club', 'Regular Hackathons & Workshops'],
   },
   ece: {
     name: 'Electronics & Communication Engineering',

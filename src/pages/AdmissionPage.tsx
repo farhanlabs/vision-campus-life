@@ -98,61 +98,124 @@ const AdmissionPage = () => {
   }
 
   // Fee Structure with backend PDFs
-  if (section === 'fee-structure') {
-    return (
-      <Layout>
-        <PageBanner title="Fee Structure" subtitle="Academic Year 2025-26" />
-        <div className="container py-12 max-w-4xl">
-          <div className="overflow-x-auto mb-8">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-maroon text-white">
-                  <th className="p-3 text-left text-sm">Programme</th>
-                  <th className="p-3 text-left text-sm">Boys (Annual)</th>
-                  <th className="p-3 text-left text-sm">Girls (Annual)</th>
-                  <th className="p-3 text-left text-sm">Hostel Fee</th>
-                </tr>
-              </thead>
-              <tbody>
-                {['Computer Science & Engineering', 'Electronics & Communication Engg.', 'Electrical & Electronics Engg.', 'Mechanical Engineering', 'Civil Engineering'].map((d, i) => (
-                  <tr key={d} className={i % 2 === 0 ? 'bg-cream' : 'bg-white'}>
-                    <td className="p-3 text-sm font-medium">{d}</td>
-                    <td className="p-3 text-sm">Contact Office</td>
-                    <td className="p-3 text-sm">Contact Office</td>
-                    <td className="p-3 text-sm">Contact Office</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-sm text-muted-foreground mb-8">* Fee structure is subject to change. Contact admission office for latest details.</p>
+  // Fee Structure with backend PDFs
+if (section === 'fee-structure') {
+  return (
+    <Layout>
+      <PageBanner title="Fee Structure" subtitle="Academic Year 2026-27" />
 
-          {/* PDF fee documents from backend */}
-          {feeStructure.length > 0 && (
-            <div>
-              <h3 className="font-heading text-xl text-foreground mb-4">Fee Structure Documents</h3>
-              <div className="space-y-3">
-                {feeStructure.map((f, i) => (
-                  <a key={f.id || i} href={f.pdfLink} target="_blank" rel="noreferrer"
-                    className="flex items-center gap-4 bg-white rounded-lg p-4 border border-border hover:border-maroon/30 hover:shadow-md transition-all group">
-                    <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center shrink-0">
-                      <FileText size={18} className="text-maroon" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-semibold text-foreground group-hover:text-maroon transition-colors">{f.title}</h4>
-                      {f.category && <span className="text-[10px] bg-gold/20 text-gold-dark px-2 py-0.5 rounded font-bold">{f.category}</span>}
-                    </div>
-                    <Download size={16} className="text-maroon shrink-0" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
+      <div className="container py-12 max-w-4xl">
+
+        {/* Updated Fee Intro */}
+        <div className="mb-6 p-6 rounded-xl bg-gradient-to-r from-maroon/5 to-gold/10 border">
+          <h3 className="text-lg font-semibold text-maroon mb-2">
+            Fee Structure (2026-27)
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            The Board of Governors has kept the lowest possible fee structure
+            for engineering and other courses to support minority and economically
+            weaker students.
+          </p>
         </div>
-      </Layout>
-    );
-  }
 
+        {/* Updated Table */}
+        <div className="overflow-x-auto mb-8">
+          <table className="w-full border-collapse shadow-sm rounded-lg overflow-hidden">
+            <thead>
+              <tr className="bg-maroon text-white">
+                <th className="p-3 text-left text-sm">Particulars</th>
+                <th className="p-3 text-left text-sm">Amount (₹)</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {[
+                ["Tuition Fee", "30,000"],
+                ["Exam Fee (Summer Semester)", "2,000"],
+                ["Exam Fee (Winter Semester)", "2,000"],
+                ["Development Fund", "5,000"],
+                ["Registration (Both Semesters)", "3,000"],
+                ["Magazines & Journals", "1,000"],
+                ["Internet Charges", "1,000"],
+                ["Sports & Cultural / Medical", "2,000"],
+                ["Training & Placement Activities", "3,000"],
+                ["Subject Association", "500"],
+              ].map((item, i) => (
+                <tr key={i} className={i % 2 === 0 ? 'bg-cream' : 'bg-white'}>
+                  <td className="p-3 text-sm font-medium">{item[0]}</td>
+                  <td className="p-3 text-sm">{item[1]}</td>
+                </tr>
+              ))}
+
+              <tr className="bg-maroon/10 font-semibold">
+                <td className="p-3 text-sm">Total Fees</td>
+                <td className="p-3 text-sm">₹49,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Additional Fee Info */}
+        <div className="space-y-4 mb-8">
+
+          <div className="p-5 rounded-lg bg-secondary border">
+            <p className="text-sm text-muted-foreground">
+              One-time refundable caution money of ₹2,000 and Prospectus fee of ₹500
+              is applicable at the time of first-year admission only.
+            </p>
+          </div>
+
+          <div className="p-5 rounded-lg bg-secondary border">
+            <h4 className="font-semibold text-primary mb-2">Special Fee Categories</h4>
+            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Girls Students Fee: ₹19,750 per year</li>
+              <li>B.Voc Fee: ₹15,000 per year</li>
+              <li>D.Voc Fee: ₹12,000 per year</li>
+            </ul>
+          </div>
+
+          <div className="p-5 rounded-lg bg-secondary border">
+            <h4 className="font-semibold text-primary mb-2">Hostel & Mess Charges</h4>
+            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+              <li>Hostel Fee: ₹16,000 per year</li>
+              <li>Mess Charges: ₹28,000 per year</li>
+              <li><span className="font-semibold">Total: ₹44,000 per year</span></li>
+            </ul>
+          </div>
+
+          <p className="text-sm text-muted-foreground">
+            * Additional fees payable to Gurugram University will be charged as per
+            university guidelines.
+          </p>
+
+        </div>
+
+        {/* PDF fee documents from backend (UNCHANGED) */}
+        {feeStructure.length > 0 && (
+          <div>
+            <h3 className="font-heading text-xl text-foreground mb-4">Fee Structure Documents</h3>
+            <div className="space-y-3">
+              {feeStructure.map((f, i) => (
+                <a key={f.id || i} href={f.pdfLink} target="_blank" rel="noreferrer"
+                  className="flex items-center gap-4 bg-white rounded-lg p-4 border border-border hover:border-maroon/30 hover:shadow-md transition-all group">
+                  <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center shrink-0">
+                    <FileText size={18} className="text-maroon" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-sm font-semibold text-foreground group-hover:text-maroon transition-colors">{f.title}</h4>
+                    {f.category && <span className="text-[10px] bg-gold/20 text-gold-dark px-2 py-0.5 rounded font-bold">{f.category}</span>}
+                  </div>
+                  <Download size={16} className="text-maroon shrink-0" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+      </div>
+    </Layout>
+  );
+}
   // Enquiry form
   if (section === 'enquiry') {
     return (
@@ -230,10 +293,128 @@ const AdmissionPage = () => {
 
   // Static sections
   const staticSections: Record<string, { title: string; content: JSX.Element }> = {
-    procedure: { title: 'Admission Procedure', content: <div className="space-y-3"><p>Admissions to B.Tech programs at MECW are conducted through counseling based on JEE Main / HSTES scores.</p><h3 className="font-heading text-xl text-primary mt-6">Steps:</h3><ol className="list-decimal list-inside space-y-2"><li>Register online on the official website</li><li>Fill in the application form with accurate details</li><li>Upload required documents</li><li>Pay the application fee</li><li>Attend counseling as per schedule</li><li>Complete admission formalities</li></ol></div> },
-    programmes: { title: 'Programmes Offered', content: <div className="grid md:grid-cols-2 gap-4">{['Computer Science & Engineering', 'Electronics & Communication Engineering', 'Electrical & Electronics Engineering', 'Mechanical Engineering', 'Civil Engineering', 'Applied Sciences & Humanities'].map(p => <div key={p} className="p-4 bg-secondary rounded-lg"><h3 className="font-heading text-lg text-primary">{p}</h3><p className="text-sm text-muted-foreground mt-1">B.Tech — 4 Years (8 Semesters)</p></div>)}</div> },
-    scholarships: { title: 'Scholarships', content: <div className="space-y-3"><p>MECW students can avail various scholarships:</p><ul className="list-disc list-inside space-y-2"><li>Government Merit Scholarships</li><li>Minority Scholarships</li><li>State Government Scholarships</li><li>Institution Merit Awards</li></ul></div> },
-  };
+
+  procedure: {
+    title: 'Admission Procedure',
+    content: (
+      <div className="space-y-6">
+
+        {/* Intro Card */}
+        <div className="p-5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border shadow-sm">
+          <p className="text-sm text-muted-foreground">
+            Start your journey at MEC through a simple, transparent and student-friendly admission process.
+          </p>
+        </div>
+
+        {/* Steps */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            "Download or collect the application form",
+            "Fill in all required details carefully",
+            "Submit form with ₹500/- DD/PO (payable at Nuh)",
+            "Email scanned form to info@mecw.ac.in",
+            "Attend counseling (JEE Main / HSTES if applicable)",
+            "Complete admission & document verification"
+          ].map((step, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-lg bg-white border shadow-sm hover:shadow-md hover:-translate-y-1 transition"
+            >
+              <p className="text-sm text-muted-foreground">
+                <span className="font-semibold text-primary">Step {i + 1}:</span> {step}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Contact */}
+        <div className="p-5 rounded-xl bg-secondary border text-center space-y-2">
+          <h3 className="font-heading text-lg text-primary">
+            Need Help?
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Contact our admission team:
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 text-sm font-medium text-primary">
+            <span>+91-9588356609</span>
+            <span>+91-9990112185</span>
+            <span>+91-9897342786</span>
+            <span>+91-9812437896</span>
+          </div>
+        </div>
+
+      </div>
+    ),
+  },
+
+  programmes: {
+    title: 'Programmes Offered',
+    content: (
+      <div className="grid md:grid-cols-2 gap-5">
+
+        {[
+          "Computer Science & Engineering",
+          "Electronics & Communication Engineering",
+          "Electrical & Electronics Engineering",
+          "Mechanical Engineering",
+          "Civil Engineering",
+          "Applied Sciences & Humanities"
+        ].map((p) => (
+          <div
+            key={p}
+            className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-lg hover:-translate-y-1 transition"
+          >
+            <h3 className="font-heading text-lg text-primary">{p}</h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              B.Tech — 4 Years (8 Semesters)
+            </p>
+          </div>
+        ))}
+
+      </div>
+    ),
+  },
+
+  scholarships: {
+    title: 'Scholarships',
+    content: (
+      <div className="space-y-5">
+
+        {/* Intro */}
+        <div className="p-5 rounded-xl bg-gradient-to-r from-indigo-50 to-blue-50 border shadow-sm">
+          <p className="text-sm text-muted-foreground">
+            MECW supports students with various scholarships to ensure financial
+            assistance and encourage academic excellence.
+          </p>
+        </div>
+
+        {/* List */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            "Government Merit Scholarships",
+            "Minority Scholarships",
+            "State Government Schemes",
+            "Institution Merit Awards",
+            "Support for Economically Weaker Sections"
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-lg bg-white border shadow-sm hover:shadow-md hover:-translate-y-1 transition"
+            >
+              <p className="text-sm text-muted-foreground">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    ),
+  },
+
+};
+
+
 
   const current = staticSections[section || 'procedure'] || staticSections.procedure;
   return (
