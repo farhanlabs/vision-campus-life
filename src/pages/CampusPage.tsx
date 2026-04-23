@@ -12,6 +12,7 @@ const staticSections: Record<string, { title: string; content: JSX.Element }> = 
   transport: { title: 'Transport', content: <p>MECW provides transport facilities covering major routes in and around Nuh district, ensuring safe and convenient commute for students and staff.</p> },
 };
 
+
 const CampusPage = () => {
   const { section } = useParams();
   const [gallery, setGallery] = useState<any[]>([]);
