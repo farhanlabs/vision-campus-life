@@ -295,123 +295,406 @@ if (section === 'fee-structure') {
   const staticSections: Record<string, { title: string; content: JSX.Element }> = {
 
   procedure: {
-    title: 'Admission Procedure',
-    content: (
-      <div className="space-y-6">
+  title: 'Admission Procedure',
+  content: (
+    <div className="space-y-10">
 
-        {/* Intro Card */}
-        <div className="p-5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border shadow-sm">
-          <p className="text-sm text-muted-foreground">
-            Start your journey at MEC through a simple, transparent and student-friendly admission process.
-          </p>
-        </div>
-
-        {/* Steps */}
-        <div className="grid md:grid-cols-2 gap-4">
-          {[
-            "Download or collect the application form",
-            "Fill in all required details carefully",
-            "Submit form with ₹500/- DD/PO (payable at Nuh)",
-            "Email scanned form to info@mecw.ac.in",
-            "Attend counseling (JEE Main / HSTES if applicable)",
-            "Complete admission & document verification"
-          ].map((step, i) => (
-            <div
-              key={i}
-              className="p-4 rounded-lg bg-white border shadow-sm hover:shadow-md hover:-translate-y-1 transition"
-            >
-              <p className="text-sm text-muted-foreground">
-                <span className="font-semibold text-primary">Step {i + 1}:</span> {step}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Contact */}
-        <div className="p-5 rounded-xl bg-secondary border text-center space-y-2">
-          <h3 className="font-heading text-lg text-primary">
-            Need Help?
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            Contact our admission team:
-          </p>
-          <div className="flex flex-wrap justify-center gap-3 text-sm font-medium text-primary">
-            <span>+91-9588356609</span>
-            <span>+91-9990112185</span>
-            <span>+91-9897342786</span>
-            <span>+91-9812437896</span>
-          </div>
-        </div>
-
+      {/* Header */}
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-green-100 via-white to-green-50 border shadow-md text-center hover:shadow-xl transition-all">
+        <h2 className="text-2xl font-bold text-green-700 mb-2">
+          Start Your Journey With MEC
+        </h2>
+        <p className="text-sm text-gray-600 max-w-xl mx-auto">
+          Experience a smooth, transparent and student-friendly admission process.
+          Follow the steps below and begin your academic journey with confidence.
+        </p>
       </div>
-    ),
-  },
 
-  programmes: {
-    title: 'Programmes Offered',
-    content: (
-      <div className="grid md:grid-cols-2 gap-5">
-
+      {/* Download Section */}
+      <div className="grid md:grid-cols-3 gap-5">
         {[
-          "Computer Science & Engineering",
-          "Electronics & Communication Engineering",
-          "Electrical & Electronics Engineering",
-          "Mechanical Engineering",
-          "Civil Engineering",
-          "Applied Sciences & Humanities"
-        ].map((p) => (
+          { title: "Application Form", desc: "Download admission form", btn: "Download" },
+          { title: "Prospectus", desc: "View courses & details", btn: "Download" },
+          { title: "Fee Structure", desc: "Check fee details", btn: "Download" }
+        ].map((item, i) => (
           <div
-            key={p}
-            className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-lg hover:-translate-y-1 transition"
+            key={i}
+            className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all text-center space-y-3"
           >
-            <h3 className="font-heading text-lg text-primary">{p}</h3>
-            <p className="text-sm text-muted-foreground mt-1">
-              B.Tech — 4 Years (8 Semesters)
+            <h4 className="font-semibold text-green-700">{item.title}</h4>
+            <p className="text-xs text-gray-500">{item.desc}</p>
+            <button className="px-4 py-2 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+              {item.btn}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Steps */}
+      <div className="grid md:grid-cols-2 gap-5">
+        {[
+          "Download or collect the application form",
+          "Fill all personal, academic and contact details carefully",
+          "Attach required documents (Marksheet, ID Proof, Photos)",
+          "Submit form with ₹500/- DD/PO (payable at Nuh)",
+          "Email scanned form to info@mecw.ac.in",
+          "Attend counseling (JEE Main / HSTES if applicable)",
+          "Confirm admission by paying required fees",
+          "Complete document verification & enrollment"
+        ].map((step, i) => (
+          <div
+            key={i}
+            className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 flex items-start gap-3"
+          >
+            <span className="text-green-600 font-bold text-lg">✔</span>
+            <p className="text-sm text-gray-600">
+              <span className="font-semibold text-green-700">
+                Step {i + 1}:
+              </span>{" "}
+              {step}
             </p>
           </div>
         ))}
-
       </div>
-    ),
-  },
 
-  scholarships: {
-    title: 'Scholarships',
-    content: (
-      <div className="space-y-5">
+      {/* Eligibility Section */}
+      <div className="p-6 rounded-2xl bg-green-50 border shadow-md hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-green-700 mb-3">
+          Eligibility Criteria
+        </h3>
+        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
+          <li>Candidate must have passed 10+2 with relevant subjects</li>
+          <li>Minimum qualifying marks as per university norms</li>
+          <li>Entrance exam (JEE Main / HSTES) may be required</li>
+          <li>All admissions are subject to verification</li>
+        </ul>
+      </div>
 
-        {/* Intro */}
-        <div className="p-5 rounded-xl bg-gradient-to-r from-indigo-50 to-blue-50 border shadow-sm">
-          <p className="text-sm text-muted-foreground">
-            MECW supports students with various scholarships to ensure financial
-            assistance and encourage academic excellence.
-          </p>
+      {/* Important Instructions */}
+      <div className="p-6 rounded-2xl bg-white border shadow-md hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-green-700 mb-3">
+          Important Instructions
+        </h3>
+        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
+          <li>Ensure all documents are valid and updated</li>
+          <li>Incomplete forms may lead to rejection</li>
+          <li>Carry original documents during verification</li>
+          <li>Fees once paid will follow institute policy</li>
+        </ul>
+      </div>
+
+      {/* Admission Cell */}
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-white to-green-50 border shadow-md hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-green-700 mb-2">
+          Admission Cell Support
+        </h3>
+        <p className="text-sm text-gray-600">
+          Our dedicated admission team provides complete support to students and parents.
+          From form filling to final enrollment, we ensure a smooth and guided experience.
+        </p>
+      </div>
+
+      {/* CTA Section */}
+      <div className="p-6 rounded-2xl bg-green-600 text-white text-center space-y-4 shadow-lg hover:shadow-xl transition">
+        <h3 className="text-xl font-bold">
+          Need Help?
+        </h3>
+        <p className="text-sm opacity-90">
+          Contact our admission team for quick assistance
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-4 text-sm font-medium">
+          <span>+91-9588356609</span>
+          <span>+91-9990112185</span>
+          <span>+91-9897342786</span>
+          <span>+91-9812437896</span>
         </div>
 
-        {/* List */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <p className="text-sm opacity-90">
+          Email: info@mecw.ac.in
+        </p>
+
+        <button className="mt-3 px-6 py-2 bg-white text-green-700 rounded-lg font-semibold hover:bg-gray-100 transition">
+          Apply Now
+        </button>
+      </div>
+
+    </div>
+  ),
+},
+
+ programmes: {
+  title: 'Programmes Offered',
+  content: (
+    <div className="space-y-10">
+
+      {/* Header */}
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-green-100 via-white to-green-50 border shadow-md text-center">
+        <h2 className="text-2xl font-bold text-green-700 mb-2">
+          Explore Our Programmes
+        </h2>
+        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+          Mewat Engineering College offers AICTE-approved programmes in Engineering & Technology,
+          designed to build strong technical knowledge and industry-ready skills.
+        </p>
+      </div>
+
+      {/* B.Tech Programmes */}
+      <div>
+        <h3 className="text-lg font-semibold text-green-700 mb-4">
+          B.Tech Programmes
+        </h3>
+
+        <div className="grid md:grid-cols-2 gap-5">
           {[
-            "Government Merit Scholarships",
-            "Minority Scholarships",
-            "State Government Schemes",
-            "Institution Merit Awards",
-            "Support for Economically Weaker Sections"
-          ].map((item, i) => (
+            { name: "Computer Science & Engineering", seats: "60 Seats" },
+            { name: "Electronics & Communication Engineering", seats: "30 Seats" },
+            { name: "Electrical & Electronics Engineering", seats: "60 Seats" },
+            { name: "Mechanical Engineering", seats: "60 Seats" },
+            { name: "Civil Engineering", seats: "60 Seats" }
+          ].map((p, i) => (
             <div
               key={i}
-              className="p-4 rounded-lg bg-white border shadow-sm hover:shadow-md hover:-translate-y-1 transition"
+              className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
             >
-              <p className="text-sm text-muted-foreground">
-                {item}
+              <h4 className="font-semibold text-green-700">{p.name}</h4>
+              <p className="text-sm text-gray-600 mt-1">
+                B.Tech — 4 Years (8 Semesters)
               </p>
+              <span className="inline-block mt-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                {p.seats}
+              </span>
             </div>
           ))}
         </div>
-
       </div>
-    ),
-  },
 
+      {/* Vocational Programmes */}
+      <div>
+        <h3 className="text-lg font-semibold text-green-700 mb-4">
+          Vocational Programmes (B.Voc / D.Voc)
+        </h3>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {[
+            { name: "B.Voc - Automobile Servicing", seats: "30 Seats" },
+            { name: "B.Voc - Renewable Energy", seats: "30 Seats" },
+            { name: "D.Voc - Automobile Servicing", seats: "30 Seats" },
+            { name: "D.Voc - Software Development", seats: "30 Seats" }
+          ].map((p, i) => (
+            <div
+              key={i}
+              className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
+            >
+              <h4 className="font-semibold text-green-700">{p.name}</h4>
+              <p className="text-sm text-gray-600 mt-1">
+                Duration — 3 Years | Merit Based Admission
+              </p>
+              <span className="inline-block mt-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                {p.seats}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Eligibility Section */}
+      <div className="p-6 rounded-2xl bg-green-50 border shadow-md">
+        <h3 className="text-lg font-semibold text-green-700 mb-3">
+          B.Tech Eligibility & Duration
+        </h3>
+        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
+          <li>10+2 with Physics & Mathematics (mandatory) + Chemistry / Biology / Biotechnology</li>
+          <li>Minimum 45% marks (40% for reserved categories)</li>
+          <li>Duration: 4 Years (8 Semesters)</li>
+          <li>Admission based on JEE Main merit (or institute-level merit if seats vacant)</li>
+        </ul>
+      </div>
+
+      {/* Lateral Entry */}
+      <div className="p-6 rounded-2xl bg-white border shadow-md">
+        <h3 className="text-lg font-semibold text-green-700 mb-3">
+          Lateral Entry (2nd Year Admission)
+        </h3>
+        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
+          <li>Diploma holders (AICTE approved) with minimum 45% marks</li>
+          <li>B.Sc. graduates with Mathematics and minimum 45% marks</li>
+          <li>Direct entry into 2nd year (3rd Semester)</li>
+          <li>Based on LEET / merit criteria as per state guidelines</li>
+        </ul>
+      </div>
+
+      {/* Admission Criteria */}
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-white to-green-50 border shadow-md">
+        <h3 className="text-lg font-semibold text-green-700 mb-3">
+          Admission Criteria
+        </h3>
+        <p className="text-sm text-gray-600">
+          Admissions in B.Tech programmes are primarily based on JEE Main merit.
+          In case of vacant seats, eligible candidates may be considered based on
+          qualifying examination merit. Minority and management quota admissions
+          follow state government norms.
+        </p>
+      </div>
+
+      {/* Vocational Eligibility */}
+      <div className="p-6 rounded-2xl bg-white border shadow-md">
+        <h3 className="text-lg font-semibold text-green-700 mb-3">
+          Vocational Programme Eligibility
+        </h3>
+        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
+          <li><strong>B.Voc:</strong> 10+2 (PCM) / ITI / Diploma holders</li>
+          <li><strong>D.Voc:</strong> Minimum Class 10th pass</li>
+          <li>Admission based on merit</li>
+          <li>Duration: 3 Years</li>
+        </ul>
+      </div>
+
+    </div>
+  ),
+},
+
+  scholarships: {
+  title: 'Scholarships',
+  content: (
+    <div className="space-y-12">
+
+      {/* Header */}
+      <div className="p-7 rounded-3xl bg-gradient-to-r from-green-100 via-white to-green-50 border shadow-md text-center hover:shadow-xl transition-all">
+        <h2 className="text-2xl font-bold text-green-700 mb-2">
+          Scholarships & Financial Assistance
+        </h2>
+        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+          MEC ensures that no deserving student is deprived of education due to financial constraints.
+          More than <span className="font-semibold text-green-700">70% students</span> receive scholarships
+          based on merit, performance, and financial background.
+        </p>
+      </div>
+
+      {/* Incharge Card */}
+      <div className="p-6 rounded-2xl bg-white border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
+        <h3 className="text-lg font-semibold text-green-700 mb-3">
+          Scholarship Incharge
+        </h3>
+        <div className="text-sm text-gray-600 space-y-1">
+          <p><strong>Dr. Khalid Hussain</strong></p>
+          <p>Scholarship Chairman, Mewat Engineering College</p>
+          <p>📞 +91-9991010618</p>
+          <p>📧 khalidchem83@yahoo.co.in</p>
+        </div>
+      </div>
+
+      {/* Waqf Scholarships Detailed */}
+      <div className="p-6 rounded-2xl bg-green-50 border shadow-md hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-green-700 mb-4">
+          Haryana Waqf Board Scholarships / Fee Concession
+        </h3>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm text-left border rounded-lg overflow-hidden">
+            <thead className="bg-green-600 text-white">
+              <tr>
+                <th className="p-3">Scholarship</th>
+                <th className="p-3">Eligibility</th>
+                <th className="p-3">Benefit</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white text-gray-600">
+              <tr className="border-t hover:bg-green-50">
+                <td className="p-3 font-medium">Dr. APJ Abdul Kalam</td>
+                <td className="p-3">Boys 80%+, Girls 70%</td>
+                <td className="p-3 text-green-700 font-semibold">100% Fee Waiver</td>
+              </tr>
+              <tr className="border-t hover:bg-green-50">
+                <td className="p-3 font-medium">Dr. A.R Kidwai</td>
+                <td className="p-3">Boys 70%+, Girls 60%</td>
+                <td className="p-3">50% Fee Discount</td>
+              </tr>
+              <tr className="border-t hover:bg-green-50">
+                <td className="p-3 font-medium">Differently-Abled</td>
+                <td className="p-3">25%–50% disability</td>
+                <td className="p-3">50–100% Fee Waiver</td>
+              </tr>
+              <tr className="border-t hover:bg-green-50">
+                <td className="p-3 font-medium">Dr. Abdul Mubeen</td>
+                <td className="p-3">Parent-less students</td>
+                <td className="p-3">100% Fee Waiver</td>
+              </tr>
+              <tr className="border-t hover:bg-green-50">
+                <td className="p-3 font-medium">Single Girl Child</td>
+                <td className="p-3">Only girl child</td>
+                <td className="p-3">100% Fee Waiver</td>
+              </tr>
+              <tr className="border-t hover:bg-green-50">
+                <td className="p-3 font-medium">Star of Mewat</td>
+                <td className="p-3">Top 3 PCM students (Nuh)</td>
+                <td className="p-3">100% Fee Waiver</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Govt Scholarships */}
+      <div className="p-6 rounded-2xl bg-white border shadow-md hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-green-700 mb-4">
+          Government Scholarships
+        </h3>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            "Merit-cum-Means (MOMA): ₹25,000 (Day Scholar) / ₹30,000 (Hosteller), Income ≤ 2.5L",
+            "NHFDC: ₹31,000/year for differently-abled students",
+            "Pragati (AICTE): ₹30,000 for girl students",
+            "Saksham: Support for physically challenged students",
+            "PMS-SC: For Scheduled Caste students",
+            "OBC Scholarship: Govt. scheme for OBC students"
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-lg bg-green-50 border hover:shadow-md hover:-translate-y-1 transition"
+            >
+              <p className="text-sm text-gray-600">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Private */}
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-white to-green-50 border shadow-md hover:shadow-lg transition">
+        <h3 className="text-lg font-semibold text-green-700 mb-4">
+          Private & Institutional Support
+        </h3>
+
+        <ul className="text-sm text-gray-600 space-y-3 list-disc pl-5">
+          <li>
+            <strong>MET-SEED Scholarship:</strong> Merit-based + Islamic Development Bank Loan support
+          </li>
+          <li>
+            <strong>M3M Foundation:</strong> ₹25,000 support + 50% tuition fee rebate
+          </li>
+          <li>
+            <strong>Indian Oil Scholarship:</strong> Merit-cum-means based national scholarship
+          </li>
+        </ul>
+      </div>
+
+      {/* CTA */}
+      <div className="p-7 rounded-2xl bg-green-600 text-white text-center shadow-xl hover:shadow-2xl transition">
+        <h3 className="text-xl font-bold mb-2">
+          Apply for Scholarships
+        </h3>
+        <p className="text-sm opacity-90 mb-3">
+          Students are advised to apply through official portals like NSP and institutional forms within deadlines.
+        </p>
+        <button className="px-6 py-2 bg-white text-green-700 rounded-lg font-semibold hover:bg-gray-100 transition">
+          Apply Now
+        </button>
+      </div>
+
+    </div>
+  ),
+},
 };
 
 
