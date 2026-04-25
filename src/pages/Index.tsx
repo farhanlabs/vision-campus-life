@@ -25,7 +25,7 @@ import deptEce from '@/assets/dept-ece.jpg';
 import deptEee from '@/assets/dept-eee.jpg';
 import deptMe from '@/assets/dept-me.jpg';
 import deptCe from '@/assets/dept-ce.jpg';
-
+ 
 
 const heroSlides = [
   { img: heroCampus, title: 'Mewat Engineering College', subtitle: 'Shaping Tomorrow\'s Engineers Today' },
@@ -231,321 +231,690 @@ const industryPartners = [
 
       {/* ===== OUR IMPACT IN NUMBERS ===== */}
       <AnimatedSection>
-        <section className="relative z-20 py-8 bg-white">
-          <div className="container">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-              {[
-                { icon: GraduationCap, label: 'Programmes', value: '6+', color: 'text-primary' },
-                { icon: Users, label: 'Students', value: '2000+', color: 'text-gold-dark' },
-                { icon: BookOpen, label: 'Faculty', value: '100+', color: 'text-maroon' },
-                { icon: Award, label: 'Years', value: '10+', color: 'text-navy' },
-              ].map((s, i) => (
-                <div key={s.label} className="text-center p-5 md:p-6 rounded-lg bg-white shadow-lg shadow-black/5 border border-border premium-card" style={{ animationDelay: `${i * .08}s` }}>
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center mx-auto mb-2.5">
-                    <s.icon className={s.color} size={20} />
-                  </div>
-                  <div className={`font-heading text-2xl md:text-3xl ${s.color}`}>{s.value}</div>
-                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium mt-0.5">{s.label}</div>
-                </div>
-              ))}
+  <section className="relative z-20 py-12 bg-gradient-to-br from-white via-green-50 to-green-100 overflow-hidden">
+
+    {/* Background Glow */}
+    <div className="absolute -top-10 -left-10 w-52 h-52 bg-green-200 opacity-30 blur-3xl rounded-full"></div>
+    <div className="absolute -bottom-10 -right-10 w-52 h-52 bg-green-300 opacity-30 blur-3xl rounded-full"></div>
+
+    <div className="container relative">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+
+        {[
+          { icon: GraduationCap, label: 'Programmes', value: '6+', color: 'text-green-600' },
+          { icon: Users, label: 'Students', value: '2000+', color: 'text-emerald-600' },
+          { icon: BookOpen, label: 'Faculty', value: '100+', color: 'text-green-700' },
+          { icon: Award, label: 'Years', value: '10+', color: 'text-green-800' },
+        ].map((s, i) => (
+          
+          <div
+            key={s.label}
+            className="group relative p-[1px] rounded-2xl bg-gradient-to-br from-green-300/40 to-transparent hover:from-green-400 transition duration-500"
+            style={{ animationDelay: `${i * 0.08}s` }}
+          >
+
+            {/* Card */}
+            <div className="h-full w-full rounded-2xl bg-white/80 backdrop-blur-md p-6 
+            border border-green-100 shadow-md hover:shadow-xl 
+            hover:-translate-y-2 transition-all duration-300 text-center">
+
+              {/* Icon */}
+              <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center 
+              rounded-xl bg-green-100 text-green-600 
+              group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
+
+                <s.icon size={22} />
+              </div>
+
+              {/* Value */}
+              <div className={`font-heading text-2xl md:text-3xl font-bold ${s.color} 
+              group-hover:scale-110 transition`}>
+                {s.value}
+              </div>
+
+              {/* Label */}
+              <div className="text-[11px] text-gray-500 uppercase tracking-widest font-medium mt-1">
+                {s.label}
+              </div>
+
+              {/* Bottom Line */}
+              <div className="mt-3 h-1 w-0 bg-green-600 mx-auto rounded-full 
+              group-hover:w-10 transition-all duration-300"></div>
+
             </div>
           </div>
-        </section>
-      </AnimatedSection>
 
-      {/* ===== NEWS & NOTIFICATIONS — AMU STYLE ===== */}
-      <AnimatedSection>
-        <section className="py-14 bg-cream">
-          <div className="container">
-            <div className="text-center mb-8">
-              <h2 className="font-heading text-2xl md:text-3xl text-foreground font-bold uppercase tracking-wide">News & Notifications</h2>
-              <div className="section-divider mx-auto mt-3" />
-            </div>
+        ))}
 
-            <div className="grid lg:grid-cols-5 gap-6">
-              {/* University News — left 2 cols */}
-              <div className="lg:col-span-2 bg-white border border-border shadow-sm rounded overflow-hidden">
-                <div className="flex items-center gap-0 border-b-[3px] border-maroon">
-                  <div className="w-1.5 h-10 bg-maroon" />
-                  <h3 className="font-bold text-foreground text-sm px-4 py-2.5 uppercase tracking-wide">University Updates</h3>
-                </div>
-                <div className="divide-y divide-border max-h-[400px] overflow-y-auto">
-                  {news.length > 0 ? news.slice(0, 5).map((n, i) => (
-                    <div key={n.id || i} className="px-4 py-3 hover:bg-cream/60 transition-colors group flex items-start gap-3">
-                      <span className="flex-shrink-0 w-7 h-7 rounded-full border-2 border-maroon text-maroon text-[11px] font-bold flex items-center justify-center mt-0.5">
-                        {i + 1}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        {n.pdfLink ? (
-                          <a href={n.pdfLink} target="_blank" rel="noreferrer"
-                            className="text-sm text-foreground font-medium line-clamp-2 group-hover:text-maroon transition-colors cursor-pointer hover:underline">
-                            {n.title}
-                          </a>
-                        ) : (
-                          <p className="text-sm text-foreground font-medium line-clamp-2 group-hover:text-maroon transition-colors">{n.title}</p>
-                        )}
-                        {n.date && (
-                          <p className="text-[10px] text-maroon mt-1 flex items-center gap-1 font-medium">
-                            <Calendar size={9} /> Published on {n.date}
-                          </p>
-                        )}
-                      </div>
-                      {n.pdfLink && (
-                        <a href={n.pdfLink} target="_blank" rel="noreferrer"
-                          className="flex-shrink-0 w-7 h-8 flex items-center justify-center text-maroon hover:text-maroon-light" title="Download PDF">
-                          <Download size={16} />
-                        </a>
-                      )}
-                    </div>
-                  )) : (
-                    <div className="px-4 py-10 text-center text-muted-foreground text-sm">No news available.</div>
-                  )}
-                </div>
-                <div className="border-t border-border px-4 py-2.5 text-center">
-                  <button onClick={() => setShowAllNews(true)} className="bg-maroon text-white text-xs font-bold px-5 py-1.5 rounded hover:bg-maroon-light transition-colors uppercase tracking-wider">
-                    View All
-                  </button>
-                </div>
-              </div>
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
-              {/* Important Notifications — middle 2 cols */}
-              <div className="lg:col-span-2 bg-white border border-border shadow-sm rounded overflow-hidden">
-                <div className="flex items-center gap-0 border-b-[3px] border-maroon">
-                  <div className="w-1.5 h-10 bg-maroon" />
-                  <h3 className="font-bold text-foreground text-sm px-4 py-2.5 uppercase tracking-wide">Important Notifications</h3>
-                </div>
-                <div className="divide-y divide-border max-h-[400px] overflow-y-auto">
-                  {notices.length > 0 ? notices.slice(0, 5).map((n, i) => (
-                    <div key={n.id || i} className="px-4 py-3 hover:bg-cream/60 transition-colors group flex items-start gap-3">
-                      <span className="flex-shrink-0 w-7 h-7 rounded-full border-2 border-maroon text-maroon text-[11px] font-bold flex items-center justify-center mt-0.5">
-                        {i + 1}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        {n.pdfLink ? (
-                          <a href={n.pdfLink} target="_blank" rel="noreferrer"
-                            className="text-sm text-foreground font-medium line-clamp-2 group-hover:text-maroon transition-colors cursor-pointer hover:underline">
-                            {n.title || n.content}
-                          </a>
-                        ) : (
-                          <p className="text-sm text-foreground font-medium line-clamp-2 group-hover:text-maroon transition-colors">{n.title || n.content}</p>
-                        )}
-                        {n.date && (
-                          <p className="text-[10px] text-maroon mt-1 flex items-center gap-1 font-medium">
-                            <Calendar size={9} /> Published on {n.date}
-                          </p>
-                        )}
-                      </div>
-                      {n.pdfLink && (
-                        <a href={n.pdfLink} target="_blank" rel="noreferrer"
-                          className="flex-shrink-0 w-7 h-8 flex items-center justify-center text-maroon hover:text-maroon-light" title="Download PDF">
-                          <Download size={16} />
-                        </a>
-                      )}
-                    </div>
-                  )) : (
-                    <div className="px-4 py-10 text-center text-muted-foreground text-sm">No notifications available.</div>
-                  )}
-                </div>
-                <div className="border-t border-border px-4 py-2.5 text-center">
-                  <button onClick={() => setShowAllNotices(true)} className="bg-maroon text-white text-xs font-bold px-5 py-1.5 rounded hover:bg-maroon-light transition-colors uppercase tracking-wider">
-                    View All
-                  </button>
-                </div>
-                <div className="border-t border-border px-3 py-2 text-center">
-                  <button onClick={() => setShowAllNotices(true)} className="text-maroon text-xs font-bold hover:underline uppercase tracking-wider">
-                    View All Notices &gt;&gt;&gt;
-                  </button>
-                </div>
-              </div>
+      {/* ===== NEWS & NOTIFICATIONS — PREMIUM UI ===== */}
+{/* ===== NEWS & NOTIFICATIONS — PREMIUM AUTO SCROLL ===== */}
+<AnimatedSection>
+  <section className="py-16 bg-gradient-to-br from-gray-50 to-green-50">
+    <div className="container">
 
-              {/* Upcoming Events — right 1 col */}
-              <div className="lg:col-span-1 bg-white border border-border shadow-sm rounded overflow-hidden">
-                <div className="flex items-center gap-0 border-b-[3px] border-primary">
-                  <div className="w-1.5 h-10 bg-primary" />
-                  <h3 className="font-bold text-foreground text-sm px-3 py-2.5 uppercase tracking-wide">Upcoming Events</h3>
-                </div>
-                <div className="divide-y divide-border max-h-[400px] overflow-y-auto">
-                  {events.length > 0 ? events.slice(0, 4).map((e, i) => {
-                    const dateParts = e.date?.split(' ') || ['', ''];
-                    return (
-                      <div key={e.id || i} className="px-3 py-3 hover:bg-cream/60 transition-colors">
-                        <div className="flex items-start gap-2.5">
-                          <div className="flex-shrink-0 text-center">
-                            <div className="text-2xl font-heading text-primary font-bold leading-none">{dateParts[0] || '—'}</div>
-                            <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{dateParts[1] || ''}</div>
-                          </div>
-                          <div className="border-l-2 border-primary/20 pl-2.5 flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-foreground line-clamp-2 leading-snug">{e.title}</p>
-                            {e.date && <p className="text-[10px] text-maroon mt-1 flex items-center gap-1"><Calendar size={9} /> Dated {e.date}</p>}
-                            {e.venue && <p className="text-[10px] text-muted-foreground flex items-center gap-1"><MapPin size={9} /> {e.venue}</p>}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }) : (
-                    <div className="px-3 py-10 text-center text-muted-foreground text-sm">No events.</div>
-                  )}
-                </div>
-                <div className="border-t border-border px-3 py-2 text-center">
-                  <Link to="/resources/events" className="text-primary text-xs font-bold hover:underline uppercase tracking-wider">
-                    View Past Events &gt;&gt;&gt;
-                  </Link>
-                </div>
-              </div>
-            </div>
+      {/* Heading */}
+      <div className="text-center mb-10">
+        <h2 className="font-heading text-3xl md:text-4xl text-gray-800 font-bold uppercase tracking-wide">
+          News & Notifications
+        </h2>
+        <div className="w-20 h-1 bg-green-600 mx-auto mt-3 rounded-full" />
+      </div>
+
+      <div className="grid lg:grid-cols-5 gap-6">
+
+        {/* ================= NEWS ================= */}
+        <div className="lg:col-span-2 bg-white/80 backdrop-blur-md border border-green-100 shadow-lg rounded-2xl overflow-hidden">
+
+          <div className="px-5 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold text-sm uppercase">
+            University Updates
           </div>
-        </section>
-      </AnimatedSection>
 
-      {/* ===== NOTICE MODAL ===== */}
-      {showAllNotices && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={() => setShowAllNotices(false)}>
-          <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
-            <div className="bg-maroon px-6 py-4 flex items-center justify-between">
-              <h3 className="text-white font-heading text-lg flex items-center gap-2"><Bell size={18} className="text-gold" /> All Notices</h3>
-              <button onClick={() => setShowAllNotices(false)} className="text-white/70 hover:text-white"><X size={20} /></button>
-            </div>
-            <div className="divide-y divide-border overflow-y-auto max-h-[60vh]">
-              {notices.length > 0 ? notices.map((n, i) => (
-                <div key={n.id || i} className="px-6 py-4 hover:bg-cream/50 transition-colors flex items-start gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-maroon/10 text-maroon text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
-                  <div className="flex-1 min-w-0">
+          <div className="relative h-[350px] overflow-hidden group">
+            <div className="flex flex-col animate-scroll-up group-hover:[animation-play-state:paused]">
+
+              {news.length > 0 ? news.concat(news).map((n, i) => (
+                <div key={n.id || i}
+                  className="px-4 py-3 border-b border-gray-100 hover:bg-green-50 transition flex items-start gap-3">
+
+                  <span className="w-7 h-7 rounded-full border-2 border-green-600 text-green-600 text-[11px] font-bold flex items-center justify-center">
+                    {(i % news.length) + 1}
+                  </span>
+
+                  <div className="flex-1">
                     {n.pdfLink ? (
-                      <a href={n.pdfLink} target="_blank" rel="noreferrer" className="text-sm font-medium text-foreground hover:text-maroon hover:underline">{n.title || n.content}</a>
+                      <a href={n.pdfLink} target="_blank" rel="noreferrer"
+                        className="text-sm font-medium text-gray-800 hover:text-green-600 line-clamp-2">
+                        {n.title}
+                      </a>
                     ) : (
-                      <p className="text-sm font-medium text-foreground">{n.title || n.content}</p>
+                      <p className="text-sm font-medium text-gray-800 line-clamp-2">
+                        {n.title}
+                      </p>
                     )}
-                    {n.date && <p className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1"><Calendar size={9} /> {n.date}</p>}
+
+                    {n.date && (
+                      <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                        <Calendar size={10}/> {n.date}
+                      </p>
+                    )}
                   </div>
+
                   {n.pdfLink && (
-                    <a href={n.pdfLink} target="_blank" rel="noreferrer" className="flex-shrink-0 px-3 py-1.5 rounded bg-maroon text-white text-xs font-medium hover:bg-maroon-light transition-colors flex items-center gap-1.5">
-                      <Download size={12} /> PDF
+                    <a href={n.pdfLink} target="_blank" rel="noreferrer"
+                      className="text-green-600 hover:scale-110 transition">
+                      <Download size={16}/>
                     </a>
                   )}
                 </div>
-              )) : <div className="px-6 py-12 text-center text-muted-foreground">No notices available.</div>}
+              )) : (
+                <div className="p-6 text-center text-gray-500">No news available.</div>
+              )}
+
             </div>
           </div>
-        </div>
-      )}
 
-      {/* ===== NEWS MODAL ===== */}
-      {showAllNews && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={() => setShowAllNews(false)}>
-          <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
-            <div className="bg-navy px-6 py-4 flex items-center justify-between">
-              <h3 className="text-white font-heading text-lg flex items-center gap-2"><Newspaper size={18} className="text-gold" /> All News</h3>
-              <button onClick={() => setShowAllNews(false)} className="text-white/70 hover:text-white"><X size={20} /></button>
-            </div>
-            <div className="divide-y divide-border overflow-y-auto max-h-[60vh]">
-              {news.length > 0 ? news.map((n, i) => (
-                <div key={n.id || i} className="px-6 py-4 hover:bg-cream/50 transition-colors flex items-start gap-4">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-navy/10 text-navy text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
-                  <div className="flex-1 min-w-0">
+          <div className="text-center py-3">
+            <button onClick={() => setShowAllNews(true)}
+              className="text-green-600 text-sm font-semibold hover:underline">
+              View All →
+            </button>
+          </div>
+        </div>
+
+
+        {/* ================= NOTICES ================= */}
+        <div className="lg:col-span-2 bg-white/80 backdrop-blur-md border border-green-100 shadow-lg rounded-2xl overflow-hidden">
+
+          <div className="px-5 py-3 bg-gradient-to-r from-green-700 to-green-800 text-white font-semibold text-sm uppercase">
+            Important Notifications
+          </div>
+
+          <div className="relative h-[350px] overflow-hidden group">
+            <div className="flex flex-col animate-scroll-up group-hover:[animation-play-state:paused]">
+
+              {notices.length > 0 ? notices.concat(notices).map((n, i) => (
+                <div key={n.id || i}
+                  className="px-4 py-3 border-b border-gray-100 hover:bg-green-50 transition flex items-start gap-3">
+
+                  <span className="w-7 h-7 rounded-full border-2 border-green-700 text-green-700 text-[11px] font-bold flex items-center justify-center">
+                    {(i % notices.length) + 1}
+                  </span>
+
+                  <div className="flex-1">
                     {n.pdfLink ? (
-                      <a href={n.pdfLink} target="_blank" rel="noreferrer" className="text-sm font-medium text-foreground hover:text-navy hover:underline">{n.title}</a>
+                      <a href={n.pdfLink} target="_blank" rel="noreferrer"
+                        className="text-sm font-medium text-gray-800 hover:text-green-600 line-clamp-2">
+                        {n.title || n.content}
+                      </a>
                     ) : (
-                      <p className="text-sm font-medium text-foreground">{n.title}</p>
+                      <p className="text-sm font-medium text-gray-800 line-clamp-2">
+                        {n.title || n.content}
+                      </p>
                     )}
-                    {n.date && <p className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1"><Calendar size={9} /> {n.date}</p>}
+
+                    {n.date && (
+                      <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                        <Calendar size={10}/> {n.date}
+                      </p>
+                    )}
                   </div>
+
                   {n.pdfLink && (
-                    <a href={n.pdfLink} target="_blank" rel="noreferrer" className="flex-shrink-0 px-3 py-1.5 rounded bg-navy text-white text-xs font-medium hover:bg-navy-light transition-colors flex items-center gap-1.5">
-                      <Download size={12} /> PDF
+                    <a href={n.pdfLink} target="_blank" rel="noreferrer"
+                      className="text-green-600 hover:scale-110 transition">
+                      <Download size={16}/>
                     </a>
                   )}
                 </div>
-              )) : <div className="px-6 py-12 text-center text-muted-foreground">No news available.</div>}
+              )) : (
+                <div className="p-6 text-center text-gray-500">No notifications available.</div>
+              )}
+
             </div>
           </div>
+
+          <div className="text-center py-3">
+            <button onClick={() => setShowAllNotices(true)}
+              className="text-green-600 text-sm font-semibold hover:underline">
+              View All →
+            </button>
+          </div>
         </div>
-      )}
+
+
+        {/* ================= EVENTS ================= */}
+        <div className="lg:col-span-1 bg-white/80 backdrop-blur-md border border-green-100 shadow-lg rounded-2xl overflow-hidden">
+
+          <div className="px-5 py-3 bg-gradient-to-r from-green-800 to-green-900 text-white font-semibold text-sm uppercase">
+            Upcoming Events
+          </div>
+
+          <div className="relative h-[350px] overflow-hidden group">
+            <div className="flex flex-col animate-scroll-up group-hover:[animation-play-state:paused]">
+
+              {events.length > 0 ? events.concat(events).map((e, i) => (
+                <div key={e.id || i}
+                  className="px-3 py-3 border-b border-gray-100 hover:bg-green-50 transition">
+
+                  <p className="text-sm font-semibold text-gray-800 line-clamp-2">
+                    {e.title}
+                  </p>
+
+                  {e.date && (
+                    <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                      <Calendar size={10}/> {e.date}
+                    </p>
+                  )}
+
+                  {e.venue && (
+                    <p className="text-xs text-gray-500 flex items-center gap-1">
+                      <MapPin size={10}/> {e.venue}
+                    </p>
+                  )}
+
+                </div>
+              )) : (
+                <div className="p-6 text-center text-gray-500">No events.</div>
+              )}
+
+            </div>
+          </div>
+
+          <div className="text-center py-3">
+            <Link to="/resources/events"
+              className="text-green-600 text-sm font-semibold hover:underline">
+              View All →
+            </Link>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
+
+{/* ===== NOTICE MODAL ===== */}
+{showAllNotices && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setShowAllNotices(false)}>
+    <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+      <div className="bg-green-700 px-6 py-4 flex justify-between text-white">
+        <h3 className="text-lg font-bold">All Notices</h3>
+        <button onClick={() => setShowAllNotices(false)}>✕</button>
+      </div>
+      <div className="overflow-y-auto max-h-[60vh] divide-y">
+        {notices.map((n,i)=>(
+          <div key={i} className="p-4 hover:bg-gray-50">
+            <p className="text-sm">{n.title || n.content}</p>
+            {n.date && <p className="text-xs text-gray-500">{n.date}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+{/* ===== NEWS MODAL ===== */}
+{showAllNews && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setShowAllNews(false)}>
+    <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+      <div className="bg-green-800 px-6 py-4 flex justify-between text-white">
+        <h3 className="text-lg font-bold">All News</h3>
+        <button onClick={() => setShowAllNews(false)}>✕</button>
+      </div>
+      <div className="overflow-y-auto max-h-[60vh] divide-y">
+        {news.map((n,i)=>(
+          <div key={i} className="p-4 hover:bg-gray-50">
+            <p className="text-sm">{n.title}</p>
+            {n.date && <p className="text-xs text-gray-500">{n.date}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+
+{/* ===== CSS ===== */}
+<style>
+{`
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+.animate-scroll-up {
+  animation: scrollUp 12s linear infinite;
+}
+`}
+</style>
 
       {/* ===== WELCOME ===== */}
       <AnimatedSection>
-        <section className="py-20 bg-white">
-          <div className="container">
-            <div className="grid lg:grid-cols-2 gap-14 items-center">
-              <div>
-                <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Welcome to MEC</span>
-                <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground leading-tight mb-3">Shaping the Future of Engineering Education</h2>
-                <div className="section-divider mb-6" />
-                <p className="text-muted-foreground leading-[1.85] mb-4 text-[15px]">
-                  Mewat Engineering College (Waqf), established under the aegis of Haryana Waqf Board, Government of Haryana, stands as a beacon of technical education in the Mewat region. Affiliated to Gurugram University and approved by AICTE, we provide world-class engineering education accessible to all.
-                </p>
-                <p className="text-muted-foreground leading-[1.85] mb-7 text-[15px]">
-                  With state-of-the-art infrastructure, experienced faculty, and industry-oriented curriculum, MEC is nurturing the next generation of engineers and leaders.
-                </p>
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  {['AICTE Approved', 'Modern Labs', 'NBA Accredited', 'Scholarship Support', 'Industry Partnerships', 'Placement Cell'].map(item => (
-                    <div key={item} className="flex items-center gap-2 text-[13px] text-foreground">
-                      <CheckCircle2 size={14} className="text-primary shrink-0" /> {item}
-                    </div>
-                  ))}
-                </div>
-                <Link to="/about/about-mec" className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded hover:bg-maroon-light transition-all font-semibold text-sm">
-                  Learn More <ArrowRight size={14} />
-                </Link>
-              </div>
-              <div className="relative">
-                <img src={aboutCampus} alt="MEC Lab" className="rounded-lg shadow-xl w-full object-cover h-[380px]" loading="lazy" />
-                <img src={campusLife} alt="MEC Library" className="absolute -bottom-6 -left-6 w-44 h-44 rounded-lg shadow-xl object-cover border-4 border-white hidden lg:block" loading="lazy" />
-                <div className="absolute -top-4 -right-4 px-5 py-4 bg-maroon text-white rounded-lg shadow-lg hidden md:block">
-                  <div className="font-heading text-2xl">10+</div>
-                  <div className="text-[10px] uppercase tracking-widest opacity-80">Years</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+  <section className="py-24 bg-gradient-to-br from-white via-green-50 to-green-100 relative overflow-hidden">
 
-      {/* ===== DEPARTMENTS WITH IMAGES ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-cream">
-          <div className="container">
-            <div className="text-center mb-12">
-              <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Academic Excellence</span>
-              <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Our Departments</h2>
-              <div className="section-divider mx-auto mb-4" />
-              <p className="text-muted-foreground max-w-xl mx-auto text-[15px]">B.Tech programmes with industry-aligned curriculum and hands-on learning.</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {departments.map((dept, i) => (
-                <AnimatedSection key={dept.code} delay={i * 0.08}>
-                  <Link to={`/department/${dept.code}`} className="group block rounded-lg overflow-hidden bg-white border border-border premium-card shadow-sm">
-                    <div className="h-44 overflow-hidden relative">
-                      <img src={dept.img} alt={dept.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
-                      <div className="absolute bottom-3 left-4 right-4">
-                        <h3 className="text-white font-bold text-sm drop-shadow-lg">{dept.name}</h3>
-                        <p className="text-white/70 text-xs mt-0.5">B.Tech · {dept.seats} Seats</p>
-                      </div>
-                    </div>
-                    <div className="px-4 py-3 flex items-center justify-between">
-                      <span className="text-xs text-maroon font-bold uppercase tracking-wider">Explore Department</span>
-                      <ChevronRight size={16} className="text-maroon group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </Link>
-                </AnimatedSection>
-              ))}
-              {/* ASH */}
-              <AnimatedSection delay={5 * 0.08}>
-                <Link to="/department/ash" className="group flex items-center gap-4 bg-white rounded-lg p-5 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
-                  <div className="w-14 h-14 rounded-lg bg-primary/10 group-hover:bg-primary flex items-center justify-center shrink-0 transition-all duration-300">
-                    <FlaskConical size={24} className="text-primary group-hover:text-white transition-colors" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors">Applied Sciences & Humanities</h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">Foundation Courses</p>
-                  </div>
-                  <ChevronRight size={16} className="text-muted-foreground/30 group-hover:text-primary transition-colors shrink-0" />
-                </Link>
-              </AnimatedSection>
-            </div>
+    {/* Background Glow */}
+    <div className="absolute -top-16 -left-16 w-72 h-72 bg-green-200 opacity-30 blur-3xl rounded-full"></div>
+    <div className="absolute -bottom-16 -right-16 w-72 h-72 bg-green-300 opacity-30 blur-3xl rounded-full"></div>
+
+    <div className="container relative">
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+        {/* LEFT CONTENT */}
+        <div>
+
+          <span className="text-green-700 font-semibold text-xs uppercase tracking-[0.3em] mb-3 block">
+            Welcome to MEC
+          </span>
+
+          <h2 className="font-heading text-3xl md:text-4xl text-gray-800 leading-tight mb-4">
+            Shaping the Future of Engineering Education
+          </h2>
+
+          <div className="w-16 h-1 bg-green-600 mb-6 rounded-full"></div>
+
+          <p className="text-gray-600 leading-[1.9] mb-4 text-[15px]">
+            Mewat Engineering College (Waqf), established under the Haryana Waqf Board,
+            Government of Haryana, is a growing hub of technical excellence in the region.
+            Affiliated with Gurugram University and approved by AICTE, the institution
+            focuses on delivering accessible, high-quality engineering education.
+          </p>
+
+          <p className="text-gray-600 leading-[1.9] mb-7 text-[15px]">
+            With modern infrastructure, expert faculty, and industry-oriented programs,
+            MEC empowers students with the knowledge, skills, and confidence to excel
+            in the evolving global technological landscape.
+          </p>
+
+          {/* FEATURES */}
+          <div className="grid grid-cols-2 gap-4 mb-8">
+            {[
+              'AICTE Approved',
+              'Advanced Laboratories',
+              'Industry Collaborations',
+              'Scholarship Programs',
+              'Placement Assistance',
+              'Research & Innovation'
+            ].map(item => (
+              <div key={item}
+                className="flex items-center gap-2 text-sm text-gray-700 group">
+
+                <CheckCircle2 size={16}
+                  className="text-green-600 group-hover:scale-110 transition" />
+
+                {item}
+              </div>
+            ))}
           </div>
-        </section>
-      </AnimatedSection>
+
+          {/* BUTTON */}
+          <Link
+            to="/about/about-mec"
+            className="inline-flex items-center gap-2 px-6 py-3 
+            bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg 
+            hover:shadow-lg hover:-translate-y-1 transition-all duration-300 font-semibold text-sm">
+
+            Learn More <ArrowRight size={16} />
+          </Link>
+
+        </div>
+
+
+        {/* RIGHT IMAGES */}
+        <div className="relative">
+
+          {/* Main Image */}
+          <div className="group overflow-hidden rounded-2xl shadow-xl">
+            <img
+              src={aboutCampus}
+              alt="MEC Lab"
+              className="w-full h-[400px] object-cover transition duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+          </div>
+
+          {/* Small Image */}
+          <div className="hidden lg:block absolute -bottom-8 -left-8 overflow-hidden rounded-xl shadow-lg border-4 border-white">
+            <img
+              src={campusLife}
+              alt="Campus Life"
+              className="w-48 h-48 object-cover hover:scale-110 transition duration-500"
+              loading="lazy"
+            />
+          </div>
+
+          {/* Floating Stats Card */}
+          <div className="absolute -top-6 -right-6 bg-white/90 backdrop-blur-md 
+          px-6 py-4 rounded-xl shadow-lg border border-green-100">
+
+            <div className="text-2xl font-bold text-green-700">
+              10+
+            </div>
+
+            <div className="text-[10px] uppercase tracking-widest text-gray-500">
+              Years Experience
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
+
+    {/* ===== FACULTIES SERVICES ===== */}
+
+<section className="relative py-24 bg-gradient-to-br from-green-50 via-white to-green-100 overflow-hidden">
+
+  {/* Background Glow */}
+  <div className="absolute -top-20 -left-20 w-72 h-72 bg-green-200 rounded-full blur-3xl opacity-30"></div>
+  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-green-300 rounded-full blur-3xl opacity-30"></div>
+
+  <div className="relative max-w-7xl mx-auto px-6">
+
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
+        Campus Services & Facilities
+      </h2>
+      <p className="text-gray-600 mt-5 max-w-2xl mx-auto leading-relaxed">
+        We provide a complete ecosystem for students — from academic excellence and
+        skill development to research opportunities and transparent support systems —
+        helping you grow into a confident professional.
+      </p>
+      <div className="mt-6 w-28 h-1 bg-gradient-to-r from-green-500 to-green-700 mx-auto rounded-full"></div>
+    </div>
+
+    {/* Grid */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      {[
+        {
+          title: "Academic & Student Support",
+          icon: "🎓",
+          desc: "Structured mentorship, remedial classes, and personalized academic guidance to boost performance and confidence."
+        },
+        {
+          title: "Training & Placement",
+          icon: "💼",
+          desc: "Career-focused training, industry exposure, internships, and dedicated placement assistance for job readiness."
+        },
+        {
+          title: "IQAC (Quality Cell)",
+          icon: "🛡️",
+          desc: "Continuous monitoring and enhancement of teaching, learning, and institutional processes for quality assurance."
+        },
+        {
+          title: "Central Library",
+          icon: "📚",
+          desc: "Well-equipped library with e-resources, journals, previous papers, and a calm study environment."
+        },
+        {
+          title: "Research & Innovation",
+          icon: "🔬",
+          desc: "Encouraging research culture through projects, funding opportunities, and national/international publications."
+        },
+        {
+          title: "e-Samadhan Portal",
+          icon: "❓",
+          desc: "A transparent digital grievance system ensuring quick resolution and student satisfaction."
+        },
+        {
+          title: "NAAC Accreditation",
+          icon: "🏆",
+          desc: "Recognized standards for excellence in academics, infrastructure, and institutional performance."
+        },
+        {
+          title: "NIRF Ranking",
+          icon: "📊",
+          desc: "Performance-driven national ranking reflecting teaching quality, research output, and placements."
+        }
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="group relative bg-white/80 backdrop-blur-md p-6 rounded-2xl 
+          border border-green-100 shadow-md hover:shadow-2xl 
+          hover:-translate-y-3 transition-all duration-500 cursor-pointer"
+        >
+
+          {/* Glow Hover Effect */}
+          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 
+          bg-gradient-to-br from-green-200/40 to-transparent transition duration-500"></div>
+
+          {/* Icon */}
+          <div className="relative text-4xl mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-3">
+            {item.icon}
+          </div>
+
+          {/* Title */}
+          <h3 className="relative text-lg font-semibold text-gray-800 mb-2 
+          group-hover:text-green-700 transition">
+            {item.title}
+          </h3>
+
+          {/* Description */}
+          <p className="relative text-sm text-gray-600 leading-relaxed">
+            {item.desc}
+          </p>
+
+          {/* Animated Bottom Line */}
+          <div className="mt-5 h-1 w-0 bg-gradient-to-r from-green-500 to-green-700 
+          group-hover:w-16 transition-all duration-500 rounded-full"></div>
+
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+{/* ===== FACULTIES SERVICES ===== */}
+
+      {/* ===== DEPARTMENTS — PREMIUM DESIGN ===== */}
+{/* ===== DEPARTMENTS WITH IMAGES ===== */}
+<AnimatedSection>
+  <section className="py-20 bg-cream">
+    <div className="container">
+
+      {/* Heading */}
+      <div className="text-center mb-12">
+        <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+          Academic Excellence
+        </span>
+        <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">
+          Our Departments
+        </h2>
+        <div className="section-divider mx-auto mb-4" />
+        <p className="text-muted-foreground max-w-xl mx-auto text-[15px]">
+          B.Tech programmes with industry-aligned curriculum and hands-on learning.
+        </p>
+      </div>
+
+      {/* B.TECH GRID */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        {departments.map((dept, i) => (
+          <AnimatedSection key={dept.code} delay={i * 0.08}>
+
+            <Link
+              to={`/department/${dept.code}`}
+              className="group block rounded-lg overflow-hidden bg-white border border-border premium-card shadow-sm hover:shadow-lg transition-all duration-300"
+            >
+
+              {/* Image */}
+              <div className="h-44 overflow-hidden relative">
+                <img
+                  src={dept.img}
+                  alt={dept.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+
+                {/* ICON BADGE */}
+                <div className="absolute top-3 left-3 bg-white/90 p-2 rounded-full shadow">
+                  🎓
+                </div>
+
+                {/* TEXT */}
+                <div className="absolute bottom-3 left-4 right-4">
+                  <h3 className="text-white font-bold text-sm drop-shadow-lg">
+                    {dept.name}
+                  </h3>
+                  <p className="text-white/70 text-xs mt-0.5">
+                    B.Tech · {dept.seats} Seats
+                  </p>
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="px-4 py-3 flex items-center justify-between">
+                <span className="text-xs text-maroon font-bold uppercase tracking-wider">
+                  Explore Department
+                </span>
+                <ChevronRight size={16} className="text-maroon group-hover:translate-x-1 transition-transform" />
+              </div>
+
+            </Link>
+
+          </AnimatedSection>
+        ))}
+
+
+        {/* ===== ASH ===== */}
+        <AnimatedSection delay={5 * 0.08}>
+          <Link to="/department/ash"
+            className="group flex items-center gap-4 bg-white rounded-lg p-5 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
+
+            <div className="w-14 h-14 rounded-lg bg-primary/10 group-hover:bg-primary flex items-center justify-center transition-all duration-300">
+              <FlaskConical size={24} className="text-primary group-hover:text-white" />
+            </div>
+
+            <div className="flex-1">
+              <h3 className="font-semibold text-foreground text-sm group-hover:text-primary">
+                Applied Sciences & Humanities
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Foundation Courses
+              </p>
+            </div>
+
+            <ChevronRight size={16} className="text-muted-foreground/30 group-hover:text-primary transition" />
+          </Link>
+        </AnimatedSection>
+
+      </div>
+
+
+      {/* ===== BVOC / DVOC SECTION (NEW ADD) ===== */}
+      <div className="mt-16">
+
+        <div className="text-center mb-8">
+          <h3 className="font-heading text-2xl text-foreground">
+            Skill Development Programs
+          </h3>
+          <p className="text-muted-foreground text-sm mt-2">
+            BVoc & DVoc courses focused on practical skills and industry training.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          {[
+            { title: "BVoc - Software Development", icon: "💻" },
+            { title: "BVoc - Automobile Technology", icon: "🚗" },
+            { title: "DVoc - Electrical Technician", icon: "⚡" },
+            { title: "DVoc - Mechanical Technician", icon: "⚙️" },
+            { title: "DVoc - IT & Networking", icon: "🌐" },
+            { title: "DVoc - Civil Construction", icon: "🏗️" },
+          ].map((course, i) => (
+
+            <div
+              key={i}
+              className="group flex items-center gap-4 bg-white rounded-lg p-5 border border-border 
+              hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+            >
+
+              {/* ICON */}
+              <div className="text-3xl group-hover:scale-110 transition">
+                {course.icon}
+              </div>
+
+              {/* TEXT */}
+              <div className="flex-1">
+                <h4 className="font-semibold text-sm text-foreground group-hover:text-primary">
+                  {course.title}
+                </h4>
+                <p className="text-xs text-muted-foreground">
+                  Skill-Based Course
+                </p>
+              </div>
+
+              <ChevronRight size={16} className="text-muted-foreground group-hover:text-primary transition" />
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</AnimatedSection>
 
       {/* ===== CEO MESSAGE ===== */}
       <AnimatedSection>
@@ -596,83 +965,87 @@ const industryPartners = [
       </AnimatedSection>
 
       {/* ===== VISION & MISSION ===== */}
-     <AnimatedSection>
-  <section className="relative py-28 overflow-hidden">
+    <AnimatedSection>
+  <section className="relative py-28 bg-gradient-to-br from-green-900 via-green-800 to-black overflow-hidden">
 
-    {/* BACKGROUND */}
-    <div className="absolute inset-0">
-      <img
-        src="https://images.unsplash.com/photo-1509062522246-3755977927d7"
-        alt="bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/60"></div>
-    </div>
+    {/* Soft Glow Background */}
+    <div className="absolute top-0 left-0 w-96 h-96 bg-green-500 opacity-20 blur-3xl rounded-full"></div>
+    <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-400 opacity-20 blur-3xl rounded-full"></div>
 
-    {/* CONTENT */}
-    <div className="relative max-w-7xl mx-auto px-4 text-white">
+    <div className="relative max-w-7xl mx-auto px-6 text-white">
 
       {/* Heading */}
       <div className="text-center mb-20">
-        <span className="text-yellow-400 text-xs uppercase tracking-[0.3em] font-semibold">
+        <span className="text-green-400 text-xs uppercase tracking-[0.3em] font-semibold">
           Our Purpose
         </span>
-        <h2 className="text-4xl md:text-5xl font-semibold mt-3">
+        <h2 className="text-4xl md:text-5xl font-bold mt-3">
           Vision & Mission
         </h2>
+        <p className="text-white/70 mt-4 max-w-xl mx-auto">
+          Driving excellence through innovation, quality education, and a commitment
+          to shaping future leaders.
+        </p>
       </div>
 
-      {/* GRID */}
+      {/* Cards */}
       <div className="grid md:grid-cols-2 gap-10">
 
-        {/* Vision */}
-        <div className="flex gap-6 p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl hover:bg-white/20 transition">
+        {/* Vision Card */}
+        <div className="group relative p-[1px] rounded-3xl bg-gradient-to-br from-green-400/40 to-transparent hover:from-green-400 transition duration-500">
 
-          {/* BIG IMAGE */}
-          <img
-            src="https://images.unsplash.com/photo-1551434678-e076c223a692"
-            alt="vision"
-            className="w-24 h-24 rounded-xl object-cover border border-white/30 flex-shrink-0"
-          />
+          <div className="h-full w-full rounded-3xl bg-black/60 backdrop-blur-md p-8 
+          border border-white/10 shadow-xl hover:-translate-y-2 transition-all duration-300">
 
-          {/* TEXT */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-2">Our Vision</h3>
-            <p className="text-white/80 leading-relaxed text-[15.5px]">
-              To be a premier institution of engineering education and research,
-              fostering innovation, ethical values, and leadership to serve society
-              and the nation with distinction.
+            {/* Icon */}
+            <div className="text-5xl mb-6 group-hover:scale-110 transition">
+              🌍
+            </div>
+
+            <h3 className="text-2xl font-semibold mb-3">
+              Our Vision
+            </h3>
+
+            <p className="text-white/70 leading-relaxed text-[15px]">
+              To emerge as a globally recognized institution that fosters innovation,
+              excellence, and leadership, empowering students to contribute
+              effectively to society and the technological world.
             </p>
-          </div>
 
+          </div>
         </div>
 
-        {/* Mission */}
-        <div className="flex gap-6 p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl hover:bg-white/20 transition">
+        {/* Mission Card */}
+        <div className="group relative p-[1px] rounded-3xl bg-gradient-to-br from-green-400/40 to-transparent hover:from-green-400 transition duration-500">
 
-          {/* BIG IMAGE */}
-          <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
-            alt="mission"
-            className="w-24 h-24 rounded-xl object-cover border border-white/30 flex-shrink-0"
-          />
+          <div className="h-full w-full rounded-3xl bg-black/60 backdrop-blur-md p-8 
+          border border-white/10 shadow-xl hover:-translate-y-2 transition-all duration-300">
 
-          {/* TEXT */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-2">Our Mission</h3>
-            <p className="text-white/80 leading-relaxed text-[15.5px]">
-              To provide quality technical education accessible to all sections of
-              society, develop competent engineers with strong ethical foundation,
-              and contribute to socio-economic development.
+            {/* Icon */}
+            <div className="text-5xl mb-6 group-hover:scale-110 transition">
+              🎯
+            </div>
+
+            <h3 className="text-2xl font-semibold mb-3">
+              Our Mission
+            </h3>
+
+            <p className="text-white/70 leading-relaxed text-[15px]">
+              To deliver high-quality education, promote research and innovation,
+              and develop skilled professionals with strong ethical values who are
+              ready to meet global challenges.
             </p>
-          </div>
 
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 </AnimatedSection>
+
+
+
 
       {/* ===== WHY CHOOSE MEC ===== */}
      <AnimatedSection>
@@ -746,6 +1119,131 @@ const industryPartners = [
 
           </AnimatedSection>
         ))}
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
+
+
+<AnimatedSection>
+  <section className="relative py-28 bg-gradient-to-br from-white via-green-50 to-green-100 overflow-hidden">
+
+    {/* Background Glow */}
+    <div className="absolute top-0 left-0 w-72 h-72 bg-green-200 opacity-30 blur-3xl rounded-full"></div>
+    <div className="absolute bottom-0 right-0 w-72 h-72 bg-green-300 opacity-30 blur-3xl rounded-full"></div>
+
+    <div className="relative max-w-7xl mx-auto px-6">
+
+      {/* Heading */}
+      <div className="text-center mb-20">
+        <span className="text-green-600 text-xs uppercase tracking-[0.3em] font-semibold">
+          Skill Development
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-3">
+          Empowering Students with Future Skills
+        </h2>
+        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Our curriculum focuses on building real-world skills that prepare students
+          for industry challenges and professional excellence.
+        </p>
+      </div>
+
+      {/* Grid */}
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+
+        {/* LEFT CONTENT */}
+        <div className="space-y-8">
+
+          {[
+            {
+              title: "Programming & Coding",
+              icon: "💻",
+              percent: "90%",
+              desc: "Hands-on coding practice with modern technologies and real-world projects."
+            },
+            {
+              title: "Communication Skills",
+              icon: "🗣️",
+              percent: "85%",
+              desc: "Enhancing verbal, written, and presentation skills for professional success."
+            },
+            {
+              title: "Leadership & Teamwork",
+              icon: "🤝",
+              percent: "80%",
+              desc: "Developing leadership mindset and collaborative abilities."
+            },
+            {
+              title: "Problem Solving",
+              icon: "🧠",
+              percent: "88%",
+              desc: "Critical thinking and analytical skills through practical challenges."
+            }
+          ].map((skill, i) => (
+            <div key={i} className="group">
+
+              {/* Title */}
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <span className="text-2xl">{skill.icon}</span>
+                  {skill.title}
+                </h3>
+                <span className="text-green-600 font-semibold">
+                  {skill.percent}
+                </span>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-full h-3 bg-green-100 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-green-500 to-green-700 rounded-full transition-all duration-1000 group-hover:brightness-110"
+                  style={{ width: skill.percent }}
+                ></div>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm text-gray-600 mt-2">
+                {skill.desc}
+              </p>
+
+            </div>
+          ))}
+
+        </div>
+
+        {/* RIGHT SIDE CARDS */}
+        <div className="grid grid-cols-2 gap-6">
+
+          {[
+            { icon: "🚀", title: "Career Ready", desc: "Industry-focused training" },
+            { icon: "📈", title: "Growth Mindset", desc: "Continuous improvement" },
+            { icon: "🌐", title: "Global Exposure", desc: "Modern technologies" },
+            { icon: "🏆", title: "Excellence", desc: "High performance culture" }
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="group bg-white p-6 rounded-2xl shadow-md border border-green-100 
+              hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center"
+            >
+
+              <div className="text-4xl mb-3 group-hover:scale-110 transition">
+                {item.icon}
+              </div>
+
+              <h4 className="font-semibold text-gray-800">
+                {item.title}
+              </h4>
+
+              <p className="text-sm text-gray-600 mt-1">
+                {item.desc}
+              </p>
+
+            </div>
+          ))}
+
+        </div>
 
       </div>
     </div>
