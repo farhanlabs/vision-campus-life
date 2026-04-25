@@ -916,72 +916,248 @@ const industryPartners = [
   </section>
 </AnimatedSection>
 
-      {/* ===== CEO MESSAGE ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-navy text-white">
-          <div className="container">
-            <div className="grid md:grid-cols-5 gap-12 items-center">
-              <div className="md:col-span-2 flex justify-center">
-                <div className="w-56 h-72 rounded-lg overflow-hidden shadow-xl border-4 border-white/10">
-                  <img src={ceoImg} alt="CEO, MEC (Waqf)" className="w-full h-full object-cover" loading="lazy" width={512} height={640} />
-                </div>
-              </div>
-              <div className="md:col-span-3">
-                <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">From the CEO's Desk</span>
-                <h2 className="font-heading text-3xl mb-6">A Message from Our CEO</h2>
-                <blockquote className="text-white/70 leading-[1.85] text-[15px] border-l-3 border-gold/50 pl-5 mb-6 italic">
-                  "Our vision is to create an institution that not only imparts technical knowledge but also builds character, fosters innovation, and prepares students to be responsible global citizens. Mewat Engineering College is committed to excellence in every aspect of education and community service."
-                </blockquote>
-                <div className="text-gold font-semibold text-sm">— CEO, Mewat Engineering College (Waqf)</div>
-              </div>
+
+
+{/* ===== ADMINISTRATOR MESSAGE ===== */}
+<AnimatedSection>
+  <section className="py-24 bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900 text-white relative overflow-hidden">
+
+    {/* soft background glow blobs */}
+    <div className="absolute -top-20 -left-20 w-72 h-72 bg-emerald-500/20 blur-3xl rounded-full"></div>
+    <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-green-400/20 blur-3xl rounded-full"></div>
+
+    <div className="container relative z-10">
+      <div className="grid md:grid-cols-5 gap-14 items-center">
+
+        {/* IMAGE */}
+        <div className="md:col-span-2 flex justify-center">
+          <div className="group relative w-60 h-76 rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm transition duration-500 hover:scale-105">
+            
+            {/* glow overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+            <img
+              src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
+              alt="Ch. Zakir Hussain Ex-MLA"
+              className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+            />
+
+            {/* bottom info */}
+            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-center">
+              <p className="text-sm font-semibold text-white">
+                Ch. Zakir Hussain
+              </p>
+              <p className="text-[11px] text-white/70">
+                Ex-MLA
+              </p>
             </div>
           </div>
-        </section>
-      </AnimatedSection>
+        </div>
+
+        {/* TEXT */}
+        <div className="md:col-span-3">
+          <span className="text-gold font-bold text-[11px] uppercase tracking-[.3em] mb-4 block">
+            From the Administrator's Desk
+          </span>
+
+          <h2 className="font-heading text-3xl md:text-4xl mb-6 leading-tight">
+            Driving Growth Through <span className="text-gold">Vision & Governance</span>
+          </h2>
+
+          <blockquote className="text-white/80 leading-[1.9] text-[15px] border-l-4 border-gold/60 pl-6 mb-8 italic relative">
+            <span className="absolute -left-3 top-0 text-gold text-3xl">“</span>
+            Our mission at Haryana Waqf Board is to ensure that institutions like 
+            Mewat Engineering College continue to grow as centers of excellence. 
+            We are focused on strengthening infrastructure, ensuring transparency, 
+            and providing inclusive opportunities that empower every student to succeed.
+          </blockquote>
+
+          <div className="flex items-center gap-4">
+            <div>
+              <p className="text-gold font-semibold text-sm">
+                Ch. Zakir Hussain, Ex-MLA
+              </p>
+              <p className="text-white/60 text-xs">
+                Administrator, Haryana Waqf Board
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
+      {/* ===== CEO MESSAGE ===== */}
+<AnimatedSection>
+  <section className="py-20 bg-navy text-white relative overflow-hidden">
+    
+    {/* subtle background glow */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-20 blur-2xl"></div>
+
+    <div className="container relative z-10">
+      <div className="grid md:grid-cols-5 gap-12 items-center">
+        
+        {/* IMAGE SECTION */}
+        <div className="md:col-span-2 flex justify-center">
+          <div className="group relative w-56 h-72 rounded-xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-500 hover:scale-105">
+            
+            {/* glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+            <img
+              src={ceoImg}
+              alt="Shri Mohammad Shayin IAS - CEO Haryana Waqf Board"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+              width={512}
+              height={640}
+            />
+
+            {/* bottom overlay */}
+            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-3 text-xs text-center text-white/80">
+              Shri Mohammad Shayin, IAS
+            </div>
+          </div>
+        </div>
+
+        {/* TEXT SECTION */}
+        <div className="md:col-span-3 animate-fadeInUp">
+          <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+            From the CEO's Desk
+          </span>
+
+          <h2 className="font-heading text-3xl mb-6 leading-snug">
+            A Visionary Message from Our Leadership
+          </h2>
+
+          <blockquote className="text-white/70 leading-[1.9] text-[15px] border-l-4 border-gold/50 pl-5 mb-6 italic">
+            "At Mewat Engineering College, our mission goes beyond conventional education. 
+            We are dedicated to nurturing innovation, strengthening technical excellence, 
+            and instilling strong ethical values among our students. 
+            As part of the Haryana Waqf Board, we strive to uplift society through quality education, 
+            empowering youth to become leaders, innovators, and responsible global citizens. 
+            Our commitment remains focused on inclusive growth, modern infrastructure, 
+            and industry-aligned learning experiences."
+          </blockquote>
+
+          <div className="text-gold font-semibold text-sm tracking-wide">
+            — Shri Mohammad Shayin, IAS  
+            <div className="text-white/60 text-xs mt-1">
+              CEO, Haryana Waqf Board
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
       {/* ===== DIRECTOR MESSAGE ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-maroon text-white">
-          <div className="container">
-            <div className="grid md:grid-cols-5 gap-12 items-center">
-              <div className="md:col-span-3">
-                <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">From the Director's Desk</span>
-                <h2 className="font-heading text-3xl mb-6">A Message of Inspiration</h2>
-                <blockquote className="text-white/70 leading-[1.85] text-[15px] border-l-3 border-gold/50 pl-5 mb-6 italic">
-                  "At Mewat Engineering College, we believe that education is the most powerful tool for transforming lives and communities. Our commitment is to provide not just technical knowledge, but a holistic educational experience."
-                </blockquote>
-                <Link to="/about/director-message" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-white rounded hover:brightness-110 transition-all font-semibold text-sm shadow-lg">
-                  Read Full Message <ArrowRight size={14} />
-                </Link>
-              </div>
-              <div className="md:col-span-2 flex justify-center">
-                <div className="w-56 h-72 rounded-lg overflow-hidden shadow-xl border-4 border-white/10">
-                  <img src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg" alt="Director, MEC (Waqf)" className="w-full h-full object-cover" loading="lazy" />
-                </div>
-              </div>
+<AnimatedSection>
+  <section className="py-20 bg-maroon text-white relative overflow-hidden">
+    
+    {/* subtle background effect */}
+    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-white/5 to-transparent opacity-20 blur-2xl"></div>
+
+    <div className="container relative z-10">
+      <div className="grid md:grid-cols-5 gap-12 items-center">
+        
+        {/* TEXT SECTION */}
+        <div className="md:col-span-3 animate-fadeInUp">
+          <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+            From the Director's Desk
+          </span>
+
+          <h2 className="font-heading text-3xl mb-6 leading-snug">
+            A Message of Vision & Excellence
+          </h2>
+
+          <blockquote className="text-white/70 leading-[1.9] text-[15px] border-l-4 border-gold/50 pl-5 mb-6 italic">
+            "At Mewat Engineering College, we believe that education is a transformative journey 
+            that shapes not only careers but also character and leadership. Our focus is on delivering 
+            high-quality technical education blended with innovation, research, and real-world exposure. 
+            We strive to create an environment where students are encouraged to think critically, 
+            act ethically, and contribute meaningfully to society. Through continuous learning and 
+            industry collaboration, we aim to prepare our students for global challenges and opportunities."
+          </blockquote>
+
+          <div className="text-gold font-semibold text-sm tracking-wide mb-6">
+            — Prof. (Dr.) Khwaja M. Rafi  
+            <div className="text-white/60 text-xs mt-1">
+              Director, Mewat Engineering College (Waqf)
             </div>
           </div>
-        </section>
-      </AnimatedSection>
+
+          <Link 
+            to="/about/director-message" 
+            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-white rounded-md font-semibold text-sm shadow-xl transition-all duration-300 hover:scale-105 hover:brightness-110"
+          >
+            Read Full Message 
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
+
+        {/* IMAGE SECTION */}
+        <div className="md:col-span-2 flex justify-center">
+          <div className="group relative w-56 h-72 rounded-xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-500 hover:scale-105">
+            
+            {/* glow overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+            <img
+              src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
+              alt="Prof. (Dr.) Khwaja M. Rafi - Director MEC"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+
+            {/* bottom label */}
+            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-3 text-xs text-center text-white/80">
+              Prof. (Dr.) Khwaja M. Rafi
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
       {/* ===== VISION & MISSION ===== */}
-    <AnimatedSection>
-  <section className="relative py-28 bg-gradient-to-br from-green-900 via-green-800 to-black overflow-hidden">
+<AnimatedSection>
+  <section className="relative py-28 overflow-hidden text-white">
 
-    {/* Soft Glow Background */}
-    <div className="absolute top-0 left-0 w-96 h-96 bg-green-500 opacity-20 blur-3xl rounded-full"></div>
-    <div className="absolute bottom-0 right-0 w-96 h-96 bg-green-400 opacity-20 blur-3xl rounded-full"></div>
+    {/* Background Image */}
+    <div className="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920&auto=format&fit=crop"
+        alt="Campus Background"
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+      {/* Dark Overlay for readability */}
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
 
-    <div className="relative max-w-7xl mx-auto px-6 text-white">
+    {/* Soft Glow */}
+    <div className="absolute top-0 left-0 w-80 h-80 bg-green-500/20 blur-3xl rounded-full"></div>
+    <div className="absolute bottom-0 right-0 w-80 h-80 bg-green-400/20 blur-3xl rounded-full"></div>
+
+    <div className="relative max-w-7xl mx-auto px-6">
 
       {/* Heading */}
       <div className="text-center mb-20">
         <span className="text-green-400 text-xs uppercase tracking-[0.3em] font-semibold">
           Our Purpose
         </span>
+
         <h2 className="text-4xl md:text-5xl font-bold mt-3">
           Vision & Mission
         </h2>
+
         <p className="text-white/70 mt-4 max-w-xl mx-auto">
           Driving excellence through innovation, quality education, and a commitment
           to shaping future leaders.
@@ -991,13 +1167,12 @@ const industryPartners = [
       {/* Cards */}
       <div className="grid md:grid-cols-2 gap-10">
 
-        {/* Vision Card */}
-        <div className="group relative p-[1px] rounded-3xl bg-gradient-to-br from-green-400/40 to-transparent hover:from-green-400 transition duration-500">
+        {/* Vision */}
+        <div className="group relative p-[1px] rounded-3xl bg-gradient-to-br from-green-400/40 to-transparent hover:from-green-400 transition">
 
           <div className="h-full w-full rounded-3xl bg-black/60 backdrop-blur-md p-8 
           border border-white/10 shadow-xl hover:-translate-y-2 transition-all duration-300">
 
-            {/* Icon */}
             <div className="text-5xl mb-6 group-hover:scale-110 transition">
               🌍
             </div>
@@ -1015,13 +1190,12 @@ const industryPartners = [
           </div>
         </div>
 
-        {/* Mission Card */}
-        <div className="group relative p-[1px] rounded-3xl bg-gradient-to-br from-green-400/40 to-transparent hover:from-green-400 transition duration-500">
+        {/* Mission */}
+        <div className="group relative p-[1px] rounded-3xl bg-gradient-to-br from-green-400/40 to-transparent hover:from-green-400 transition">
 
           <div className="h-full w-full rounded-3xl bg-black/60 backdrop-blur-md p-8 
           border border-white/10 shadow-xl hover:-translate-y-2 transition-all duration-300">
 
-            {/* Icon */}
             <div className="text-5xl mb-6 group-hover:scale-110 transition">
               🎯
             </div>
