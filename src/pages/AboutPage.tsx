@@ -10,7 +10,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
 
       {/* HERO SECTION */}
       <div className="relative rounded-3xl overflow-hidden shadow-xl">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-black/70 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/80 to-black/70 z-10"></div>
         <img
           src="/images/mec-campus.jpg"
           alt="MEC Campus"
@@ -54,9 +54,9 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
         ].map((item, index) => (
           <div
             key={index}
-            className="p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition border"
+            className="p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition border border-red-100"
           >
-            <h3 className="text-lg font-semibold text-blue-600">
+            <h3 className="text-lg font-semibold text-red-600">
               {item}
             </h3>
             <p className="text-gray-600 text-sm mt-2">
@@ -68,8 +68,8 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
       </div>
 
       {/* CAMPUS LIFE */}
-      <div className="bg-gradient-to-r from-blue-50 to-gray-50 p-8 rounded-3xl shadow-inner">
-        <h2 className="text-2xl font-bold text-blue-600 mb-4 text-center">
+      <div className="bg-gradient-to-r from-red-50 to-white p-8 rounded-3xl shadow-inner">
+        <h2 className="text-2xl font-bold text-red-600 mb-4 text-center">
           Campus Life
         </h2>
 
@@ -82,7 +82,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
 
       {/* WHY CHOOSE MEC */}
       <div>
-        <h2 className="text-3xl font-bold text-center text-blue-600 mb-10">
+        <h2 className="text-3xl font-bold text-center text-red-600 mb-10">
           The MEC Advantage
         </h2>
 
@@ -108,7 +108,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
           ].map((item, index) => (
             <div
               key={index}
-              className="p-6 rounded-2xl bg-white border shadow-md hover:shadow-lg transition"
+              className="p-6 rounded-2xl bg-white border border-red-100 shadow-md hover:shadow-lg transition"
             >
               <h3 className="text-xl font-semibold text-gray-800">
                 {item.title}
@@ -122,7 +122,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
         </div>
 
         {/* Highlight Card */}
-        <div className="mt-8 p-8 rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center shadow-lg">
+        <div className="mt-8 p-8 rounded-3xl bg-gradient-to-r from-red-600 to-red-500 text-white text-center shadow-lg">
           <h3 className="text-2xl font-bold">
             Beautiful Campus & Infrastructure
           </h3>
@@ -143,18 +143,18 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
     <div className="relative py-10">
 
       {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-white to-indigo-100 blur-2xl opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
 
       {/* Glow Circles */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-red-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-red-300/20 rounded-full blur-3xl"></div>
 
       {/* Main Container */}
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-red-600 to-red-500 text-transparent bg-clip-text">
             OUR VISION
           </h2>
           <p className="text-gray-500 mt-3">
@@ -163,7 +163,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
         </div>
 
         {/* Glass Card */}
-        <div className="p-10 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl hover:shadow-blue-200/50 transition duration-500">
+        <div className="p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-red-100 shadow-2xl hover:shadow-red-200/50 transition duration-500">
 
           {/* Main Paragraph */}
           <p className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto">
@@ -175,7 +175,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
           </p>
 
           {/* Divider */}
-          <div className="w-28 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto my-8 rounded-full"></div>
+          <div className="w-28 h-1 bg-gradient-to-r from-red-500 to-red-400 mx-auto my-8 rounded-full"></div>
 
           {/* Vision Cards */}
           <div className="grid md:grid-cols-3 gap-6">
@@ -208,9 +208,9 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
             ].map((item, index) => (
               <div
                 key={index}
-                className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border"
+                className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border border-red-100"
               >
-                <h3 className="text-lg font-semibold text-blue-600 group-hover:text-indigo-600 transition">
+                <h3 className="text-lg font-semibold text-red-600 group-hover:text-red-500 transition">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 text-sm mt-2 leading-relaxed">
@@ -223,7 +223,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
 
           {/* Bottom Highlight */}
           <div className="mt-10 text-center">
-            <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
+            <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg">
               Empowering Minds • Transforming Futures • Building Nation
             </div>
           </div>
@@ -240,18 +240,18 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
     <div className="relative py-10">
 
       {/* Background Gradient Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-white to-blue-100 blur-2xl opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
 
       {/* Floating Glow Circles */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-400/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-72 h-72 bg-red-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-red-300/20 rounded-full blur-3xl"></div>
 
       {/* Main Container */}
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 text-transparent bg-clip-text">
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-red-600 to-red-500 text-transparent bg-clip-text">
             OUR MISSION
           </h2>
           <p className="text-gray-500 mt-3">
@@ -260,7 +260,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
         </div>
 
         {/* Glass Card */}
-        <div className="p-10 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl hover:shadow-indigo-200/50 transition duration-500">
+        <div className="p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-red-100 shadow-2xl hover:shadow-red-200/50 transition duration-500">
 
           {/* Intro Line */}
           <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto leading-relaxed">
@@ -270,7 +270,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
           </p>
 
           {/* Divider */}
-          <div className="w-28 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 mx-auto my-8 rounded-full"></div>
+          <div className="w-28 h-1 bg-gradient-to-r from-red-500 to-red-400 mx-auto my-8 rounded-full"></div>
 
           {/* Mission Points Grid */}
           <div className="grid md:grid-cols-3 gap-6">
@@ -303,9 +303,9 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
             ].map((item, index) => (
               <div
                 key={index}
-                className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border"
+                className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border border-red-100"
               >
-                <h3 className="text-lg font-semibold text-indigo-600 group-hover:text-blue-600 transition">
+                <h3 className="text-lg font-semibold text-red-600 group-hover:text-red-500 transition">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 text-sm mt-2 leading-relaxed">
@@ -318,7 +318,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
 
           {/* Bottom Highlight Badge */}
           <div className="mt-10 text-center">
-            <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg">
+            <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg">
               Learn • Innovate • Lead • Serve
             </div>
           </div>
@@ -335,18 +335,18 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
     <div className="relative py-10">
 
       {/* Background Gradient Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-white to-indigo-100 blur-2xl opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
 
       {/* Floating Glow Effects */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-indigo-400/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-red-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-red-300/20 rounded-full blur-3xl"></div>
 
       {/* Container */}
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-red-600 to-red-500 text-transparent bg-clip-text">
             CORE VALUES
           </h2>
           <p className="text-gray-500 mt-3">
@@ -355,7 +355,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
         </div>
 
         {/* Glass Card */}
-        <div className="p-10 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl hover:shadow-blue-200/50 transition duration-500">
+        <div className="p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-red-100 shadow-2xl hover:shadow-red-200/50 transition duration-500">
 
           {/* Intro */}
           <p className="text-lg text-gray-700 text-center max-w-4xl mx-auto leading-relaxed">
@@ -365,7 +365,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
           </p>
 
           {/* Divider */}
-          <div className="w-28 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto my-8 rounded-full"></div>
+          <div className="w-28 h-1 bg-gradient-to-r from-red-500 to-red-400 mx-auto my-8 rounded-full"></div>
 
           {/* Values Grid */}
           <div className="grid md:grid-cols-3 gap-6">
@@ -398,9 +398,9 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
             ].map((item, index) => (
               <div
                 key={index}
-                className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border"
+                className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border border-red-100"
               >
-                <h3 className="text-lg font-semibold text-blue-600 group-hover:text-indigo-600 transition">
+                <h3 className="text-lg font-semibold text-red-600 group-hover:text-red-500 transition">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 text-sm mt-2 leading-relaxed">
@@ -413,7 +413,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
 
           {/* Bottom Tagline */}
           <div className="mt-10 text-center">
-            <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
+            <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg">
               Integrity • Innovation • Excellence • Growth
             </div>
           </div>
@@ -430,34 +430,34 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
     <div className="relative py-12">
 
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-white to-blue-100 blur-2xl opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
 
       {/* Floating Effects */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-400/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-72 h-72 bg-red-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-red-300/20 rounded-full blur-3xl"></div>
 
       {/* Container */}
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 text-transparent bg-clip-text">
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-red-600 to-red-500 text-transparent bg-clip-text">
             ADMINISTRATOR'S MESSAGE
           </h2>
         </div>
 
         {/* Main Card */}
-        <div className="grid md:grid-cols-3 gap-8 items-center p-8 md:p-10 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl hover:shadow-indigo-200/50 transition duration-500">
+        <div className="grid md:grid-cols-3 gap-8 items-center p-8 md:p-10 rounded-3xl bg-white/80 backdrop-blur-xl border border-red-100 shadow-2xl hover:shadow-red-200/50 transition duration-500">
 
           {/* LEFT - IMAGE */}
           <div className="flex flex-col items-center text-center">
             <div className="relative">
               <img
-                src="/images/zakir-hussain.jpg"  // 👉 yaha apna image path daalna
+                src="/images/zakir-hussain.jpg"
                 alt="Administrator"
-                className="w-48 h-48 object-cover rounded-2xl shadow-lg border"
+                className="w-48 h-48 object-cover rounded-2xl shadow-lg border border-red-100"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500/20 to-blue-500/20"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-red-500/20 to-red-400/20"></div>
             </div>
 
             {/* Name & Role */}
@@ -473,7 +473,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
           <div className="md:col-span-2 space-y-5 text-gray-700 leading-relaxed">
 
             {/* Quote */}
-            <p className="italic text-indigo-600 text-lg border-l-4 border-indigo-500 pl-4">
+            <p className="italic text-red-600 text-lg border-l-4 border-red-500 pl-4">
               "Education is the most powerful weapon which you can use to change the world."
             </p>
 
@@ -517,7 +517,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
             {/* Signature */}
             <div className="pt-4">
               <p className="font-semibold text-gray-800">Best Wishes,</p>
-              <p className="text-indigo-600 font-bold">Ch. Zakir Hussain</p>
+              <p className="text-red-600 font-bold">Ch. Zakir Hussain</p>
               <p className="text-sm text-gray-500">
                 Administrator, Haryana Waqf Board
               </p>
@@ -537,30 +537,30 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
     <div className="relative py-12">
 
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-white to-indigo-100 blur-2xl opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
 
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* Heading */}
-        <h2 className="text-4xl font-extrabold text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text mb-10">
+        <h2 className="text-4xl font-extrabold text-center bg-gradient-to-r from-red-600 to-red-500 text-transparent bg-clip-text mb-10">
           CEO'S MESSAGE
         </h2>
 
         {/* Card */}
-        <div className="grid md:grid-cols-3 gap-8 items-center p-10 rounded-3xl bg-white/70 backdrop-blur-xl shadow-2xl border hover:shadow-blue-200/50 transition duration-500">
+        <div className="grid md:grid-cols-3 gap-8 items-center p-10 rounded-3xl bg-white/80 backdrop-blur-xl shadow-2xl border border-red-100 hover:shadow-red-200/50 transition duration-500">
 
           {/* LEFT - IMAGE + NAME */}
           <div className="text-center">
             <div className="relative">
               <img
                 src="/images/ceo.jpg"
-                className="w-48 h-48 object-cover rounded-2xl mx-auto shadow-lg border"
+                className="w-48 h-48 object-cover rounded-2xl mx-auto shadow-lg border border-red-100"
                 alt="CEO"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-500/20 to-indigo-500/20"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-red-500/20 to-red-400/20"></div>
             </div>
 
-            {/* 👉 Name yaha change karna */}
+            {/* Name */}
             <h3 className="mt-4 text-xl font-semibold text-gray-800">
               Mohammad Shayin IAS
             </h3>
@@ -573,7 +573,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
           <div className="md:col-span-2 space-y-4 text-gray-700 leading-relaxed">
 
             {/* Quote */}
-            <p className="italic text-blue-600 border-l-4 border-blue-500 pl-4">
+            <p className="italic text-red-600 border-l-4 border-red-500 pl-4">
               "Building future-ready engineers with values, vision, and innovation."
             </p>
 
@@ -605,7 +605,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
             {/* Signature */}
             <div className="pt-4">
               <p className="font-semibold text-gray-800">Best Wishes,</p>
-              <p className="text-blue-600 font-bold text-lg"> Mohammad Shayin IAS</p>
+              <p className="text-red-600 font-bold text-lg"> Mohammad Shayin IAS</p>
               <p className="text-sm text-gray-500">
                 CEO, Haryana Waqf Board
               </p>
@@ -625,27 +625,27 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
     <div className="relative py-12">
 
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 via-white to-blue-100 blur-2xl opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
 
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* Heading */}
-        <h2 className="text-4xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-blue-600 text-transparent bg-clip-text mb-10">
+        <h2 className="text-4xl font-extrabold text-center bg-gradient-to-r from-red-600 to-red-500 text-transparent bg-clip-text mb-10">
           DIRECTOR'S MESSAGE
         </h2>
 
         {/* Card */}
-        <div className="grid md:grid-cols-3 gap-8 items-center p-10 rounded-3xl bg-white/70 backdrop-blur-xl shadow-2xl border hover:shadow-indigo-200/50 transition duration-500">
+        <div className="grid md:grid-cols-3 gap-8 items-center p-10 rounded-3xl bg-white/80 backdrop-blur-xl shadow-2xl border border-red-100 hover:shadow-red-200/50 transition duration-500">
 
           {/* LEFT - IMAGE */}
           <div className="text-center">
             <div className="relative">
               <img
-                src="/images/director.jpg"  // 👉 yaha image daalna
-                className="w-48 h-48 object-cover rounded-2xl mx-auto shadow-lg border"
+                src="/images/director.jpg"
+                className="w-48 h-48 object-cover rounded-2xl mx-auto shadow-lg border border-red-100"
                 alt="Director"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-indigo-500/20 to-blue-500/20"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-red-500/20 to-red-400/20"></div>
             </div>
 
             {/* Name */}
@@ -661,7 +661,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
           <div className="md:col-span-2 space-y-4 text-gray-700 leading-relaxed">
 
             {/* Quote */}
-            <p className="italic text-indigo-600 border-l-4 border-indigo-500 pl-4">
+            <p className="italic text-red-600 border-l-4 border-red-500 pl-4">
               "Excellence in education shapes the future of tomorrow."
             </p>
 
@@ -703,7 +703,7 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
             {/* Signature */}
             <div className="pt-4">
               <p className="font-semibold text-gray-800">Best Wishes,</p>
-              <p className="text-indigo-600 font-bold text-lg">
+              <p className="text-red-600 font-bold text-lg">
                 Prof. (Dr.) Khwaja M. Rafi
               </p>
               <p className="text-sm text-gray-500">Director, MEC</p>
@@ -723,57 +723,73 @@ const sections: Record<string, { title: string; content: JSX.Element }> = {
     <div className="relative py-12">
 
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-white to-indigo-100 blur-2xl opacity-60"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
 
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* Heading */}
-        <h2 className="text-4xl font-extrabold text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text mb-10">
+        <h2 className="text-4xl font-extrabold text-center bg-gradient-to-r from-red-600 to-red-500 text-transparent bg-clip-text mb-6">
           OUR ACHIEVEMENTS
         </h2>
 
         {/* Intro */}
-        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
+        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
           Mewat Engineering College has established itself as a reputed institution
           in engineering education through consistent achievements, awards, and
           academic excellence by its students.
         </p>
 
         {/* Achievement Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
 
           {[
             {
               title: "GATE AIR 48",
-              desc: "Mr. Dipanshu Garg (CSE, 2024) secured All India Rank 48 in GATE."
+              desc: "Mr. Dipanshu Garg (CSE, 2024) secured All India Rank 48 in GATE.",
+              img: "/icons/trophy.png"
             },
             {
               title: "Competition Winner",
-              desc: "Mr. Mujahid won 2nd Prize in Road Safety Competition, Rewari (Haryana)."
+              desc: "Mr. Mujahid won 2nd Prize in Road Safety Competition, Rewari (Haryana).",
+              img: "/icons/medal.png"
             },
             {
               title: "GATE AIR 51",
-              desc: "Mr. Samran (EEE, 2017) secured All India Rank 51 in GATE."
+              desc: "Mr. Samran (EEE, 2017) secured All India Rank 51 in GATE.",
+              img: "/icons/award.png"
             }
           ].map((item, index) => (
             <div
               key={index}
-              className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border"
+              className="group relative p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2 border border-red-100"
             >
-              <h3 className="text-lg font-semibold text-blue-600 group-hover:text-indigo-600 transition">
+
+              {/* Icon */}
+              <div className="flex items-center justify-center w-14 h-14 mb-4 rounded-full bg-red-50 shadow-sm mx-auto">
+                <img src={item.img} alt="" className="w-8 h-8 object-contain" />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-center text-red-600 group-hover:text-red-500 transition">
                 {item.title}
               </h3>
-              <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+
+              {/* Desc */}
+              <p className="text-gray-600 text-sm mt-2 text-center leading-relaxed">
                 {item.desc}
               </p>
+
+              {/* Glow Hover Effect */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-red-100 to-transparent"></div>
+
             </div>
           ))}
 
         </div>
 
         {/* Bottom Tagline */}
-        <div className="mt-10 text-center">
-          <div className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
+        <div className="mt-12 text-center">
+          <div className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg tracking-wide">
             Excellence • Recognition • Achievement
           </div>
         </div>

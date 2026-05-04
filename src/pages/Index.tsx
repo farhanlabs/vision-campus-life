@@ -230,28 +230,53 @@ const industryPartners = [
       </AnimatedSection>
 
       {/* ===== OUR IMPACT IN NUMBERS ===== */}
-      <AnimatedSection>
-        <section className="relative z-20 py-8 bg-white">
-          <div className="container">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-              {[
-                { icon: GraduationCap, label: 'Programmes', value: '6+', color: 'text-primary' },
-                { icon: Users, label: 'Students', value: '2000+', color: 'text-gold-dark' },
-                { icon: BookOpen, label: 'Faculty', value: '100+', color: 'text-maroon' },
-                { icon: Award, label: 'Years', value: '10+', color: 'text-navy' },
-              ].map((s, i) => (
-                <div key={s.label} className="text-center p-5 md:p-6 rounded-lg bg-white shadow-lg shadow-black/5 border border-border premium-card" style={{ animationDelay: `${i * .08}s` }}>
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center mx-auto mb-2.5">
-                    <s.icon className={s.color} size={20} />
-                  </div>
-                  <div className={`font-heading text-2xl md:text-3xl ${s.color}`}>{s.value}</div>
-                  <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium mt-0.5">{s.label}</div>
-                </div>
-              ))}
+<AnimatedSection>
+  <section className="relative z-20 py-10">
+
+    {/* Background Glow */}
+    <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
+
+    <div className="container relative">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+
+        {[
+          { icon: GraduationCap, label: 'Programmes', value: '6+' },
+          { icon: Users, label: 'Students', value: '2000+' },
+          { icon: BookOpen, label: 'Faculty', value: '100+' },
+          { icon: Award, label: 'Years', value: '10+' },
+        ].map((s, i) => (
+          <div
+            key={s.label}
+            className="group text-center p-6 rounded-2xl bg-white/80 backdrop-blur-xl shadow-lg hover:shadow-xl transition duration-300 hover:-translate-y-2 border border-red-100"
+            style={{ animationDelay: `${i * .08}s` }}
+          >
+
+            {/* Icon */}
+            <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mx-auto mb-3 shadow-sm group-hover:bg-red-100 transition">
+              <s.icon className="text-red-600" size={22} />
             </div>
+
+            {/* Value */}
+            <div className="font-heading text-3xl md:text-4xl text-red-600 font-bold tracking-wide">
+              {s.value}
+            </div>
+
+            {/* Label */}
+            <div className="text-xs text-gray-500 uppercase tracking-widest font-medium mt-1">
+              {s.label}
+            </div>
+
+            {/* Hover Glow */}
+            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-red-100 to-transparent"></div>
+
           </div>
-        </section>
-      </AnimatedSection>
+        ))}
+
+      </div>
+    </div>
+
+  </section>
+</AnimatedSection>
 
       {/* ===== NEWS & NOTIFICATIONS — AMU STYLE ===== */}
       <AnimatedSection>
@@ -461,139 +486,601 @@ const industryPartners = [
         </div>
       )}
 
-      {/* ===== WELCOME ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-white">
-          <div className="container">
-            <div className="grid lg:grid-cols-2 gap-14 items-center">
-              <div>
-                <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Welcome to MEC</span>
-                <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground leading-tight mb-3">Shaping the Future of Engineering Education</h2>
-                <div className="section-divider mb-6" />
-                <p className="text-muted-foreground leading-[1.85] mb-4 text-[15px]">
-                  Mewat Engineering College (Waqf), established under the aegis of Haryana Waqf Board, Government of Haryana, stands as a beacon of technical education in the Mewat region. Affiliated to Gurugram University and approved by AICTE, we provide world-class engineering education accessible to all.
-                </p>
-                <p className="text-muted-foreground leading-[1.85] mb-7 text-[15px]">
-                  With state-of-the-art infrastructure, experienced faculty, and industry-oriented curriculum, MEC is nurturing the next generation of engineers and leaders.
-                </p>
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  {['AICTE Approved', 'Modern Labs', 'NBA Accredited', 'Scholarship Support', 'Industry Partnerships', 'Placement Cell'].map(item => (
-                    <div key={item} className="flex items-center gap-2 text-[13px] text-foreground">
-                      <CheckCircle2 size={14} className="text-primary shrink-0" /> {item}
-                    </div>
-                  ))}
-                </div>
-                <Link to="/about/about-mec" className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded hover:bg-maroon-light transition-all font-semibold text-sm">
-                  Learn More <ArrowRight size={14} />
-                </Link>
+     {/* ===== WELCOME ===== */}
+<AnimatedSection>
+  <section className="py-20 bg-white relative overflow-hidden">
+
+    {/* Soft Background Glow */}
+    <div className="absolute inset-0 bg-gradient-to-br from-maroon/5 via-white to-maroon/10 blur-2xl opacity-60"></div>
+
+    <div className="container relative">
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+        {/* LEFT CONTENT */}
+        <div>
+          <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+            Welcome to MEC
+          </span>
+
+          <h2 className="font-heading text-3xl md:text-[2.5rem] text-foreground leading-tight mb-4">
+            Shaping the Future of Engineering Education
+          </h2>
+
+          <div className="w-16 h-[3px] bg-maroon mb-6 rounded-full"></div>
+
+          <p className="text-muted-foreground leading-[1.9] mb-4 text-[15px]">
+            Mewat Engineering College (Waqf), established under the aegis of Haryana Waqf Board, Government of Haryana, stands as a beacon of technical education in the Mewat region. Affiliated to Gurugram University and approved by AICTE, we provide world-class engineering education accessible to all.
+          </p>
+
+          <p className="text-muted-foreground leading-[1.9] mb-8 text-[15px]">
+            With state-of-the-art infrastructure, experienced faculty, and industry-oriented curriculum, MEC is nurturing the next generation of engineers and leaders.
+          </p>
+
+          {/* FEATURES */}
+          <div className="grid grid-cols-2 gap-3 mb-8">
+            {[
+              'AICTE Approved',
+              'Modern Labs',
+              'NBA Accredited',
+              'Scholarship Support',
+              'Industry Partnerships',
+              'Placement Cell'
+            ].map(item => (
+              <div
+                key={item}
+                className="flex items-center gap-2 text-[13px] text-foreground bg-white px-3 py-2 rounded-lg shadow-sm border hover:shadow-md transition"
+              >
+                <CheckCircle2 size={14} className="text-primary shrink-0" />
+                {item}
               </div>
-              <div className="relative">
-                <img src={aboutCampus} alt="MEC Lab" className="rounded-lg shadow-xl w-full object-cover h-[380px]" loading="lazy" />
-                <img src={campusLife} alt="MEC Library" className="absolute -bottom-6 -left-6 w-44 h-44 rounded-lg shadow-xl object-cover border-4 border-white hidden lg:block" loading="lazy" />
-                <div className="absolute -top-4 -right-4 px-5 py-4 bg-maroon text-white rounded-lg shadow-lg hidden md:block">
-                  <div className="font-heading text-2xl">10+</div>
-                  <div className="text-[10px] uppercase tracking-widest opacity-80">Years</div>
-                </div>
-              </div>
+            ))}
+          </div>
+
+          {/* BUTTON */}
+          <Link
+            to="/about/about-mec"
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-maroon text-white rounded-lg hover:bg-maroon-light transition-all font-semibold text-sm shadow-md hover:shadow-lg"
+          >
+            Learn More <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* RIGHT IMAGES */}
+        <div className="relative">
+
+          {/* MAIN IMAGE */}
+          <div className="overflow-hidden rounded-2xl shadow-2xl group">
+            <img
+              src={aboutCampus}
+              alt="MEC Lab"
+              className="w-full h-[400px] object-cover transform group-hover:scale-105 transition duration-500"
+              loading="lazy"
+            />
+          </div>
+
+          {/* SMALL FLOATING IMAGE */}
+          <div className="absolute -bottom-8 -left-8 w-48 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden lg:block group">
+            <img
+              src={campusLife}
+              alt="MEC Library"
+              className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+              loading="lazy"
+            />
+          </div>
+
+          {/* YEARS BADGE */}
+          <div className="absolute -top-5 -right-5 px-6 py-5 bg-white/80 backdrop-blur-lg text-maroon rounded-xl shadow-xl border hidden md:block">
+            <div className="font-heading text-3xl font-bold">10+</div>
+            <div className="text-[10px] uppercase tracking-widest opacity-70">
+              Years
             </div>
           </div>
-        </section>
-      </AnimatedSection>
+
+          {/* DECORATIVE GLOW */}
+          <div className="absolute -z-10 top-10 right-10 w-32 h-32 bg-maroon/10 rounded-full blur-2xl"></div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</AnimatedSection>
 
       {/* ===== DEPARTMENTS WITH IMAGES ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-cream">
-          <div className="container">
-            <div className="text-center mb-12">
-              <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Academic Excellence</span>
-              <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Our Departments</h2>
-              <div className="section-divider mx-auto mb-4" />
-              <p className="text-muted-foreground max-w-xl mx-auto text-[15px]">B.Tech programmes with industry-aligned curriculum and hands-on learning.</p>
+<AnimatedSection>
+  <section className="py-20 bg-cream">
+    <div className="container">
+
+      {/* HEADER */}
+      <div className="text-center mb-12">
+        <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+          Academic Excellence
+        </span>
+        <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">
+          Our Departments
+        </h2>
+        <div className="section-divider mx-auto mb-4" />
+        <p className="text-muted-foreground max-w-xl mx-auto text-[15px]">
+          B.Tech programmes with industry-aligned curriculum and hands-on learning.
+        </p>
+      </div>
+
+      {/* B.TECH DEPARTMENTS */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+        {departments.map((dept, i) => (
+          <AnimatedSection key={dept.code} delay={i * 0.08}>
+            <Link
+              to={`/department/${dept.code}`}
+              className="group block rounded-xl overflow-hidden bg-white border border-border shadow-sm hover:shadow-lg transition"
+            >
+              <div className="h-44 overflow-hidden relative">
+                <img
+                  src={dept.img}
+                  alt={dept.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="absolute bottom-3 left-4 right-4">
+                  <h3 className="text-white font-bold text-sm">{dept.name}</h3>
+                  <p className="text-white/70 text-xs mt-0.5">
+                    B.Tech · {dept.seats} Seats
+                  </p>
+                </div>
+              </div>
+
+              <div className="px-4 py-3 flex items-center justify-between">
+                <span className="text-xs text-maroon font-bold uppercase tracking-wider">
+                  Explore
+                </span>
+                <ChevronRight
+                  size={16}
+                  className="text-maroon group-hover:translate-x-1 transition"
+                />
+              </div>
+            </Link>
+          </AnimatedSection>
+        ))}
+      </div>
+
+      {/* ===== VOCATIONAL COURSES ===== */}
+      <div className="text-center mb-10">
+        <h3 className="text-2xl font-heading text-maroon mb-2">
+          Vocational Courses
+        </h3>
+        <p className="text-sm text-muted-foreground">
+          Skill-based programs designed for real-world industry exposure
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {[
+          {
+            title: "D.Voc - Software Development",
+            desc: "Hands-on training in programming, web & app development.",
+          },
+          {
+            title: "D.Voc - Automobile Engineering",
+            desc: "Practical knowledge of vehicle systems & maintenance.",
+          },
+          {
+            title: "B.Voc - Data Science",
+            desc: "Industry-ready skills in data analysis & machine learning.",
+          },
+          {
+            title: "B.Voc - Renewable Energy",
+            desc: "Focus on solar, wind & sustainable energy systems.",
+          },
+          {
+            title: "D.Voc - Electrical Systems",
+            desc: "Skill training in wiring, control systems & maintenance.",
+          },
+          {
+            title: "B.Voc - Healthcare Technology",
+            desc: "Modern healthcare equipment & technical training.",
+          },
+        ].map((course, i) => (
+          <AnimatedSection key={i} delay={i * 0.07}>
+            <div className="group p-6 rounded-2xl bg-white border border-border shadow-sm hover:shadow-xl transition hover:-translate-y-1">
+
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-xl bg-maroon/10 flex items-center justify-center mb-4 group-hover:bg-maroon transition">
+                <BookOpen className="text-maroon group-hover:text-white" size={22} />
+              </div>
+
+              {/* Title */}
+              <h4 className="text-[15px] font-semibold text-foreground group-hover:text-maroon transition">
+                {course.title}
+              </h4>
+
+              {/* Desc */}
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                {course.desc}
+              </p>
+
+              {/* CTA */}
+              <div className="mt-4 flex items-center justify-between text-xs font-semibold text-maroon">
+                <span>View Details</span>
+                <ChevronRight size={14} className="group-hover:translate-x-1 transition" />
+              </div>
+
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {departments.map((dept, i) => (
-                <AnimatedSection key={dept.code} delay={i * 0.08}>
-                  <Link to={`/department/${dept.code}`} className="group block rounded-lg overflow-hidden bg-white border border-border premium-card shadow-sm">
-                    <div className="h-44 overflow-hidden relative">
-                      <img src={dept.img} alt={dept.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
-                      <div className="absolute bottom-3 left-4 right-4">
-                        <h3 className="text-white font-bold text-sm drop-shadow-lg">{dept.name}</h3>
-                        <p className="text-white/70 text-xs mt-0.5">B.Tech · {dept.seats} Seats</p>
-                      </div>
-                    </div>
-                    <div className="px-4 py-3 flex items-center justify-between">
-                      <span className="text-xs text-maroon font-bold uppercase tracking-wider">Explore Department</span>
-                      <ChevronRight size={16} className="text-maroon group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </Link>
-                </AnimatedSection>
-              ))}
-              {/* ASH */}
-              <AnimatedSection delay={5 * 0.08}>
-                <Link to="/department/ash" className="group flex items-center gap-4 bg-white rounded-lg p-5 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full">
-                  <div className="w-14 h-14 rounded-lg bg-primary/10 group-hover:bg-primary flex items-center justify-center shrink-0 transition-all duration-300">
-                    <FlaskConical size={24} className="text-primary group-hover:text-white transition-colors" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors">Applied Sciences & Humanities</h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">Foundation Courses</p>
-                  </div>
-                  <ChevronRight size={16} className="text-muted-foreground/30 group-hover:text-primary transition-colors shrink-0" />
-                </Link>
-              </AnimatedSection>
+          </AnimatedSection>
+        ))}
+
+      </div>
+
+      {/* ASH */}
+      <div className="mt-10">
+        <AnimatedSection>
+          <Link
+            to="/department/ash"
+            className="group flex items-center gap-4 bg-white rounded-xl p-5 border border-border hover:border-primary/30 hover:shadow-lg transition"
+          >
+            <div className="w-14 h-14 rounded-lg bg-primary/10 group-hover:bg-primary flex items-center justify-center transition">
+              <FlaskConical size={24} className="text-primary group-hover:text-white" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-sm group-hover:text-primary">
+                Applied Sciences & Humanities
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Foundation Courses
+              </p>
+            </div>
+            <ChevronRight size={16} className="text-muted-foreground group-hover:text-primary transition" />
+          </Link>
+        </AnimatedSection>
+      </div>
+
+    </div>
+  </section>
+</AnimatedSection>
+
+ 
+{/* ===== FACULTIES SERVICES ===== */}
+
+<section className="relative py-24 bg-gradient-to-br from-red-50 via-white to-red-100 overflow-hidden">
+
+  {/* Background Glow */}
+  <div className="absolute -top-20 -left-20 w-72 h-72 bg-red-200 rounded-full blur-3xl opacity-30"></div>
+  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-red-300 rounded-full blur-3xl opacity-30"></div>
+
+  <div className="relative max-w-7xl mx-auto px-6">
+
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
+        Campus Services & Facilities
+      </h2>
+      <p className="text-gray-600 mt-5 max-w-2xl mx-auto leading-relaxed">
+        We provide a complete ecosystem for students — from academic excellence and
+        skill development to research opportunities and transparent support systems —
+        helping you grow into a confident professional.
+      </p>
+      <div className="mt-6 w-28 h-1 bg-gradient-to-r from-red-500 to-red-700 mx-auto rounded-full"></div>
+    </div>
+
+    {/* Grid */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      {[
+        {
+          title: "Academic & Student Support",
+          icon: "🎓",
+          desc: "Structured mentorship, remedial classes, and personalized academic guidance to boost performance and confidence."
+        },
+        {
+          title: "Training & Placement",
+          icon: "💼",
+          desc: "Career-focused training, industry exposure, internships, and dedicated placement assistance for job readiness."
+        },
+        {
+          title: "IQAC (Quality Cell)",
+          icon: "🛡️",
+          desc: "Continuous monitoring and enhancement of teaching, learning, and institutional processes for quality assurance."
+        },
+        {
+          title: "Central Library",
+          icon: "📚",
+          desc: "Well-equipped library with e-resources, journals, previous papers, and a calm study environment."
+        },
+        {
+          title: "Research & Innovation",
+          icon: "🔬",
+          desc: "Encouraging research culture through projects, funding opportunities, and national/international publications."
+        },
+        {
+          title: "e-Samadhan Portal",
+          icon: "❓",
+          desc: "A transparent digital grievance system ensuring quick resolution and student satisfaction."
+        },
+        {
+          title: "NAAC Accreditation",
+          icon: "🏆",
+          desc: "Recognized standards for excellence in academics, infrastructure, and institutional performance."
+        },
+        {
+          title: "NIRF Ranking",
+          icon: "📊",
+          desc: "Performance-driven national ranking reflecting teaching quality, research output, and placements."
+        }
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="group relative bg-white/80 backdrop-blur-md p-6 rounded-2xl 
+          border border-red-100 shadow-md hover:shadow-2xl 
+          hover:-translate-y-3 transition-all duration-500 cursor-pointer"
+        >
+
+          {/* Glow Hover Effect */}
+          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 
+          bg-gradient-to-br from-red-200/40 to-transparent transition duration-500"></div>
+
+          {/* Icon */}
+          <div className="relative text-4xl mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-3">
+            {item.icon}
+          </div>
+
+          {/* Title */}
+          <h3 className="relative text-lg font-semibold text-gray-800 mb-2 
+          group-hover:text-red-600 transition">
+            {item.title}
+          </h3>
+
+          {/* Description */}
+          <p className="relative text-sm text-gray-600 leading-relaxed">
+            {item.desc}
+          </p>
+
+          {/* Animated Bottom Line */}
+          <div className="mt-5 h-1 w-0 bg-gradient-to-r from-red-500 to-red-700 
+          group-hover:w-16 transition-all duration-500 rounded-full"></div>
+
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+
+{/* ===== ADMINISTRATOR MESSAGE ===== */}
+<AnimatedSection>
+  <section className="py-24 bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900 text-white relative overflow-hidden">
+
+    {/* soft background glow blobs */}
+    <div className="absolute -top-20 -left-20 w-72 h-72 bg-emerald-500/20 blur-3xl rounded-full"></div>
+    <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-green-400/20 blur-3xl rounded-full"></div>
+
+    <div className="container relative z-10">
+      <div className="grid md:grid-cols-5 gap-14 items-center">
+
+        {/* IMAGE */}
+        <div className="md:col-span-2 flex justify-center">
+          <div className="group relative w-60 h-76 rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm transition duration-500 hover:scale-105">
+            
+            {/* glow overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+            <img
+              src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
+              alt="Ch. Zakir Hussain Ex-MLA"
+              className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+            />
+
+            {/* bottom info */}
+            <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-center">
+              <p className="text-sm font-semibold text-white">
+                Ch. Zakir Hussain
+              </p>
+              <p className="text-[11px] text-white/70">
+                Ex-MLA
+              </p>
             </div>
           </div>
-        </section>
-      </AnimatedSection>
+        </div>
+
+        {/* TEXT */}
+        <div className="md:col-span-3">
+          <span className="text-gold font-bold text-[11px] uppercase tracking-[.3em] mb-4 block">
+            From the Administrator's Desk
+          </span>
+
+          <h2 className="font-heading text-3xl md:text-4xl mb-6 leading-tight">
+            Driving Growth Through <span className="text-gold">Vision & Governance</span>
+          </h2>
+
+          <blockquote className="text-white/80 leading-[1.9] text-[15px] border-l-4 border-gold/60 pl-6 mb-8 italic relative">
+            <span className="absolute -left-3 top-0 text-gold text-3xl">“</span>
+            Our mission at Haryana Waqf Board is to ensure that institutions like 
+            Mewat Engineering College continue to grow as centers of excellence. 
+            We are focused on strengthening infrastructure, ensuring transparency, 
+            and providing inclusive opportunities that empower every student to succeed.
+          </blockquote>
+
+          <div className="flex items-center gap-4">
+            <div>
+              <p className="text-gold font-semibold text-sm">
+                Ch. Zakir Hussain, Ex-MLA
+              </p>
+              <p className="text-white/60 text-xs">
+                Administrator, Haryana Waqf Board
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
 
       {/* ===== CEO MESSAGE ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-navy text-white">
-          <div className="container">
-            <div className="grid md:grid-cols-5 gap-12 items-center">
-              <div className="md:col-span-2 flex justify-center">
-                <div className="w-56 h-72 rounded-lg overflow-hidden shadow-xl border-4 border-white/10">
-                  <img src={ceoImg} alt="CEO, MEC (Waqf)" className="w-full h-full object-cover" loading="lazy" width={512} height={640} />
-                </div>
-              </div>
-              <div className="md:col-span-3">
-                <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">From the CEO's Desk</span>
-                <h2 className="font-heading text-3xl mb-6">A Message from Our CEO</h2>
-                <blockquote className="text-white/70 leading-[1.85] text-[15px] border-l-3 border-gold/50 pl-5 mb-6 italic">
-                  "Our vision is to create an institution that not only imparts technical knowledge but also builds character, fosters innovation, and prepares students to be responsible global citizens. Mewat Engineering College is committed to excellence in every aspect of education and community service."
-                </blockquote>
-                <div className="text-gold font-semibold text-sm">— CEO, Mewat Engineering College (Waqf)</div>
-              </div>
+<AnimatedSection>
+  <section className="py-20 bg-navy text-white relative overflow-hidden">
+
+    {/* Subtle Glow */}
+    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-40"></div>
+
+    <div className="container relative">
+      <div className="grid md:grid-cols-5 gap-14 items-center">
+
+        {/* LEFT IMAGE */}
+        <div className="md:col-span-2 flex justify-center">
+          <div className="relative group">
+
+            {/* Image */}
+            <div className="w-56 h-72 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+              <img
+                src={ceoImg}
+                alt="CEO, MEC (Waqf)"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                loading="lazy"
+              />
             </div>
+
+            {/* Glow Effect */}
+            <div className="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-gold/20 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition"></div>
+
           </div>
-        </section>
-      </AnimatedSection>
+        </div>
+
+        {/* RIGHT CONTENT */}
+        <div className="md:col-span-3">
+
+          <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+            From the CEO's Desk
+          </span>
+
+          <h2 className="font-heading text-3xl mb-6">
+            A Message from Our CEO
+          </h2>
+
+          {/* Quote */}
+          <blockquote className="text-white/80 leading-[1.9] text-[15px] border-l-4 border-gold pl-5 mb-6 italic">
+            "Our vision is to create an institution that not only imparts technical knowledge but also builds character, fosters innovation, and prepares students to be responsible global citizens. Mewat Engineering College is committed to excellence in education, inclusivity, and community development."
+          </blockquote>
+
+          {/* Extra Content */}
+          <p className="text-white/70 text-sm leading-relaxed mb-5">
+            Under the leadership of the Haryana Waqf Board, MEC has emerged as a
+            center of technical excellence in the Mewat region. With modern
+            infrastructure, industry-focused programs, and strong emphasis on
+            skill development, the college is shaping future-ready engineers.
+          </p>
+
+          <p className="text-white/70 text-sm leading-relaxed mb-6">
+            The institution remains dedicated to empowering students from diverse
+            backgrounds by providing quality education, scholarships, and
+            opportunities that bridge the gap between rural talent and global
+            industry standards.
+          </p>
+
+          {/* CEO DETAILS */}
+          <div className="border-t border-white/10 pt-4">
+            <p className="text-gold font-semibold text-lg">
+              Shri Mohammad Shayin, IAS
+            </p>
+            <p className="text-white/60 text-sm">
+              CEO, Haryana Waqf Board
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</AnimatedSection>
 
       {/* ===== DIRECTOR MESSAGE ===== */}
-      <AnimatedSection>
-        <section className="py-20 bg-maroon text-white">
-          <div className="container">
-            <div className="grid md:grid-cols-5 gap-12 items-center">
-              <div className="md:col-span-3">
-                <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">From the Director's Desk</span>
-                <h2 className="font-heading text-3xl mb-6">A Message of Inspiration</h2>
-                <blockquote className="text-white/70 leading-[1.85] text-[15px] border-l-3 border-gold/50 pl-5 mb-6 italic">
-                  "At Mewat Engineering College, we believe that education is the most powerful tool for transforming lives and communities. Our commitment is to provide not just technical knowledge, but a holistic educational experience."
-                </blockquote>
-                <Link to="/about/director-message" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-white rounded hover:brightness-110 transition-all font-semibold text-sm shadow-lg">
-                  Read Full Message <ArrowRight size={14} />
-                </Link>
-              </div>
-              <div className="md:col-span-2 flex justify-center">
-                <div className="w-56 h-72 rounded-lg overflow-hidden shadow-xl border-4 border-white/10">
-                  <img src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg" alt="Director, MEC (Waqf)" className="w-full h-full object-cover" loading="lazy" />
-                </div>
-              </div>
-            </div>
+<AnimatedSection>
+  <section className="py-20 bg-maroon text-white relative overflow-hidden">
+
+    {/* Subtle Glow */}
+    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-40"></div>
+
+    <div className="container relative">
+      <div className="grid md:grid-cols-5 gap-14 items-center">
+
+        {/* LEFT CONTENT */}
+        <div className="md:col-span-3">
+
+          <span className="text-gold font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">
+            From the Director's Desk
+          </span>
+
+          <h2 className="font-heading text-3xl mb-6">
+            A Message of Inspiration
+          </h2>
+
+          {/* Quote */}
+          <blockquote className="text-white/80 leading-[1.9] text-[15px] border-l-4 border-gold pl-5 mb-6 italic">
+            "At Mewat Engineering College, we believe that education is the most powerful tool for transforming lives and communities. Our commitment is to provide not just technical knowledge, but a holistic educational experience that shapes future leaders."
+          </blockquote>
+
+          {/* Extra Unique Content */}
+          <p className="text-white/70 text-sm leading-relaxed mb-5">
+            MEC stands as a bridge between rural talent and modern technological advancement. 
+            With a strong focus on practical learning, innovation, and research, we ensure that 
+            students are not only academically strong but also industry-ready.
+          </p>
+
+          <p className="text-white/70 text-sm leading-relaxed mb-6">
+            Our campus fosters an environment of discipline, creativity, and inclusivity, 
+            where students from diverse backgrounds are nurtured into confident professionals 
+            capable of contributing to national and global development.
+          </p>
+
+          {/* CTA */}
+          <Link
+            to="/about/director-message"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold text-white rounded-lg hover:brightness-110 transition-all font-semibold text-sm shadow-lg"
+          >
+            Read Full Message <ArrowRight size={14} />
+          </Link>
+
+          {/* DIRECTOR DETAILS */}
+          <div className="border-t border-white/10 pt-4 mt-6">
+            <p className="text-gold font-semibold text-lg">
+              Prof. (Dr.) Khwaja M. Rafi
+            </p>
+            <p className="text-white/60 text-sm">
+              Director, MEC
+            </p>
           </div>
-        </section>
-      </AnimatedSection>
+
+        </div>
+
+        {/* RIGHT IMAGE */}
+        <div className="md:col-span-2 flex justify-center">
+          <div className="relative group">
+
+            {/* Image */}
+            <div className="w-56 h-72 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+              <img
+                src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
+                alt="Director, MEC (Waqf)"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Glow Effect */}
+            <div className="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-gold/20 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</AnimatedSection>
 
       {/* ===== VISION & MISSION ===== */}
      <AnimatedSection>
@@ -746,6 +1233,130 @@ const industryPartners = [
 
           </AnimatedSection>
         ))}
+
+      </div>
+    </div>
+  </section>
+</AnimatedSection>
+
+{/* ===== skill dev program ===== */}
+<AnimatedSection>
+  <section className="relative py-28 bg-gradient-to-br from-white via-red-50 to-red-100 overflow-hidden">
+
+    {/* Background Glow */}
+    <div className="absolute top-0 left-0 w-72 h-72 bg-red-200 opacity-30 blur-3xl rounded-full"></div>
+    <div className="absolute bottom-0 right-0 w-72 h-72 bg-red-300 opacity-30 blur-3xl rounded-full"></div>
+
+    <div className="relative max-w-7xl mx-auto px-6">
+
+      {/* Heading */}
+      <div className="text-center mb-20">
+        <span className="text-red-600 text-xs uppercase tracking-[0.3em] font-semibold">
+          Skill Development
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-3">
+          Empowering Students with Future Skills
+        </h2>
+        <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          Our curriculum focuses on building real-world skills that prepare students
+          for industry challenges and professional excellence.
+        </p>
+      </div>
+
+      {/* Grid */}
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+
+        {/* LEFT CONTENT */}
+        <div className="space-y-8">
+
+          {[
+            {
+              title: "Programming & Coding",
+              icon: "💻",
+              percent: "90%",
+              desc: "Hands-on coding practice with modern technologies and real-world projects."
+            },
+            {
+              title: "Communication Skills",
+              icon: "🗣️",
+              percent: "85%",
+              desc: "Enhancing verbal, written, and presentation skills for professional success."
+            },
+            {
+              title: "Leadership & Teamwork",
+              icon: "🤝",
+              percent: "80%",
+              desc: "Developing leadership mindset and collaborative abilities."
+            },
+            {
+              title: "Problem Solving",
+              icon: "🧠",
+              percent: "88%",
+              desc: "Critical thinking and analytical skills through practical challenges."
+            }
+          ].map((skill, i) => (
+            <div key={i} className="group">
+
+              {/* Title */}
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <span className="text-2xl">{skill.icon}</span>
+                  {skill.title}
+                </h3>
+                <span className="text-red-600 font-semibold">
+                  {skill.percent}
+                </span>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-full h-3 bg-red-100 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-red-500 to-red-700 rounded-full transition-all duration-1000 group-hover:brightness-110"
+                  style={{ width: skill.percent }}
+                ></div>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm text-gray-600 mt-2">
+                {skill.desc}
+              </p>
+
+            </div>
+          ))}
+
+        </div>
+
+        {/* RIGHT SIDE CARDS */}
+        <div className="grid grid-cols-2 gap-6">
+
+          {[
+            { icon: "🚀", title: "Career Ready", desc: "Industry-focused training" },
+            { icon: "📈", title: "Growth Mindset", desc: "Continuous improvement" },
+            { icon: "🌐", title: "Global Exposure", desc: "Modern technologies" },
+            { icon: "🏆", title: "Excellence", desc: "High performance culture" }
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="group bg-white p-6 rounded-2xl shadow-md border border-red-100 
+              hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center"
+            >
+
+              <div className="text-4xl mb-3 group-hover:scale-110 transition">
+                {item.icon}
+              </div>
+
+              <h4 className="font-semibold text-gray-800">
+                {item.title}
+              </h4>
+
+              <p className="text-sm text-gray-600 mt-1">
+                {item.desc}
+              </p>
+
+            </div>
+          ))}
+
+        </div>
 
       </div>
     </div>

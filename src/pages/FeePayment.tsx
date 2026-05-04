@@ -9,7 +9,7 @@ const FeePayment = () => (
 
       {/* Hero */}
       <div className="text-center space-y-3">
-        <h2 className="text-3xl font-bold text-green-700">
+        <h2 className="text-3xl font-bold text-red-600">
           Pay Fees Easily & Securely
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -21,21 +21,22 @@ const FeePayment = () => (
       {/* Highlights */}
       <div className="grid md:grid-cols-4 gap-5 text-center">
         {[
-          ["100% Secure","Encrypted Payment"],
-          ["24/7 Access","Anytime Payment"],
-          ["Instant Receipt","Download Anytime"],
-          ["Multiple Modes","UPI / Card / Netbanking"]
+          ["🔐","100% Secure","Encrypted Payment"],
+          ["⏰","24/7 Access","Anytime Payment"],
+          ["📄","Instant Receipt","Download Anytime"],
+          ["💳","Multiple Modes","UPI / Card / Netbanking"]
         ].map((x,i)=>(
-          <div key={i} className="p-5 bg-white border rounded-xl shadow hover:shadow-lg">
-            <h3 className="font-bold text-green-700">{x[0]}</h3>
-            <p className="text-sm text-gray-600">{x[1]}</p>
+          <div key={i} className="p-5 bg-white border border-red-100 rounded-xl shadow hover:shadow-xl transition">
+            <div className="text-2xl mb-2">{x[0]}</div>
+            <h3 className="font-bold text-red-600">{x[1]}</h3>
+            <p className="text-sm text-gray-600">{x[2]}</p>
           </div>
         ))}
       </div>
 
       {/* College Account */}
-      <div className="p-7 bg-gradient-to-r from-green-100 via-white to-green-50 border rounded-2xl shadow">
-        <h3 className="text-xl font-semibold text-green-700 mb-3">
+      <div className="p-7 bg-gradient-to-r from-red-100 via-white to-red-50 border border-red-100 rounded-2xl shadow">
+        <h3 className="text-xl font-semibold text-red-600 mb-3">
           College Fee Payment
         </h3>
 
@@ -60,8 +61,8 @@ const FeePayment = () => (
       </div>
 
       {/* Hostel Section */}
-      <div className="p-7 bg-white border rounded-2xl shadow">
-        <h3 className="text-xl font-semibold text-green-700 mb-3">
+      <div className="p-7 bg-white border border-red-100 rounded-2xl shadow">
+        <h3 className="text-xl font-semibold text-red-600 mb-3">
           Hostel Fee Payment
         </h3>
 
@@ -86,23 +87,23 @@ const FeePayment = () => (
       </div>
 
       {/* Payment Methods */}
-      <div className="p-7 bg-green-50 border rounded-2xl shadow">
-        <h3 className="text-xl font-semibold text-green-700 mb-4">
+      <div className="p-7 bg-red-50 border border-red-100 rounded-2xl shadow">
+        <h3 className="text-xl font-semibold text-red-600 mb-4">
           Payment Methods Available
         </h3>
 
         <div className="grid md:grid-cols-3 gap-5">
           {["UPI Payment","Debit/Credit Card","Net Banking"].map((x,i)=>(
-            <div key={i} className="p-5 bg-white border rounded-xl text-center shadow hover:shadow-lg">
-              {x}
+            <div key={i} className="p-5 bg-white border border-red-100 rounded-xl text-center shadow hover:shadow-lg">
+              💳 {x}
             </div>
           ))}
         </div>
       </div>
 
       {/* Steps */}
-      <div className="p-7 bg-white border rounded-2xl shadow">
-        <h3 className="text-xl font-semibold text-green-700 mb-4">
+      <div className="p-7 bg-white border border-red-100 rounded-2xl shadow">
+        <h3 className="text-xl font-semibold text-red-600 mb-4">
           How to Pay Fees
         </h3>
 
@@ -118,8 +119,8 @@ const FeePayment = () => (
       {/* Payment Cards */}
       <div className="grid md:grid-cols-2 gap-6">
 
-        <div className="p-6 bg-white border rounded-2xl shadow hover:shadow-xl text-center">
-          <h3 className="text-lg font-semibold text-green-700 mb-3">
+        <div className="p-6 bg-white border border-red-100 rounded-2xl shadow hover:shadow-xl text-center">
+          <h3 className="text-lg font-semibold text-red-600 mb-3">
             College Fee Payment
           </h3>
 
@@ -127,13 +128,13 @@ const FeePayment = () => (
             QR Code (College)
           </div>
 
-          <button className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+          <button className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
             Pay Now
           </button>
         </div>
 
-        <div className="p-6 bg-white border rounded-2xl shadow hover:shadow-xl text-center">
-          <h3 className="text-lg font-semibold text-green-700 mb-3">
+        <div className="p-6 bg-white border border-red-100 rounded-2xl shadow hover:shadow-xl text-center">
+          <h3 className="text-lg font-semibold text-red-600 mb-3">
             Hostel Fee Payment
           </h3>
 
@@ -141,7 +142,7 @@ const FeePayment = () => (
             QR Code (Hostel)
           </div>
 
-          <button className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+          <button className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
             Pay Now
           </button>
         </div>
@@ -149,8 +150,8 @@ const FeePayment = () => (
       </div>
 
       {/* FAQ */}
-      <div className="p-7 bg-white border rounded-2xl shadow">
-        <h3 className="text-xl font-semibold text-green-700 mb-4">
+      <div className="p-7 bg-white border border-red-100 rounded-2xl shadow">
+        <h3 className="text-xl font-semibold text-red-600 mb-4">
           Frequently Asked Questions
         </h3>
 
@@ -162,7 +163,7 @@ const FeePayment = () => (
       </div>
 
       {/* CTA */}
-      <div className="p-7 bg-green-600 text-white text-center rounded-2xl shadow-xl">
+      <div className="p-7 bg-gradient-to-r from-red-600 to-red-500 text-white text-center rounded-2xl shadow-xl">
         <h3 className="text-xl font-bold mb-2">Need Assistance?</h3>
         <p className="text-sm opacity-90 mb-2">
           Contact accounts department for help with payments

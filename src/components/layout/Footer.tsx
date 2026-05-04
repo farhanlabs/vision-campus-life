@@ -50,6 +50,7 @@ const Footer = () => (
                 { label: 'Contact / Enquiry', path: '/admission/enquiry' },
                 { label: 'Right to Information', path: '/resources/anti-ragging' },
                 { label: 'Mandatory Disclosure', path: '/about/about-mec' },
+                {label:   'Conference', path: '/Conference' },
               ].map(link => (
                 <Link key={link.label} to={link.path} className="flex items-center gap-1.5 text-white/45 hover:text-gold hover:translate-x-1 transition-all duration-200 py-0.5">
                   <ExternalLink size={10} className="shrink-0" /> {link.label}

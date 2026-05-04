@@ -63,6 +63,9 @@ const DepartmentPage = () => {
     <Layout>
       <PageBanner title={info.name} subtitle="Department" />
 
+     
+
+
       <div className="container py-12 max-w-5xl">
         {/* Department Overview */}
         <AnimatedSection>
