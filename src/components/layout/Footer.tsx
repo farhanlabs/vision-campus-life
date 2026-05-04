@@ -67,7 +67,6 @@ const Footer = () => (
                 { label: 'Anti Ragging Committee', path: '/resources/anti-ragging' },
                 { label: 'Grievance Redressal Cell', path: '/resources/women-cell' },
                 { label: 'Alumni Form', path: '/placements/alumni' },
-                { label: 'Conference', path: '/placements/conferences' },
                 { label: 'AICTE Approval', path: '/about/achievements' },
                 { label: 'NBA', path: '/about/achievements' },
                 { label: 'Contact Details', path: '/admission/enquiry' },

@@ -21,6 +21,7 @@ import FacultyDashboard from "./pages/faculty/FacultyDashboard";
 import StudentDashboard from "./pages/student/StudentDashboard";
 import NotFound from "./pages/NotFound";
 import ScrollToTopOnNav from "./components/ScrollToTopOnNav";
+import Conference from "./pages/Conference";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
             <Route path="/faculty/dashboard" element={<FacultyDashboard />} />
             <Route path="/student/dashboard" element={<StudentDashboard />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/conference" element={<Conference />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

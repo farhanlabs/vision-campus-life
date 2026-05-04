@@ -6,13 +6,50 @@ import ScrollToTop from '@/components/ScrollToTop';
 import AnimatedSection from '@/components/AnimatedSection';
 import { subscribeToData } from '@/lib/firebase';
 import {
-  GraduationCap, Users, BookOpen, Award, MapPin, Phone, Mail,
-  Calendar, ArrowRight, Megaphone, ImageIcon, Trophy, Building2,
-  Cpu, Zap, Cog, HardHat, FlaskConical, ChevronRight, Clock,
-  CheckCircle2, Star, Shield, Target, FileText, Bell, Newspaper,
-  ExternalLink, BookMarked, Briefcase, Download, X, ChevronLeft,
-  MessageCircle, Quote, Facebook, Instagram, Twitter, Youtube, Linkedin
-} from 'lucide-react';
+  GraduationCap,
+  Users,
+  BookOpen,
+  Award,
+  MapPin,
+  Phone,
+  Mail,
+  Calendar,
+  ArrowRight,
+  Megaphone,
+  ImageIcon,
+  Trophy,
+  Building2,
+  Cpu,
+  Zap,
+  Cog,
+  HardHat,
+  FlaskConical,
+  ChevronRight,
+  Clock,
+  CheckCircle2,
+  Star,
+  Shield,
+  Target,
+  FileText,
+  Bell,
+  Newspaper,
+  ExternalLink,
+  BookMarked,
+  Briefcase,
+  Download,
+  X,
+  ChevronLeft,
+  MessageCircle,
+  Quote,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+  Linkedin,
+  ShieldCheck,
+  HelpCircle,
+  BarChart3
+} from "lucide-react";
 import heroCampus from '@/assets/hero-campus.jpg';
 import heroCampus2 from '@/assets/hero-campus-2.jpg';
 import heroCampus3 from '@/assets/hero-campus-3.jpg';
@@ -229,52 +266,70 @@ const industryPartners = [
         </section>
       </AnimatedSection>
 
-      {/* ===== OUR IMPACT IN NUMBERS ===== */}
+{/* ===== OUR IMPACT IN NUMBERS ===== */}
 <AnimatedSection>
-  <section className="relative z-20 py-10">
+  <section className="relative z-20 py-16">
 
     {/* Background Glow */}
-    <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-white to-red-50 blur-2xl opacity-60"></div>
+    <div className="absolute inset-0 bg-gradient-to-br from-[#800000]/10 via-white to-[#D4AF37]/10 blur-3xl opacity-50" />
 
-    <div className="container relative">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    <div className="container relative max-w-6xl">
+      {/* Section Header */}
+      <div className="text-center mb-12">
+        <span className="inline-flex items-center gap-2 bg-[#800000]/10 text-[#800000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-4">
+          <Award size={14} />
+          Our Achievements
+        </span>
+        <h2 className="font-heading text-3xl md:text-4xl text-foreground font-bold mb-3">
+          Impact in Numbers
+        </h2>
+        <div className="w-20 h-1 bg-[#800000] rounded-full mx-auto" />
+        <p className="text-muted-foreground text-sm mt-4 max-w-lg mx-auto">
+          A legacy of excellence built through dedicated education, research, and student success.
+        </p>
+      </div>
 
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
         {[
-          { icon: GraduationCap, label: 'Programmes', value: '6+' },
-          { icon: Users, label: 'Students', value: '2000+' },
-          { icon: BookOpen, label: 'Faculty', value: '100+' },
-          { icon: Award, label: 'Years', value: '10+' },
+          { icon: GraduationCap, label: 'Programmes', value: '6+', desc: 'UG & PG Courses' },
+          { icon: Users, label: 'Students', value: '2000+', desc: 'Enrolled & Active' },
+          { icon: BookOpen, label: 'Faculty', value: '100+', desc: 'Expert Educators' },
+          { icon: Award, label: 'Years', value: '10+', desc: 'Of Excellence' },
         ].map((s, i) => (
           <div
             key={s.label}
-            className="group text-center p-6 rounded-2xl bg-white/80 backdrop-blur-xl shadow-lg hover:shadow-xl transition duration-300 hover:-translate-y-2 border border-red-100"
-            style={{ animationDelay: `${i * .08}s` }}
+            className="group relative text-center p-6 md:p-8 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-border hover:border-[#800000]/20 overflow-hidden"
+            style={{ animationDelay: `${i * 0.1}s` }}
           >
+            {/* Subtle Corner Accent */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#800000]/5 to-transparent rounded-bl-full" />
 
             {/* Icon */}
-            <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mx-auto mb-3 shadow-sm group-hover:bg-red-100 transition">
-              <s.icon className="text-red-600" size={22} />
+            <div className="relative w-14 h-14 rounded-xl bg-[#800000]/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#800000] transition-all duration-500 shadow-sm">
+              <s.icon className="text-[#800000] group-hover:text-white transition-colors duration-500" size={26} />
             </div>
 
             {/* Value */}
-            <div className="font-heading text-3xl md:text-4xl text-red-600 font-bold tracking-wide">
+            <div className="relative font-heading text-3xl md:text-4xl text-[#800000] font-bold tracking-tight mb-1">
               {s.value}
             </div>
 
             {/* Label */}
-            <div className="text-xs text-gray-500 uppercase tracking-widest font-medium mt-1">
+            <div className="relative text-sm text-foreground font-semibold uppercase tracking-wider mb-1">
               {s.label}
             </div>
 
-            {/* Hover Glow */}
-            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-red-100 to-transparent"></div>
+            {/* Description */}
+            <div className="relative text-xs text-muted-foreground">
+              {s.desc}
+            </div>
 
+            {/* Bottom Accent Line */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-[#D4AF37] rounded-full group-hover:w-16 transition-all duration-500" />
           </div>
         ))}
-
       </div>
     </div>
-
   </section>
 </AnimatedSection>
 
@@ -740,110 +795,114 @@ const industryPartners = [
 
  
 {/* ===== FACULTIES SERVICES ===== */}
+<AnimatedSection>
+  <section className="relative py-24 bg-gradient-to-br from-[#FFF8F0] via-white to-[#800000]/5 overflow-hidden">
 
-<section className="relative py-24 bg-gradient-to-br from-red-50 via-white to-red-100 overflow-hidden">
+    {/* Background Glow */}
+    <div className="absolute -top-20 -left-20 w-96 h-96 bg-[#800000]/10 rounded-full blur-3xl opacity-40"></div>
+    <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl opacity-40"></div>
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#800000]/[0.02] rounded-full blur-3xl"></div>
 
-  {/* Background Glow */}
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-red-200 rounded-full blur-3xl opacity-30"></div>
-  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-red-300 rounded-full blur-3xl opacity-30"></div>
+    <div className="relative max-w-7xl mx-auto px-6">
 
-  <div className="relative max-w-7xl mx-auto px-6">
+      {/* Heading */}
+      <div className="text-center mb-16">
+        <span className="inline-flex items-center gap-2 bg-[#800000]/10 text-[#800000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-4">
+          <Award size={14} />
+          Our Infrastructure
+        </span>
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          Campus Services & Facilities
+        </h2>
+        <p className="text-muted-foreground mt-5 max-w-2xl mx-auto leading-relaxed text-sm">
+          We provide a complete ecosystem for students — from academic excellence and
+          skill development to research opportunities and transparent support systems —
+          helping you grow into a confident professional.
+        </p>
+        <div className="mt-6 w-20 h-1 bg-[#800000] mx-auto rounded-full"></div>
+      </div>
 
-    {/* Heading */}
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
-        Campus Services & Facilities
-      </h2>
-      <p className="text-gray-600 mt-5 max-w-2xl mx-auto leading-relaxed">
-        We provide a complete ecosystem for students — from academic excellence and
-        skill development to research opportunities and transparent support systems —
-        helping you grow into a confident professional.
-      </p>
-      <div className="mt-6 w-28 h-1 bg-gradient-to-r from-red-500 to-red-700 mx-auto rounded-full"></div>
-    </div>
+      {/* Grid */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-    {/* Grid */}
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {[
+          {
+            title: "Academic & Student Support",
+            icon: GraduationCap,
+            desc: "Structured mentorship, remedial classes, and personalized academic guidance to boost performance and confidence."
+          },
+          {
+            title: "Training & Placement",
+            icon: Briefcase,
+            desc: "Career-focused training, industry exposure, internships, and dedicated placement assistance for job readiness."
+          },
+          {
+            title: "IQAC (Quality Cell)",
+            icon: ShieldCheck,
+            desc: "Continuous monitoring and enhancement of teaching, learning, and institutional processes for quality assurance."
+          },
+          {
+            title: "Central Library",
+            icon: BookOpen,
+            desc: "Well-equipped library with e-resources, journals, previous papers, and a calm study environment."
+          },
+          {
+            title: "Research & Innovation",
+            icon: FlaskConical,
+            desc: "Encouraging research culture through projects, funding opportunities, and national/international publications."
+          },
+          {
+            title: "e-Samadhan Portal",
+            icon: HelpCircle,
+            desc: "A transparent digital grievance system ensuring quick resolution and student satisfaction."
+          },
+          {
+            title: "NAAC Accreditation",
+            icon: Trophy,
+            desc: "Recognized standards for excellence in academics, infrastructure, and institutional performance."
+          },
+          {
+            title: "NIRF Ranking",
+            icon: BarChart3,
+            desc: "Performance-driven national ranking reflecting teaching quality, research output, and placements."
+          }
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="group relative bg-white p-6 rounded-2xl border border-border shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden"
+          >
+            {/* Subtle Corner Accent */}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#800000]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-      {[
-        {
-          title: "Academic & Student Support",
-          icon: "🎓",
-          desc: "Structured mentorship, remedial classes, and personalized academic guidance to boost performance and confidence."
-        },
-        {
-          title: "Training & Placement",
-          icon: "💼",
-          desc: "Career-focused training, industry exposure, internships, and dedicated placement assistance for job readiness."
-        },
-        {
-          title: "IQAC (Quality Cell)",
-          icon: "🛡️",
-          desc: "Continuous monitoring and enhancement of teaching, learning, and institutional processes for quality assurance."
-        },
-        {
-          title: "Central Library",
-          icon: "📚",
-          desc: "Well-equipped library with e-resources, journals, previous papers, and a calm study environment."
-        },
-        {
-          title: "Research & Innovation",
-          icon: "🔬",
-          desc: "Encouraging research culture through projects, funding opportunities, and national/international publications."
-        },
-        {
-          title: "e-Samadhan Portal",
-          icon: "❓",
-          desc: "A transparent digital grievance system ensuring quick resolution and student satisfaction."
-        },
-        {
-          title: "NAAC Accreditation",
-          icon: "🏆",
-          desc: "Recognized standards for excellence in academics, infrastructure, and institutional performance."
-        },
-        {
-          title: "NIRF Ranking",
-          icon: "📊",
-          desc: "Performance-driven national ranking reflecting teaching quality, research output, and placements."
-        }
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="group relative bg-white/80 backdrop-blur-md p-6 rounded-2xl 
-          border border-red-100 shadow-md hover:shadow-2xl 
-          hover:-translate-y-3 transition-all duration-500 cursor-pointer"
-        >
+            {/* Icon */}
+            <div className="relative w-14 h-14 rounded-xl bg-[#800000]/10 flex items-center justify-center mb-4 group-hover:bg-[#800000] transition-all duration-500 shadow-sm">
+              <item.icon size={26} className="text-[#800000] group-hover:text-white transition-colors duration-500" />
+            </div>
 
-          {/* Glow Hover Effect */}
-          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 
-          bg-gradient-to-br from-red-200/40 to-transparent transition duration-500"></div>
+            {/* Title */}
+            <h3 className="relative text-base font-semibold text-foreground mb-2 group-hover:text-[#800000] transition-colors duration-300">
+              {item.title}
+            </h3>
 
-          {/* Icon */}
-          <div className="relative text-4xl mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-3">
-            {item.icon}
+            {/* Description */}
+            <p className="relative text-sm text-muted-foreground leading-relaxed">
+              {item.desc}
+            </p>
+
+            {/* Animated Bottom Line */}
+            <div className="mt-5 h-1 w-0 bg-[#D4AF37] group-hover:w-16 transition-all duration-500 rounded-full"></div>
+
+            {/* Hover Arrow */}
+            <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-500">
+              <ChevronRight size={18} className="text-[#800000]" />
+            </div>
           </div>
+        ))}
 
-          {/* Title */}
-          <h3 className="relative text-lg font-semibold text-gray-800 mb-2 
-          group-hover:text-red-600 transition">
-            {item.title}
-          </h3>
-
-          {/* Description */}
-          <p className="relative text-sm text-gray-600 leading-relaxed">
-            {item.desc}
-          </p>
-
-          {/* Animated Bottom Line */}
-          <div className="mt-5 h-1 w-0 bg-gradient-to-r from-red-500 to-red-700 
-          group-hover:w-16 transition-all duration-500 rounded-full"></div>
-
-        </div>
-      ))}
-
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</AnimatedSection>
 
 
 {/* ===== ADMINISTRATOR MESSAGE ===== */}
@@ -1664,38 +1723,7 @@ const industryPartners = [
         </section>
       </AnimatedSection>
 
-      {/* ===== DOWNLOADS SECTION ===== */}
-      {downloads.length > 0 && (
-        <AnimatedSection>
-          <section className="py-16 bg-white">
-            <div className="container">
-              <div className="text-center mb-10">
-                <span className="text-maroon font-bold text-[10px] uppercase tracking-[.25em] mb-3 block">Resources</span>
-                <h2 className="font-heading text-3xl md:text-[2.4rem] text-foreground mb-3">Downloads</h2>
-                <div className="section-divider mx-auto" />
-              </div>
-              <div className="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
-                {downloads.slice(0, 10).map((d, i) => (
-                  <a key={d.id || i} href={d.pdfLink} target="_blank" rel="noreferrer"
-                    className="flex items-center gap-3 bg-cream rounded-lg p-4 border border-border hover:border-maroon/30 hover:shadow-md transition-all group">
-                    <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center shrink-0">
-                      <Download size={18} className="text-maroon" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-semibold text-foreground group-hover:text-maroon transition-colors truncate">{d.title}</h4>
-                      <div className="flex items-center gap-2 mt-0.5">
-                        {d.category && <span className="text-[10px] bg-maroon/10 text-maroon px-2 py-0.5 rounded font-bold">{d.category}</span>}
-                        {d.date && <span className="text-[10px] text-muted-foreground">{d.date}</span>}
-                      </div>
-                    </div>
-                    <FileText size={16} className="text-maroon/40 group-hover:text-maroon shrink-0 transition-colors" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
-        </AnimatedSection>
-      )}
+      
 
       {/* ===== ACHIEVER POPUP ===== */}
       {selectedAchiever && (
