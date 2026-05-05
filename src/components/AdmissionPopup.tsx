@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { subscribeToValue } from '@/lib/firebase';
-import { X } from 'lucide-react';
+import { X, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AdmissionPopup = () => {
@@ -12,34 +12,92 @@ const AdmissionPopup = () => {
     return () => unsub();
   }, []);
 
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setDismissed(true);
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
+
   if (!popup?.active || dismissed) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-foreground/60 p-4" onClick={() => setDismissed(true)}>
-      <div className="bg-card rounded-lg shadow-2xl max-w-lg w-full relative animate-fade-in-up overflow-hidden" onClick={e => e.stopPropagation()}>
-        <button onClick={() => setDismissed(true)} className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-foreground/50 text-white hover:bg-foreground/70 flex items-center justify-center transition-colors">
-          <X size={18} />
-        </button>
-        {/* Full banner image */}
-        {popup.imageUrl && (
-          <img src={popup.imageUrl} alt={popup.title || 'Admission Banner'} className="w-full object-contain max-h-[70vh]" />
-        )}
-        {!popup.imageUrl && (
-          <div className="p-8 text-center">
-            <h2 className="font-heading text-2xl text-primary mb-2">{popup.title || 'Admissions Open!'}</h2>
-            <p className="text-muted-foreground mb-4">{popup.content || 'Apply now for the upcoming academic session.'}</p>
+    <div 
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4"
+      onClick={() => setDismissed(true)}
+    >
+      <div 
+        className="bg-card rounded-2xl shadow-2xl max-w-md w-full overflow-hidden animate-in fade-in-0 zoom-in-95"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* === FULL BANNER SECTION === */}
+        <div className="relative">
+          {popup.imageUrl ? (
+            <img 
+              src={popup.imageUrl} 
+              alt="Admission Banner"
+              className="w-full h-auto max-h-[320px] object-contain bg-white" 
+            />
+          ) : (
+            <div className="h-52 bg-gradient-to-br from-red-600 via-red-700 to-amber-800 flex items-center justify-center">
+              <div className="text-white text-center">
+                <h2 className="text-3xl font-bold">ADMISSIONS OPEN</h2>
+              </div>
+            </div>
+          )}
+
+          {/* Animated Close Button */}
+          <button 
+            onClick={() => setDismissed(true)}
+            className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 hover:bg-white shadow-lg flex items-center justify-center transition-all hover:scale-110 active:scale-95 group"
+          >
+            <X 
+              size={22} 
+              className="text-red-600 group-hover:rotate-90 transition-transform duration-300" 
+            />
+          </button>
+
+          {/* Live Badge */}
+          <div className="absolute top-3 left-3 px-3 py-1 bg-white text-red-600 font-bold text-xs rounded-full shadow-md flex items-center gap-1.5">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
+            </span>
+            LIVE
           </div>
-        )}
-        {/* Action buttons below banner */}
-        <div className="p-4 bg-cream flex flex-col sm:flex-row gap-3 items-center justify-center">
-          <a href="https://mecw-admission.vercel.app/#admission" target="_blank" rel="noreferrer"
-            className="px-6 py-2.5 bg-gold text-white font-bold rounded hover:brightness-110 transition-all text-sm inline-flex items-center gap-2 shadow-lg">
-            Apply Now →
-          </a>
-          <Link to="/admission/enquiry" onClick={() => setDismissed(true)}
-            className="px-6 py-2.5 bg-maroon text-white font-bold rounded hover:bg-maroon-light transition-all text-sm inline-flex items-center gap-2">
-            Admission Enquiry
-          </Link>
+        </div>
+
+        {/* === CONTENT BELOW BANNER === */}
+        <div className="p-6">
+          <h2 className="font-bold text-xl text-gray-900 mb-2">
+            {popup.title || 'Admissions 2026-27 Open'}
+          </h2>
+
+          <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-2">
+            {popup.content || 'Apply now for the upcoming academic session.'}
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col gap-3">
+            <a 
+              href="https://mecw-admission.vercel.app/#admission" 
+              target="_blank" 
+              rel="noreferrer"
+              className="py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+            >
+              Apply Now 
+              <ArrowRight size={18} />
+            </a>
+
+            <Link 
+              to="/admission/enquiry" 
+              onClick={() => setDismissed(true)}
+              className="py-3 border-2 border-red-600 text-red-600 hover:bg-red-50 font-semibold rounded-xl text-center transition-all"
+            >
+              Admission Enquiry
+            </Link>
+          </div>
         </div>
       </div>
     </div>
