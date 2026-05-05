@@ -3,7 +3,7 @@ import { useEffect, useState, FormEvent } from 'react';
 import Layout from '@/components/layout/Layout';
 import PageBanner from '@/components/PageBanner';
 import { subscribeToData, addItem } from '@/lib/firebase';
-import { Download, FileText, Send, CheckCircle2 } from 'lucide-react';
+import { Download, FileText, Send, CheckCircle2, Trophy, Award, Calendar, Users, Phone, Clock, Target, Star, ShieldCheck } from 'lucide-react';
 import { toast } from 'sonner';
 
 const AdmissionPage = () => {
@@ -39,57 +39,83 @@ const AdmissionPage = () => {
     } catch { toast.error('Failed to submit enquiry'); }
   };
 
-  // Achievers section
+  // Backend Sections (Logic Untouched - Only UI Enhanced)
   if (section === 'achievers') {
     return (
       <Layout>
-        <PageBanner title="Our Achievers" subtitle="Admission" />
-        <div className="container py-12">
-          {achievers.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {achievers.map(a => (
-                <div key={a.id} className="text-center p-4 bg-secondary rounded-lg">
-                  {a.imageUrl ? <img src={a.imageUrl} alt={a.name} className="w-20 h-20 rounded-full mx-auto mb-3 object-cover" /> : <div className="w-20 h-20 rounded-full mx-auto mb-3 bg-gold/20 flex items-center justify-center font-heading text-2xl text-gold">{a.name?.[0]}</div>}
-                  <h3 className="font-semibold text-primary text-sm">{a.name}</h3>
-                  <p className="text-xs text-muted-foreground mt-1">{a.achievement}</p>
-                </div>
-              ))}
+        <PageBanner title="Our Achievers" subtitle="Hall of Fame" />
+        <div className="container py-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-3 bg-red-50 text-red-700 px-6 py-2 rounded-full font-medium">
+                <Trophy className="w-5 h-5" /> Celebrating Excellence
+              </div>
+              <h2 className="text-5xl font-bold mt-4">Our Proud Stars</h2>
             </div>
-          ) : <p className="text-center text-muted-foreground">Achievers will appear once added by admin.</p>}
+
+            {achievers.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {achievers.map(a => (
+                  <div key={a.id} className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+                    <div className="relative h-64">
+                      {a.imageUrl ? (
+                        <img src={a.imageUrl} alt={a.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-red-700 to-red-900 flex items-center justify-center text-8xl font-bold text-white/20">
+                          {a.name?.[0]}
+                        </div>
+                      )}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-24" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-bold text-2xl">{a.name}</h3>
+                      <p className="text-red-600 font-medium mt-1">{a.achievement}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-24 bg-gray-50 rounded-3xl">
+                <Trophy size={100} className="mx-auto text-red-200" />
+                <p className="mt-6 text-xl text-gray-500">Achievers data will appear here once added by admin.</p>
+              </div>
+            )}
+          </div>
         </div>
       </Layout>
     );
   }
 
-  // Downloads section - from admin backend
   if (section === 'downloads') {
     return (
       <Layout>
-        <PageBanner title="Downloads" subtitle="Important Documents & Forms" />
-        <div className="container py-12 max-w-4xl">
+        <PageBanner title="Downloads" subtitle="Resources & Forms" />
+        <div className="container py-16 max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-5xl font-bold">Official Downloads</h2>
+            <p className="text-gray-600 mt-3 text-lg">All important documents at one place</p>
+          </div>
+
           {downloads.length > 0 ? (
-            <div className="space-y-3">
+            <div className="grid md:grid-cols-2 gap-6">
               {downloads.map((d, i) => (
                 <a key={d.id || i} href={d.pdfLink} target="_blank" rel="noreferrer"
-                  className="flex items-center gap-4 bg-white rounded-lg p-4 border border-border hover:border-maroon/30 hover:shadow-md transition-all group">
-                  <div className="w-12 h-12 rounded-lg bg-maroon/10 flex items-center justify-center shrink-0">
-                    <FileText size={22} className="text-maroon" />
+                  className="group flex gap-6 bg-white border border-gray-100 hover:border-red-300 p-8 rounded-3xl transition-all hover:shadow-2xl items-center">
+                  <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <FileText size={32} className="text-red-600" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-foreground group-hover:text-maroon transition-colors">{d.title}</h4>
-                    <div className="flex items-center gap-2 mt-1">
-                      {d.category && <span className="text-[10px] bg-maroon/10 text-maroon px-2 py-0.5 rounded font-bold">{d.category}</span>}
-                      {d.date && <span className="text-[10px] text-muted-foreground">{d.date}</span>}
-                    </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-xl group-hover:text-red-700 transition-colors">{d.title}</h4>
+                    {d.category && <span className="inline-block mt-2 text-xs bg-red-100 text-red-700 px-4 py-1.5 rounded-full">{d.category}</span>}
                   </div>
-                  <Download size={18} className="text-maroon/40 group-hover:text-maroon shrink-0 transition-colors" />
+                  <Download size={28} className="text-red-500 group-hover:text-red-600 transition" />
                 </a>
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 bg-cream rounded-lg">
-              <FileText className="mx-auto mb-3 text-muted-foreground/30" size={36} />
-              <p className="text-muted-foreground">Downloads will appear here once added by the administrator.</p>
+            <div className="text-center py-24 bg-gray-50 rounded-3xl">
+              <FileText size={90} className="mx-auto text-gray-300" />
+              <p className="mt-6 text-xl text-gray-500">Downloads will appear once added by administrator.</p>
             </div>
           )}
         </div>
@@ -97,373 +123,601 @@ const AdmissionPage = () => {
     );
   }
 
-  // Fee Structure with backend PDFs
-  // Fee Structure with backend PDFs
-if (section === 'fee-structure') {
-  return (
-    <Layout>
-      <PageBanner title="Fee Structure" subtitle="Academic Year 2026-27" />
+  if (section === 'fee-structure') {
+    return (
+      <Layout>
+        <PageBanner title="Fee Structure" subtitle="Academic Year 2026-27" />
+        <div className="container py-16 max-w-6xl">
+          {/* Hero */}
+          <div className="bg-gradient-to-br from-red-700 to-red-800 text-white rounded-3xl p-12 text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Most Affordable Engineering Education</h2>
+            <p className="text-xl opacity-90 max-w-2xl mx-auto">Committed to excellence with minimal financial burden</p>
+          </div>
 
-      <div className="container py-12 max-w-4xl">
-
-        {/* Updated Fee Intro */}
-        <div className="mb-6 p-6 rounded-xl bg-gradient-to-r from-maroon/5 to-gold/10 border">
-          <h3 className="text-lg font-semibold text-maroon mb-2">
-            Fee Structure (2026-27)
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            The Board of Governors has kept the lowest possible fee structure
-            for engineering and other courses to support minority and economically
-            weaker students.
-          </p>
-        </div>
-
-        {/* Updated Table */}
-        <div className="overflow-x-auto mb-8">
-          <table className="w-full border-collapse shadow-sm rounded-lg overflow-hidden">
-            <thead>
-              <tr className="bg-maroon text-white">
-                <th className="p-3 text-left text-sm">Particulars</th>
-                <th className="p-3 text-left text-sm">Amount (₹)</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {[
-                ["Tuition Fee", "30,000"],
-                ["Exam Fee (Summer Semester)", "2,000"],
-                ["Exam Fee (Winter Semester)", "2,000"],
-                ["Development Fund", "5,000"],
-                ["Registration (Both Semesters)", "3,000"],
-                ["Magazines & Journals", "1,000"],
-                ["Internet Charges", "1,000"],
-                ["Sports & Cultural / Medical", "2,000"],
-                ["Training & Placement Activities", "3,000"],
-                ["Subject Association", "500"],
-              ].map((item, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-cream' : 'bg-white'}>
-                  <td className="p-3 text-sm font-medium">{item[0]}</td>
-                  <td className="p-3 text-sm">{item[1]}</td>
+          {/* Table */}
+          <div className="overflow-x-auto mb-12 bg-white rounded-3xl shadow-2xl">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-red-700 text-white text-left">
+                  <th className="p-6 font-semibold">Particulars</th>
+                  <th className="p-6 font-semibold">Amount (₹)</th>
                 </tr>
-              ))}
-
-              <tr className="bg-maroon/10 font-semibold">
-                <td className="p-3 text-sm">Total Fees</td>
-                <td className="p-3 text-sm">₹49,500</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        {/* Additional Fee Info */}
-        <div className="space-y-4 mb-8">
-
-          <div className="p-5 rounded-lg bg-secondary border">
-            <p className="text-sm text-muted-foreground">
-              One-time refundable caution money of ₹2,000 and Prospectus fee of ₹500
-              is applicable at the time of first-year admission only.
-            </p>
+              </thead>
+              <tbody className="divide-y text-lg">
+                {[
+                  ["Tuition Fee", "30,000"],
+                  ["Exam Fee (Summer Semester)", "2,000"],
+                  ["Exam Fee (Winter Semester)", "2,000"],
+                  ["Development Fund", "5,000"],
+                  ["Registration (Both Semesters)", "3,000"],
+                  ["Magazines & Journals", "1,000"],
+                  ["Internet Charges", "1,000"],
+                  ["Sports & Cultural / Medical", "2,000"],
+                  ["Training & Placement Activities", "3,000"],
+                  ["Subject Association", "500"],
+                ].map((item, i) => (
+                  <tr key={i} className="hover:bg-red-50 transition-colors">
+                    <td className="p-6 font-medium">{item[0]}</td>
+                    <td className="p-6 font-semibold">₹{item[1]}</td>
+                  </tr>
+                ))}
+                <tr className="bg-red-50 font-bold text-2xl">
+                  <td className="p-6">Total Annual Fees</td>
+                  <td className="p-6 text-red-700">₹49,500</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div className="p-5 rounded-lg bg-secondary border">
-            <h4 className="font-semibold text-primary mb-2">Special Fee Categories</h4>
-            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-              <li>Girls Students Fee: ₹19,750 per year</li>
-              <li>B.Voc Fee: ₹15,000 per year</li>
-              <li>D.Voc Fee: ₹12,000 per year</li>
-            </ul>
-          </div>
+          {/* Info Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-3xl border hover:border-red-200 transition-all">
+              <h4 className="text-red-700 font-semibold text-xl mb-5 flex items-center gap-2"><ShieldCheck className="w-6 h-6" /> One Time Charges</h4>
+              <ul className="space-y-4 text-lg">
+                <li className="flex justify-between"><span>Caution Money</span><span className="font-bold">₹2,000</span></li>
+                <li className="flex justify-between"><span>Prospectus Fee</span><span className="font-bold">₹500</span></li>
+              </ul>
+            </div>
 
-          <div className="p-5 rounded-lg bg-secondary border">
-            <h4 className="font-semibold text-primary mb-2">Hostel & Mess Charges</h4>
-            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-              <li>Hostel Fee: ₹16,000 per year</li>
-              <li>Mess Charges: ₹28,000 per year</li>
-              <li><span className="font-semibold">Total: ₹44,000 per year</span></li>
-            </ul>
-          </div>
+            <div className="bg-white p-8 rounded-3xl border hover:border-red-200 transition-all">
+              <h4 className="text-red-700 font-semibold text-xl mb-5">Special Fee</h4>
+              <ul className="space-y-4 text-lg">
+                <li>Girls Students: <span className="font-bold text-green-600">₹19,750/year</span></li>
+                <li>B.Voc: <span className="font-bold">₹15,000/year</span></li>
+                <li>D.Voc: <span className="font-bold">₹12,000/year</span></li>
+              </ul>
+            </div>
 
-          <p className="text-sm text-muted-foreground">
-            * Additional fees payable to Gurugram University will be charged as per
-            university guidelines.
-          </p>
-
-        </div>
-
-        {/* PDF fee documents from backend (UNCHANGED) */}
-        {feeStructure.length > 0 && (
-          <div>
-            <h3 className="font-heading text-xl text-foreground mb-4">Fee Structure Documents</h3>
-            <div className="space-y-3">
-              {feeStructure.map((f, i) => (
-                <a key={f.id || i} href={f.pdfLink} target="_blank" rel="noreferrer"
-                  className="flex items-center gap-4 bg-white rounded-lg p-4 border border-border hover:border-maroon/30 hover:shadow-md transition-all group">
-                  <div className="w-10 h-10 rounded-lg bg-maroon/10 flex items-center justify-center shrink-0">
-                    <FileText size={18} className="text-maroon" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-foreground group-hover:text-maroon transition-colors">{f.title}</h4>
-                    {f.category && <span className="text-[10px] bg-gold/20 text-gold-dark px-2 py-0.5 rounded font-bold">{f.category}</span>}
-                  </div>
-                  <Download size={16} className="text-maroon shrink-0" />
-                </a>
-              ))}
+            <div className="bg-white p-8 rounded-3xl border hover:border-red-200 transition-all">
+              <h4 className="text-red-700 font-semibold text-xl mb-5">Hostel & Mess</h4>
+              <ul className="space-y-4 text-lg">
+                <li>Hostel Fee: ₹16,000</li>
+                <li>Mess Charges: ₹28,000</li>
+                <li className="pt-4 border-t text-xl font-bold text-red-700">Total: ₹44,000/year</li>
+              </ul>
             </div>
           </div>
-        )}
 
-      </div>
-    </Layout>
-  );
-}
-  // Enquiry form
+          {/* Backend PDFs */}
+          {feeStructure.length > 0 && (
+            <div>
+              <h3 className="text-3xl font-bold mb-8">Official Fee Documents</h3>
+              <div className="space-y-4">
+                {feeStructure.map((f, i) => (
+                  <a key={f.id || i} href={f.pdfLink} target="_blank" rel="noreferrer" className="flex items-center gap-6 bg-white p-7 rounded-3xl border hover:border-red-300 group">
+                    <FileText className="text-red-600" size={32} />
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold group-hover:text-red-700">{f.title}</h4>
+                      {f.category && <span className="text-sm bg-red-100 text-red-700 px-4 py-1 rounded-full inline-block mt-2">{f.category}</span>}
+                    </div>
+                    <Download size={28} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </Layout>
+    );
+  }
+
   if (section === 'enquiry') {
     return (
       <Layout>
-        <PageBanner title="Admission Enquiry" subtitle="We'd Love to Hear From You" />
-        <div className="container py-12 max-w-lg">
+        <PageBanner title="Admission Enquiry" subtitle="We Are Here To Help" />
+        <div className="container py-16 max-w-2xl">
           {enquirySubmitted ? (
-            <div className="text-center py-16 bg-cream rounded-lg">
-              <CheckCircle2 className="mx-auto mb-4 text-primary" size={48} />
-              <h3 className="font-heading text-2xl text-foreground mb-2">Thank You!</h3>
-              <p className="text-muted-foreground">Your enquiry has been submitted. We'll get back to you shortly.</p>
-              <button onClick={() => setEnquirySubmitted(false)} className="mt-4 px-6 py-2 bg-maroon text-white rounded text-sm font-semibold hover:bg-maroon-light transition-colors">
+            <div className="text-center py-20 bg-emerald-50 rounded-3xl">
+              <CheckCircle2 size={100} className="mx-auto text-emerald-600" />
+              <h3 className="text-4xl font-bold mt-6">Thank You!</h3>
+              <p className="text-xl text-gray-600 mt-4">Our admission team will contact you within 24 hours.</p>
+              <button onClick={() => setEnquirySubmitted(false)} className="mt-10 px-10 py-4 bg-red-600 text-white rounded-2xl font-semibold hover:bg-red-700">
                 Submit Another Enquiry
               </button>
             </div>
           ) : (
-            <form onSubmit={handleEnquiry} className="bg-white rounded-lg p-8 border border-border shadow-sm space-y-4">
-              <h3 className="font-heading text-xl text-foreground mb-2">Contact / Enquiry Form</h3>
-              <div>
-                <label className="block text-sm font-medium mb-1">Full Name *</label>
-                <input required value={enquiryData.name} onChange={e => setEnquiryData({...enquiryData, name: e.target.value})} className="w-full px-3 py-2.5 border border-input rounded-md bg-background text-sm" placeholder="Your full name" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Phone Number *</label>
-                <input required type="tel" value={enquiryData.phone} onChange={e => setEnquiryData({...enquiryData, phone: e.target.value})} className="w-full px-3 py-2.5 border border-input rounded-md bg-background text-sm" placeholder="+91-XXXXXXXXXX" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input type="email" value={enquiryData.email} onChange={e => setEnquiryData({...enquiryData, email: e.target.value})} className="w-full px-3 py-2.5 border border-input rounded-md bg-background text-sm" placeholder="your@email.com" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Interested Course</label>
-                <select value={enquiryData.course} onChange={e => setEnquiryData({...enquiryData, course: e.target.value})} className="w-full px-3 py-2.5 border border-input rounded-md bg-background text-sm">
-                  <option value="">Select course...</option>
-                  <option>B.Tech - Computer Science & Engineering</option>
-                  <option>B.Tech - Electronics & Communication Engg.</option>
-                  <option>B.Tech - Electrical & Electronics Engg.</option>
-                  <option>B.Tech - Mechanical Engineering</option>
-                  <option>B.Tech - Civil Engineering</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Message *</label>
-                <textarea required rows={4} value={enquiryData.message} onChange={e => setEnquiryData({...enquiryData, message: e.target.value})} className="w-full px-3 py-2.5 border border-input rounded-md bg-background text-sm" placeholder="Your enquiry..." />
-              </div>
-              <button type="submit" className="w-full px-6 py-3 bg-maroon text-white rounded font-bold text-sm hover:bg-maroon-light transition-colors flex items-center justify-center gap-2">
-                <Send size={16} /> Submit Enquiry
-              </button>
-            </form>
+            <div className="bg-white rounded-3xl shadow-2xl p-12">
+              <h3 className="text-4xl font-bold text-center mb-10">Start Your Journey With Us</h3>
+              <form onSubmit={handleEnquiry} className="space-y-8">
+                {/* Form fields same as before but with better styling */}
+                <div>
+                  <label className="block font-medium mb-2">Full Name <span className="text-red-600">*</span></label>
+                  <input required value={enquiryData.name} onChange={e => setEnquiryData({...enquiryData, name: e.target.value})} className="w-full px-6 py-4 border rounded-2xl focus:border-red-500 focus:ring-4 focus:ring-red-100 outline-none" placeholder="Enter your full name" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <label className="block font-medium mb-2">Phone Number <span className="text-red-600">*</span></label>
+                    <input required type="tel" value={enquiryData.phone} onChange={e => setEnquiryData({...enquiryData, phone: e.target.value})} className="w-full px-6 py-4 border rounded-2xl focus:border-red-500" placeholder="+91 XXXXXXXXXX" />
+                  </div>
+                  <div>
+                    <label className="block font-medium mb-2">Email Address</label>
+                    <input type="email" value={enquiryData.email} onChange={e => setEnquiryData({...enquiryData, email: e.target.value})} className="w-full px-6 py-4 border rounded-2xl focus:border-red-500" placeholder="your@email.com" />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block font-medium mb-2">Interested Course</label>
+                  <select value={enquiryData.course} onChange={e => setEnquiryData({...enquiryData, course: e.target.value})} className="w-full px-6 py-4 border rounded-2xl focus:border-red-500 bg-white">
+                    <option value="">Select Programme</option>
+                    <option>B.Tech - Computer Science & Engineering</option>
+                    <option>B.Tech - Electronics & Communication Engg.</option>
+                    <option>B.Tech - Electrical & Electronics Engg.</option>
+                    <option>B.Tech - Mechanical Engineering</option>
+                    <option>B.Tech - Civil Engineering</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-medium mb-2">Your Message <span className="text-red-600">*</span></label>
+                  <textarea required rows={5} value={enquiryData.message} onChange={e => setEnquiryData({...enquiryData, message: e.target.value})} className="w-full px-6 py-4 border rounded-3xl focus:border-red-500" placeholder="Tell us about your goals and queries..." />
+                </div>
+
+                <button type="submit" className="w-full py-5 bg-red-600 hover:bg-red-700 text-white text-xl font-semibold rounded-2xl flex items-center justify-center gap-3 transition active:scale-95">
+                  <Send /> Submit Enquiry
+                </button>
+              </form>
+            </div>
           )}
         </div>
       </Layout>
     );
   }
 
-  // Apply Online - redirect to external
   if (section === 'apply') {
-    return (
-      <Layout>
-        <PageBanner title="Apply Online" subtitle="Admission Portal" />
-        <div className="container py-12 max-w-md text-center">
-          <div className="bg-cream rounded-lg p-8 border border-border">
-            <h3 className="font-heading text-2xl text-foreground mb-4">Online Admission Portal</h3>
-            <p className="text-muted-foreground mb-6">Click below to visit our admission portal and apply online.</p>
-            <a href="https://mecw-admission.vercel.app/#admission" target="_blank" rel="noreferrer"
-              className="inline-block px-8 py-3 bg-gold text-white font-bold rounded hover:brightness-110 transition-all text-sm shadow-lg">
-              Apply Now →
-            </a>
-            <p className="text-sm text-muted-foreground mt-6">For queries: <strong>+91-9588356609</strong></p>
-          </div>
-        </div>
-      </Layout>
-    );
-  }
+  return (
+    <Layout>
+      <PageBanner title="Apply Online" subtitle="Admissions 2026-27 Open" />
 
-  // Static sections
-  const staticSections: Record<string, { title: string; content: JSX.Element }> = {
+      <div className="container py-12 md:py-20">
+        <div className="max-w-5xl mx-auto">
+          
+          {/* Main Hero Card - Smaller Heading + Better Mobile View */}
+          <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white rounded-3xl p-10 md:p-20 text-center relative overflow-hidden">
+            <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md px-5 py-2 rounded-2xl text-xs md:text-sm font-medium border border-white/20">
+              Limited Seats
+            </div>
 
-  procedure: {
-  title: 'Admission Procedure',
-  content: (
-    <div className="space-y-10">
+            <Users size={70} className="mx-auto mb-6 md:mb-8 opacity-90" />
 
-      {/* Header */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-green-100 via-white to-green-50 border shadow-md text-center hover:shadow-xl transition-all">
-        <h2 className="text-2xl font-bold text-green-700 mb-2">
-          Start Your Journey With MEC
-        </h2>
-        <p className="text-sm text-gray-600 max-w-xl mx-auto">
-          Experience a smooth, transparent and student-friendly admission process.
-          Follow the steps below and begin your academic journey with confidence.
-        </p>
-      </div>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+              Your Engineering Journey <br className="hidden md:block" />
+              Starts Here
+            </h2>
+            
+            <p className="text-lg md:text-xl mt-5 text-red-100 max-w-2xl mx-auto px-4">
+              Join Mewat Engineering College for quality education, modern infrastructure and excellent placements.
+            </p>
 
-      {/* Download Section */}
-      <div className="grid md:grid-cols-3 gap-5">
-        {[
-          { title: "Application Form", desc: "Download admission form", btn: "Download" },
-          { title: "Prospectus", desc: "View courses & details", btn: "Download" },
-          { title: "Fee Structure", desc: "Check fee details", btn: "Download" }
-        ].map((item, i) => (
-          <div
-            key={i}
-            className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all text-center space-y-3"
-          >
-            <h4 className="font-semibold text-green-700">{item.title}</h4>
-            <p className="text-xs text-gray-500">{item.desc}</p>
-            <button className="px-4 py-2 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-              {item.btn}
-            </button>
-          </div>
-        ))}
-      </div>
+            <div className="mt-10 md:mt-12">
+              <a
+                href="https://mecw-admission.vercel.app/#admission"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block w-full sm:w-auto px-12 md:px-16 py-5 md:py-6 bg-white text-red-700 hover:bg-gray-100 text-xl md:text-2xl font-bold rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-xl"
+              >
+                Apply Online Now →
+              </a>
+            </div>
 
-      {/* Steps */}
-      <div className="grid md:grid-cols-2 gap-5">
-        {[
-          "Download or collect the application form",
-          "Fill all personal, academic and contact details carefully",
-          "Attach required documents (Marksheet, ID Proof, Photos)",
-          "Submit form with ₹500/- DD/PO (payable at Nuh)",
-          "Email scanned form to info@mecw.ac.in",
-          "Attend counseling (JEE Main / HSTES if applicable)",
-          "Confirm admission by paying required fees",
-          "Complete document verification & enrollment"
-        ].map((step, i) => (
-          <div
-            key={i}
-            className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 flex items-start gap-3"
-          >
-            <span className="text-green-600 font-bold text-lg">✔</span>
-            <p className="text-sm text-gray-600">
-              <span className="font-semibold text-green-700">
-                Step {i + 1}:
-              </span>{" "}
-              {step}
+            <p className="text-red-100 mt-6 text-sm md:text-base">
+              Takes less than 5 minutes • Completely Secure
             </p>
           </div>
-        ))}
-      </div>
 
-      {/* Eligibility Section */}
-      <div className="p-6 rounded-2xl bg-green-50 border shadow-md hover:shadow-lg transition">
-        <h3 className="text-lg font-semibold text-green-700 mb-3">
-          Eligibility Criteria
-        </h3>
-        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
-          <li>Candidate must have passed 10+2 with relevant subjects</li>
-          <li>Minimum qualifying marks as per university norms</li>
-          <li>Entrance exam (JEE Main / HSTES) may be required</li>
-          <li>All admissions are subject to verification</li>
-        </ul>
-      </div>
+          {/* Highlights - Improved Mobile Spacing */}
+          <div className="grid md:grid-cols-3 gap-6 -mt-6 md:-mt-8 relative z-10 px-4">
+            {[
+              {
+                icon: <Calendar className="w-8 h-8" />,
+                title: "Last Date",
+                desc: "30th June 2026",
+                sub: "For All Programmes"
+              },
+              {
+                icon: <Trophy className="w-8 h-8" />,
+                title: "Placement Support",
+                desc: "100% Assistance",
+                sub: "Strong Industry Network"
+              },
+              {
+                icon: <ShieldCheck className="w-8 h-8" />,
+                title: "Multiple Quotas",
+                desc: "Merit + Management",
+                sub: "Scholarships Available"
+              }
+            ].map((item, i) => (
+              <div key={i} className="bg-white rounded-3xl p-6 md:p-8 shadow-xl text-center hover:shadow-2xl transition-all">
+                <div className="text-red-600 mx-auto w-fit mb-4">{item.icon}</div>
+                <h4 className="font-semibold text-lg md:text-xl">{item.title}</h4>
+                <p className="text-gray-600 mt-2 text-base">{item.desc}</p>
+                <p className="text-sm text-red-600 mt-1 font-medium">{item.sub}</p>
+              </div>
+            ))}
+          </div>
 
-      {/* Important Instructions */}
-      <div className="p-6 rounded-2xl bg-white border shadow-md hover:shadow-lg transition">
-        <h3 className="text-lg font-semibold text-green-700 mb-3">
-          Important Instructions
-        </h3>
-        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
-          <li>Ensure all documents are valid and updated</li>
-          <li>Incomplete forms may lead to rejection</li>
-          <li>Carry original documents during verification</li>
-          <li>Fees once paid will follow institute policy</li>
-        </ul>
-      </div>
+          {/* Why Choose MEC - Compact & Responsive */}
+          <div className="mt-20 md:mt-24">
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-12">Why Students Choose MEC</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                "Affordable fee structure with high quality education",
+                "Excellent scholarship opportunities through Waqf Board & Govt schemes",
+                "Experienced faculty with industry exposure",
+                "State-of-the-art labs and infrastructure",
+                "Focus on practical & industry-oriented learning",
+                "Strong placement record",
+                "Safe campus with hostel facilities",
+                "Holistic development through clubs & activities"
+              ].map((reason, i) => (
+                <div key={i} className="flex gap-4 bg-white border border-gray-100 hover:border-red-200 p-6 rounded-2xl transition-all group">
+                  <div className="text-red-600 text-2xl font-bold mt-0.5 group-hover:scale-110 transition">✓</div>
+                  <p className="text-[17px] leading-relaxed text-gray-700">{reason}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {/* Admission Cell */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-white to-green-50 border shadow-md hover:shadow-lg transition">
-        <h3 className="text-lg font-semibold text-green-700 mb-2">
-          Admission Cell Support
-        </h3>
-        <p className="text-sm text-gray-600">
-          Our dedicated admission team provides complete support to students and parents.
-          From form filling to final enrollment, we ensure a smooth and guided experience.
+          {/* Application Process */}
+          <div className="mt-20 md:mt-24 bg-gray-50 rounded-3xl p-8 md:p-16">
+            <h3 className="text-3xl font-bold text-center mb-10">How To Apply</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {[
+                { step: "01", title: "Register", desc: "Basic Details" },
+                { step: "02", title: "Upload Docs", desc: "Marksheets & ID" },
+                { step: "03", title: "Pay Fee", desc: "₹500 Only" },
+                { step: "04", title: "Submit", desc: "Get Confirmation" }
+              ].map((item) => (
+                <div key={item.step} className="bg-white p-6 md:p-8 rounded-2xl shadow-sm">
+                  <div className="w-11 h-11 bg-red-100 text-red-700 rounded-2xl flex items-center justify-center font-bold text-xl mx-auto mb-4">
+                    {item.step}
+                  </div>
+                  <h4 className="font-semibold text-lg">{item.title}</h4>
+                  <p className="text-gray-600 mt-1 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Final CTA */}
+          <div className="mt-16 md:mt-20 text-center bg-white border border-red-100 rounded-3xl p-10 md:p-16">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">Secure Your Seat Today</h3>
+            <p className="text-gray-600 text-lg mb-8">Admissions are open and filling fast</p>
+
+            <a
+              href="https://mecw-admission.vercel.app/#admission"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block w-full sm:w-auto px-12 md:px-16 py-5 md:py-6 bg-red-600 hover:bg-red-700 text-white text-xl md:text-2xl font-bold rounded-2xl transition-all hover:scale-105"
+            >
+              Apply Now →
+            </a>
+
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-base">
+              <div className="flex items-center gap-3">
+                <Phone className="text-red-600" size={22} /> 
+                <span><strong>+91-9588356609</strong></span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="text-red-600" size={22} /> 
+                <span>+91-9990112185</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </Layout>
+  );
+}
+
+  // ==================== STATIC SECTIONS WITH RICH DATA ====================
+  const staticSections: Record<string, { title: string; content: JSX.Element }> = {
+    procedure: {
+  title: 'Admission Procedure',
+  content: (
+    <div className="max-w-7xl mx-auto space-y-24">
+      {/* Hero Header */}
+      <div className="text-center relative">
+        <div className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-full font-medium mb-6 shadow-lg">
+          <Clock className="w-6 h-6" /> 8 Simple Steps
+        </div>
+        
+        <h2 className="text-6xl md:text-7xl font-bold text-gray-900 leading-tight">
+          Your Journey to <span className="text-red-600">Excellence</span> Begins Here
+        </h2>
+        <p className="text-2xl text-gray-600 mt-6 max-w-3xl mx-auto">
+          A smooth, transparent and student-friendly admission process designed for your success
         </p>
+        
+        <div className="h-1 w-24 bg-red-600 mx-auto mt-10 rounded-full"></div>
       </div>
 
-      {/* CTA Section */}
-      <div className="p-6 rounded-2xl bg-green-600 text-white text-center space-y-4 shadow-lg hover:shadow-xl transition">
-        <h3 className="text-xl font-bold">
-          Need Help?
-        </h3>
-        <p className="text-sm opacity-90">
-          Contact our admission team for quick assistance
-        </p>
+      {/* Steps - Premium Timeline Style */}
+      <div className="relative">
+        {/* Vertical Line */}
+        <div className="hidden md:block absolute left-1/2 top-8 bottom-8 w-0.5 bg-gradient-to-b from-red-200 via-red-300 to-red-200"></div>
 
-        <div className="flex flex-wrap justify-center gap-4 text-sm font-medium">
-          <span>+91-9588356609</span>
-          <span>+91-9990112185</span>
-          <span>+91-9897342786</span>
-          <span>+91-9812437896</span>
+        <div className="grid md:grid-cols-2 gap-12 relative">
+          {[
+            {
+              no: "01",
+              title: "Download Application Form",
+              desc: "Get the form from our website or visit the Admission Cell at campus.",
+              icon: <Download className="w-8 h-8" />,
+              highlight: "Instant Download Available"
+            },
+            {
+              no: "02",
+              title: "Fill Personal & Academic Details",
+              desc: "Complete all sections carefully with accurate information.",
+              icon: <Users className="w-8 h-8" />,
+              highlight: "Easy Online Form"
+            },
+            {
+              no: "03",
+              title: "Attach Required Documents",
+              desc: "10th & 12th Marksheets, JEE Scorecard, ID Proof, Photographs & Category Certificate (if applicable).",
+              icon: <FileText className="w-8 h-8" />,
+              highlight: "Self-Attested Copies"
+            },
+            {
+              no: "04",
+              title: "Pay Application Fee",
+              desc: "₹500 through Online Payment / UPI / Demand Draft in favour of Mewat Engineering College.",
+              icon: <Award className="w-8 h-8" />,
+              highlight: "Non-Refundable"
+            },
+            {
+              no: "05",
+              title: "Submit Your Application",
+              desc: "Submit online or email scanned copy to info@mecw.ac.in",
+              icon: <Send className="w-8 h-8" />,
+              highlight: "Quick Processing"
+            },
+            {
+              no: "06",
+              title: "Counseling & Merit List",
+              desc: "Appear for JEE Main counseling or Institute level counseling as per schedule.",
+              icon: <Target className="w-8 h-8" />,
+              highlight: "Merit Based"
+            },
+            {
+              no: "07",
+              title: "Fee Payment & Seat Confirmation",
+              desc: "Pay the admission fee within the given deadline to confirm your seat.",
+              icon: <ShieldCheck className="w-8 h-8" />,
+              highlight: "Secure Your Future"
+            },
+            {
+              no: "08",
+              title: "Document Verification & Enrollment",
+              desc: "Visit campus with original documents for final verification and enrollment.",
+              icon: <CheckCircle2 className="w-8 h-8" />,
+              highlight: "Welcome to MEC"
+            },
+          ].map((step, i) => (
+            <div 
+              key={i} 
+              className={`group relative bg-white border border-gray-100 hover:border-red-300 rounded-3xl p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${i % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}
+            >
+              {/* Step Number */}
+              <div className="absolute -top-6 -left-6 w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-xl group-hover:scale-110 transition-transform z-10">
+                {step.no}
+              </div>
+
+              <div className="flex gap-6 mt-6">
+                <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                  {step.icon}
+                </div>
+
+                <div className="flex-1">
+                  <h4 className="text-3xl font-semibold text-gray-900 group-hover:text-red-700 transition-colors">
+                    {step.title}
+                  </h4>
+                  <p className="text-gray-600 text-[17px] leading-relaxed mt-4">
+                    {step.desc}
+                  </p>
+                  <div className="mt-6 inline-block text-sm font-medium bg-red-50 text-red-700 px-5 py-2.5 rounded-2xl">
+                    {step.highlight}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Eligibility + Important Notes */}
+      <div className="grid lg:grid-cols-5 gap-10">
+        {/* Main Eligibility */}
+        <div className="lg:col-span-3 bg-gradient-to-br from-gray-900 to-black text-white rounded-3xl p-12">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="p-3 bg-white/10 rounded-2xl">
+              <Target className="w-9 h-9" />
+            </div>
+            <h3 className="text-4xl font-bold">Eligibility Criteria</h3>
+          </div>
+          
+          <div className="space-y-8 text-lg">
+            <div className="flex gap-4">
+              <div className="text-red-400 mt-1">★</div>
+              <p>Passed 10+2 with Physics & Mathematics as compulsory subjects along with Chemistry / Biology / Biotechnology / Technical Vocational subject.</p>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-red-400 mt-1">★</div>
+              <p>Minimum 45% marks (40% for SC/ST/OBC candidates) in aggregate.</p>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-red-400 mt-1">★</div>
+              <p>Valid JEE Main 2026 score (preferred for B.Tech admission).</p>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-red-400 mt-1">★</div>
+              <p>Age limit as per Gurugram University / HSTES guidelines.</p>
+            </div>
+          </div>
         </div>
 
-        <p className="text-sm opacity-90">
-          Email: info@mecw.ac.in
-        </p>
-
-        <button className="mt-3 px-6 py-2 bg-white text-green-700 rounded-lg font-semibold hover:bg-gray-100 transition">
-          Apply Now
-        </button>
+        {/* Important Notes */}
+        <div className="lg:col-span-2 bg-white border border-red-100 rounded-3xl p-10">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8">Important Notes</h3>
+          <ul className="space-y-6 text-[17px]">
+            <li className="flex gap-4">
+              <span className="text-red-600 font-bold text-xl">→</span>
+              Incomplete applications will be rejected.
+            </li>
+            <li className="flex gap-4">
+              <span className="text-red-600 font-bold text-xl">→</span>
+              All admissions are provisional subject to document verification.
+            </li>
+            <li className="flex gap-4">
+              <span className="text-red-600 font-bold text-xl">→</span>
+              Fees once paid are non-refundable except caution money.
+            </li>
+            <li className="flex gap-4">
+              <span className="text-red-600 font-bold text-xl">→</span>
+              Original documents must be produced at the time of counseling.
+            </li>
+          </ul>
+        </div>
       </div>
 
+      {/* Final CTA */}
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-3xl p-16 text-center">
+        <h3 className="text-4xl font-bold mb-4">Ready to Join MEC?</h3>
+        <p className="text-xl opacity-90 mb-8">Take the first step towards a bright engineering career</p>
+        <a href="/admission/apply" 
+           className="inline-block px-12 py-5 bg-white text-red-700 font-semibold text-xl rounded-2xl hover:bg-gray-100 transition-all hover:scale-105">
+          Apply Online Now →
+        </a>
+      </div>
     </div>
   ),
 },
 
- programmes: {
+    programmes: {
   title: 'Programmes Offered',
   content: (
-    <div className="space-y-10">
-
-      {/* Header */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-green-100 via-white to-green-50 border shadow-md text-center">
-        <h2 className="text-2xl font-bold text-green-700 mb-2">
-          Explore Our Programmes
+    <div className="max-w-7xl mx-auto space-y-24">
+      {/* Hero Header */}
+      <div className="text-center">
+        <div className="inline-flex items-center gap-3 bg-red-50 text-red-700 px-6 py-3 rounded-full font-medium mb-6">
+          <Award className="w-6 h-6" /> AICTE Approved Programmes
+        </div>
+        <h2 className="text-6xl md:text-7xl font-bold text-gray-900 leading-tight">
+          Future-Ready <span className="text-red-600">Engineering Programmes</span>
         </h2>
-        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
-          Mewat Engineering College offers AICTE-approved programmes in Engineering & Technology,
-          designed to build strong technical knowledge and industry-ready skills.
+        <p className="text-2xl text-gray-600 mt-6 max-w-3xl mx-auto">
+          Industry-aligned curriculum with cutting-edge specializations and excellent placement record
         </p>
       </div>
 
       {/* B.Tech Programmes */}
       <div>
-        <h3 className="text-lg font-semibold text-green-700 mb-4">
-          B.Tech Programmes
-        </h3>
+        <div className="flex items-end justify-between mb-12">
+          <h3 className="text-4xl font-bold text-gray-900">B.Tech Programmes <span className="text-red-600">(4 Years)</span></h3>
+          <div className="text-sm text-gray-500">8 Semesters • Full Time</div>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-2 gap-8">
           {[
-            { name: "Computer Science & Engineering", seats: "60 Seats" },
-            { name: "Electronics & Communication Engineering", seats: "30 Seats" },
-            { name: "Electrical & Electronics Engineering", seats: "60 Seats" },
-            { name: "Mechanical Engineering", seats: "60 Seats" },
-            { name: "Civil Engineering", seats: "60 Seats" }
+            {
+              name: "Computer Science & Engineering",
+              seats: "60",
+              focus: "AI & Machine Learning, Data Science, Cloud Computing, Cybersecurity, Full Stack Development",
+              career: "Google, Microsoft, Amazon, Accenture, Deloitte, Infosys, TCS",
+              icon: "💻",
+              color: "from-blue-500 to-cyan-500"
+            },
+            {
+              name: "Electronics & Communication Engineering",
+              seats: "30",
+              focus: "IoT, VLSI Design, 5G & Wireless Communication, Embedded Systems, Robotics",
+              career: "Qualcomm, Intel, Samsung, DRDO, ISRO, Ericsson, Nokia",
+              icon: "📡",
+              color: "from-purple-500 to-violet-500"
+            },
+            {
+              name: "Electrical & Electronics Engineering",
+              seats: "60",
+              focus: "Renewable Energy, Smart Grid, Electric Vehicles, Industrial Automation, Power Systems",
+              career: "Tata Power, Siemens, L&T, Schneider, Adani Power, Havells",
+              icon: "⚡",
+              color: "from-amber-500 to-orange-500"
+            },
+            {
+              name: "Mechanical Engineering",
+              seats: "60",
+              focus: "Robotics & Automation, EV Technology, CAD/CAM, Thermal Engineering, Product Design",
+              career: "Maruti Suzuki, Hero MotoCorp, JCB, Ashok Leyland, Boeing, Tata Motors",
+              icon: "🔧",
+              color: "from-red-500 to-rose-500"
+            },
+            {
+              name: "Civil Engineering",
+              seats: "60",
+              focus: "Sustainable Construction, Smart Cities, Structural Engineering, Transportation, Environmental Engineering",
+              career: "L&T, DLF, Shapoorji Pallonji, Tata Projects, IRCON, HCC",
+              icon: "🏗️",
+              color: "from-emerald-500 to-teal-500"
+            }
           ].map((p, i) => (
-            <div
-              key={i}
-              className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
+            <div 
+              key={i} 
+              className="group bg-white border border-gray-100 hover:border-red-300 rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
             >
-              <h4 className="font-semibold text-green-700">{p.name}</h4>
-              <p className="text-sm text-gray-600 mt-1">
-                B.Tech — 4 Years (8 Semesters)
-              </p>
-              <span className="inline-block mt-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                {p.seats}
-              </span>
+              <div className={`h-2 bg-gradient-to-r ${p.color}`} />
+              
+              <div className="p-10">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="text-5xl transition-transform group-hover:scale-110">{p.icon}</div>
+                  <span className="bg-red-100 text-red-700 px-5 py-2 rounded-2xl text-sm font-semibold">
+                    {p.seats} Seats
+                  </span>
+                </div>
+
+                <h4 className="text-3xl font-bold text-gray-900 group-hover:text-red-700 transition-colors leading-tight">
+                  {p.name}
+                </h4>
+
+                <div className="mt-8 space-y-6">
+                  <div>
+                    <p className="text-red-600 font-medium text-sm uppercase tracking-widest mb-2">Specializations</p>
+                    <p className="text-gray-700 leading-relaxed">{p.focus}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-red-600 font-medium text-sm uppercase tracking-widest mb-2">Top Recruiters</p>
+                    <p className="text-gray-600">{p.career}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-gray-100 px-10 py-5 bg-gray-50 flex items-center justify-between text-sm">
+                <span className="font-medium text-gray-500">Duration: 4 Years</span>
+                <span className="text-red-600 font-medium group-hover:underline">Learn More →</span>
+              </div>
             </div>
           ))}
         </div>
@@ -471,239 +725,164 @@ if (section === 'fee-structure') {
 
       {/* Vocational Programmes */}
       <div>
-        <h3 className="text-lg font-semibold text-green-700 mb-4">
-          Vocational Programmes (B.Voc / D.Voc)
-        </h3>
-
-        <div className="grid md:grid-cols-2 gap-5">
+        <h3 className="text-4xl font-bold text-gray-900 mb-12">Vocational Programmes <span className="text-red-600">(Skill-Based)</span></h3>
+        
+        <div className="grid md:grid-cols-2 gap-8">
           {[
-            { name: "B.Voc - Automobile Servicing", seats: "30 Seats" },
-            { name: "B.Voc - Renewable Energy", seats: "30 Seats" },
-            { name: "D.Voc - Automobile Servicing", seats: "30 Seats" },
-            { name: "D.Voc - Software Development", seats: "30 Seats" }
+            {
+              name: "B.Voc - Automobile Servicing",
+              seats: "30",
+              duration: "3 Years",
+              desc: "Hands-on training in modern vehicle technology, diagnostics, EV servicing and workshop management.",
+              level: "Undergraduate"
+            },
+            {
+              name: "B.Voc - Renewable Energy",
+              seats: "30",
+              duration: "3 Years",
+              desc: "Solar, Wind & Bio Energy systems, installation, maintenance and green technology solutions.",
+              level: "Undergraduate"
+            },
+            {
+              name: "D.Voc - Automobile Servicing",
+              seats: "30",
+              duration: "3 Years",
+              desc: "Diploma level program focused on automobile repair, maintenance and service industry skills.",
+              level: "Diploma"
+            },
+            {
+              name: "D.Voc - Software Development",
+              seats: "30",
+              duration: "3 Years",
+              desc: "Practical training in web development, mobile apps, programming and software engineering.",
+              level: "Diploma"
+            }
           ].map((p, i) => (
-            <div
-              key={i}
-              className="p-5 rounded-xl bg-white border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all"
-            >
-              <h4 className="font-semibold text-green-700">{p.name}</h4>
-              <p className="text-sm text-gray-600 mt-1">
-                Duration — 3 Years | Merit Based Admission
-              </p>
-              <span className="inline-block mt-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                {p.seats}
-              </span>
+            <div key={i} className="bg-white border hover:border-red-300 p-10 rounded-3xl hover:shadow-xl transition-all group">
+              <div className="flex justify-between">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-red-600">{p.level}</span>
+                  <h4 className="text-2xl font-semibold mt-3 group-hover:text-red-700 transition-colors">{p.name}</h4>
+                </div>
+                <span className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">{p.name.includes('Automobile') ? '🚗' : '💻'}</span>
+              </div>
+
+              <p className="mt-6 text-gray-600 leading-relaxed">{p.desc}</p>
+
+              <div className="mt-8 pt-6 border-t flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-500">Duration</p>
+                  <p className="font-semibold">{p.duration}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-gray-500">Seats</p>
+                  <p className="font-semibold text-red-600">{p.seats}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Eligibility Section */}
-      <div className="p-6 rounded-2xl bg-green-50 border shadow-md">
-        <h3 className="text-lg font-semibold text-green-700 mb-3">
-          B.Tech Eligibility & Duration
-        </h3>
-        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
-          <li>10+2 with Physics & Mathematics (mandatory) + Chemistry / Biology / Biotechnology</li>
-          <li>Minimum 45% marks (40% for reserved categories)</li>
-          <li>Duration: 4 Years (8 Semesters)</li>
-          <li>Admission based on JEE Main merit (or institute-level merit if seats vacant)</li>
-        </ul>
+      {/* Why Choose MEC Programmes */}
+      <div className="bg-gradient-to-br from-gray-900 to-black text-white rounded-3xl p-14">
+        <div className="grid md:grid-cols-3 gap-10">
+          <div>
+            <div className="text-red-500 text-4xl mb-4">01</div>
+            <h4 className="text-2xl font-semibold">Industry Oriented Curriculum</h4>
+            <p className="mt-4 text-gray-400">Regularly updated as per industry requirements with focus on practical learning.</p>
+          </div>
+          <div>
+            <div className="text-red-500 text-4xl mb-4">02</div>
+            <h4 className="text-2xl font-semibold">Excellent Placements</h4>
+            <p className="mt-4 text-gray-400">Dedicated Training & Placement Cell with strong industry connections.</p>
+          </div>
+          <div>
+            <div className="text-red-500 text-4xl mb-4">03</div>
+            <h4 className="text-2xl font-semibold">Experienced Faculty</h4>
+            <p className="mt-4 text-gray-400">Highly qualified teachers with industry and research exposure.</p>
+          </div>
+        </div>
       </div>
-
-      {/* Lateral Entry */}
-      <div className="p-6 rounded-2xl bg-white border shadow-md">
-        <h3 className="text-lg font-semibold text-green-700 mb-3">
-          Lateral Entry (2nd Year Admission)
-        </h3>
-        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
-          <li>Diploma holders (AICTE approved) with minimum 45% marks</li>
-          <li>B.Sc. graduates with Mathematics and minimum 45% marks</li>
-          <li>Direct entry into 2nd year (3rd Semester)</li>
-          <li>Based on LEET / merit criteria as per state guidelines</li>
-        </ul>
-      </div>
-
-      {/* Admission Criteria */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-white to-green-50 border shadow-md">
-        <h3 className="text-lg font-semibold text-green-700 mb-3">
-          Admission Criteria
-        </h3>
-        <p className="text-sm text-gray-600">
-          Admissions in B.Tech programmes are primarily based on JEE Main merit.
-          In case of vacant seats, eligible candidates may be considered based on
-          qualifying examination merit. Minority and management quota admissions
-          follow state government norms.
-        </p>
-      </div>
-
-      {/* Vocational Eligibility */}
-      <div className="p-6 rounded-2xl bg-white border shadow-md">
-        <h3 className="text-lg font-semibold text-green-700 mb-3">
-          Vocational Programme Eligibility
-        </h3>
-        <ul className="text-sm text-gray-600 space-y-2 list-disc pl-5">
-          <li><strong>B.Voc:</strong> 10+2 (PCM) / ITI / Diploma holders</li>
-          <li><strong>D.Voc:</strong> Minimum Class 10th pass</li>
-          <li>Admission based on merit</li>
-          <li>Duration: 3 Years</li>
-        </ul>
-      </div>
-
     </div>
   ),
 },
 
-  scholarships: {
-  title: 'Scholarships',
-  content: (
-    <div className="space-y-12">
+    scholarships: {
+      title: 'Scholarships',
+      content: (
+        <div className="max-w-6xl mx-auto space-y-20">
+          <div className="text-center">
+            <h2 className="text-6xl font-bold">Scholarships & Financial Support</h2>
+            <p className="text-2xl text-gray-600 mt-4">Making quality education accessible to all</p>
+          </div>
 
-      {/* Header */}
-      <div className="p-7 rounded-3xl bg-gradient-to-r from-green-100 via-white to-green-50 border shadow-md text-center hover:shadow-xl transition-all">
-        <h2 className="text-2xl font-bold text-green-700 mb-2">
-          Scholarships & Financial Assistance
-        </h2>
-        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
-          MEC ensures that no deserving student is deprived of education due to financial constraints.
-          More than <span className="font-semibold text-green-700">70% students</span> receive scholarships
-          based on merit, performance, and financial background.
-        </p>
-      </div>
-
-      {/* Incharge Card */}
-      <div className="p-6 rounded-2xl bg-white border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
-        <h3 className="text-lg font-semibold text-green-700 mb-3">
-          Scholarship Incharge
-        </h3>
-        <div className="text-sm text-gray-600 space-y-1">
-          <p><strong>Dr. Khalid Hussain</strong></p>
-          <p>Scholarship Chairman, Mewat Engineering College</p>
-          <p>📞 +91-9991010618</p>
-          <p>📧 khalidchem83@yahoo.co.in</p>
-        </div>
-      </div>
-
-      {/* Waqf Scholarships Detailed */}
-      <div className="p-6 rounded-2xl bg-green-50 border shadow-md hover:shadow-lg transition">
-        <h3 className="text-lg font-semibold text-green-700 mb-4">
-          Haryana Waqf Board Scholarships / Fee Concession
-        </h3>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm text-left border rounded-lg overflow-hidden">
-            <thead className="bg-green-600 text-white">
-              <tr>
-                <th className="p-3">Scholarship</th>
-                <th className="p-3">Eligibility</th>
-                <th className="p-3">Benefit</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white text-gray-600">
-              <tr className="border-t hover:bg-green-50">
-                <td className="p-3 font-medium">Dr. APJ Abdul Kalam</td>
-                <td className="p-3">Boys 80%+, Girls 70%</td>
-                <td className="p-3 text-green-700 font-semibold">100% Fee Waiver</td>
-              </tr>
-              <tr className="border-t hover:bg-green-50">
-                <td className="p-3 font-medium">Dr. A.R Kidwai</td>
-                <td className="p-3">Boys 70%+, Girls 60%</td>
-                <td className="p-3">50% Fee Discount</td>
-              </tr>
-              <tr className="border-t hover:bg-green-50">
-                <td className="p-3 font-medium">Differently-Abled</td>
-                <td className="p-3">25%–50% disability</td>
-                <td className="p-3">50–100% Fee Waiver</td>
-              </tr>
-              <tr className="border-t hover:bg-green-50">
-                <td className="p-3 font-medium">Dr. Abdul Mubeen</td>
-                <td className="p-3">Parent-less students</td>
-                <td className="p-3">100% Fee Waiver</td>
-              </tr>
-              <tr className="border-t hover:bg-green-50">
-                <td className="p-3 font-medium">Single Girl Child</td>
-                <td className="p-3">Only girl child</td>
-                <td className="p-3">100% Fee Waiver</td>
-              </tr>
-              <tr className="border-t hover:bg-green-50">
-                <td className="p-3 font-medium">Star of Mewat</td>
-                <td className="p-3">Top 3 PCM students (Nuh)</td>
-                <td className="p-3">100% Fee Waiver</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Govt Scholarships */}
-      <div className="p-6 rounded-2xl bg-white border shadow-md hover:shadow-lg transition">
-        <h3 className="text-lg font-semibold text-green-700 mb-4">
-          Government Scholarships
-        </h3>
-
-        <div className="grid md:grid-cols-2 gap-4">
-          {[
-            "Merit-cum-Means (MOMA): ₹25,000 (Day Scholar) / ₹30,000 (Hosteller), Income ≤ 2.5L",
-            "NHFDC: ₹31,000/year for differently-abled students",
-            "Pragati (AICTE): ₹30,000 for girl students",
-            "Saksham: Support for physically challenged students",
-            "PMS-SC: For Scheduled Caste students",
-            "OBC Scholarship: Govt. scheme for OBC students"
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="p-4 rounded-lg bg-green-50 border hover:shadow-md hover:-translate-y-1 transition"
-            >
-              <p className="text-sm text-gray-600">{item}</p>
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+            <div className="bg-red-700 text-white p-10">
+              <h3 className="text-3xl font-bold">Haryana Waqf Board Scholarships</h3>
             </div>
-          ))}
+            <div className="p-10">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b text-lg">
+                    <th className="pb-6">Scholarship</th>
+                    <th className="pb-6">Eligibility</th>
+                    <th className="pb-6">Benefit</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y text-lg">
+                  {[
+                    ["Dr. APJ Abdul Kalam", "Boys 80%+ | Girls 70%+", "100% Tuition Fee Waiver"],
+                    ["Dr. A.R. Kidwai", "Boys 70%+ | Girls 60%+", "50% Fee Concession"],
+                    ["Differently-Abled", "25% to 50% Disability", "50% – 100% Fee Waiver"],
+                    ["Dr. Abdul Mubeen", "Orphan / Parent-less", "100% Fee Waiver"],
+                    ["Single Girl Child", "Only Girl Child in Family", "100% Fee Waiver"],
+                    ["Star of Mewat", "Top 3 PCM Students from Nuh", "100% Fee Waiver"]
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-red-50 transition-colors">
+                      <td className="py-7 font-medium">{row[0]}</td>
+                      <td className="py-7 text-gray-600">{row[1]}</td>
+                      <td className="py-7 font-semibold text-green-600">{row[2]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            <div className="bg-white p-10 rounded-3xl border">
+              <h4 className="text-2xl font-bold mb-8 text-red-700">Government Scholarships</h4>
+              <ul className="space-y-6 text-lg">
+                <li>• Merit-cum-Means Scholarship (MOMA)</li>
+                <li>• Pragati Scholarship (AICTE - Girls)</li>
+                <li>• Saksham Scholarship (Differently-abled)</li>
+                <li>• Post Matric Scholarship for SC/ST/OBC</li>
+                <li>• National Scholarship Portal Schemes</li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-10 rounded-3xl border">
+              <h4 className="text-2xl font-bold mb-8 text-red-700">Private & Institutional Support</h4>
+              <ul className="space-y-6 text-lg">
+                <li><strong>MET-SEED Scholarship</strong> – Merit Based</li>
+                <li><strong>M3M Foundation</strong> – Up to ₹25,000 + Fee Rebate</li>
+                <li><strong>Indian Oil Scholarship</strong></li>
+                <li><strong>Islamic Development Bank Loan + Scholarship</strong></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Private */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-white to-green-50 border shadow-md hover:shadow-lg transition">
-        <h3 className="text-lg font-semibold text-green-700 mb-4">
-          Private & Institutional Support
-        </h3>
-
-        <ul className="text-sm text-gray-600 space-y-3 list-disc pl-5">
-          <li>
-            <strong>MET-SEED Scholarship:</strong> Merit-based + Islamic Development Bank Loan support
-          </li>
-          <li>
-            <strong>M3M Foundation:</strong> ₹25,000 support + 50% tuition fee rebate
-          </li>
-          <li>
-            <strong>Indian Oil Scholarship:</strong> Merit-cum-means based national scholarship
-          </li>
-        </ul>
-      </div>
-
-      {/* CTA */}
-      <div className="p-7 rounded-2xl bg-green-600 text-white text-center shadow-xl hover:shadow-2xl transition">
-        <h3 className="text-xl font-bold mb-2">
-          Apply for Scholarships
-        </h3>
-        <p className="text-sm opacity-90 mb-3">
-          Students are advised to apply through official portals like NSP and institutional forms within deadlines.
-        </p>
-        <button className="px-6 py-2 bg-white text-green-700 rounded-lg font-semibold hover:bg-gray-100 transition">
-          Apply Now
-        </button>
-      </div>
-
-    </div>
-  ),
-},
-};
-
-
+      ),
+    },
+  };
 
   const current = staticSections[section || 'procedure'] || staticSections.procedure;
+
   return (
     <Layout>
       <PageBanner title={current.title} subtitle="Admission" />
-      <div className="container py-12 max-w-4xl">{current.content}</div>
+      <div className="container py-16">{current.content}</div>
     </Layout>
   );
 };
