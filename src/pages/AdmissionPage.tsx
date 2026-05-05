@@ -433,112 +433,102 @@ const AdmissionPage = () => {
 
   // ==================== STATIC SECTIONS WITH RICH DATA ====================
   const staticSections: Record<string, { title: string; content: JSX.Element }> = {
-    procedure: {
+   procedure: {
   title: 'Admission Procedure',
   content: (
-    <div className="max-w-7xl mx-auto space-y-24">
+    <div className="max-w-5xl mx-auto px-4 space-y-16">
       {/* Hero Header */}
-      <div className="text-center relative">
-        <div className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-full font-medium mb-6 shadow-lg">
-          <Clock className="w-6 h-6" /> 8 Simple Steps
+      <div className="text-center">
+        <div className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2.5 rounded-full font-medium mb-6 shadow-lg text-sm">
+          <Clock className="w-5 h-5" /> 8 Simple Steps
         </div>
         
-        <h2 className="text-6xl md:text-7xl font-bold text-gray-900 leading-tight">
-          Your Journey to <span className="text-red-600">Excellence</span> Begins Here
+        <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+          Your Journey to <span className="text-red-600">Excellence</span>
         </h2>
-        <p className="text-2xl text-gray-600 mt-6 max-w-3xl mx-auto">
-          A smooth, transparent and student-friendly admission process designed for your success
+        <p className="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+          Smooth, transparent and student-friendly admission process
         </p>
-        
-        <div className="h-1 w-24 bg-red-600 mx-auto mt-10 rounded-full"></div>
       </div>
 
-      {/* Steps - Premium Timeline Style */}
+      {/* Steps */}
       <div className="relative">
         {/* Vertical Line */}
-        <div className="hidden md:block absolute left-1/2 top-8 bottom-8 w-0.5 bg-gradient-to-b from-red-200 via-red-300 to-red-200"></div>
+        <div className="hidden md:block absolute left-1/2 top-6 bottom-6 w-0.5 bg-gradient-to-b from-red-200 to-red-300" />
 
-        <div className="grid md:grid-cols-2 gap-12 relative">
+        <div className="space-y-10 md:space-y-14">
           {[
-            {
-              no: "01",
-              title: "Download Application Form",
-              desc: "Get the form from our website or visit the Admission Cell at campus.",
-              icon: <Download className="w-8 h-8" />,
-              highlight: "Instant Download Available"
+            { 
+              no: "01", 
+              title: "Download Application Form", 
+              desc: "From website or Admission Cell", 
+              highlight: "Instant Download" 
             },
-            {
-              no: "02",
-              title: "Fill Personal & Academic Details",
-              desc: "Complete all sections carefully with accurate information.",
-              icon: <Users className="w-8 h-8" />,
-              highlight: "Easy Online Form"
+            { 
+              no: "02", 
+              title: "Fill Personal & Academic Details", 
+              desc: "Accurate information required", 
+              highlight: "Easy Online Form" 
             },
-            {
-              no: "03",
-              title: "Attach Required Documents",
-              desc: "10th & 12th Marksheets, JEE Scorecard, ID Proof, Photographs & Category Certificate (if applicable).",
-              icon: <FileText className="w-8 h-8" />,
-              highlight: "Self-Attested Copies"
+            { 
+              no: "03", 
+              title: "Attach Required Documents", 
+              desc: "10th, 12th, JEE, ID & Photos", 
+              highlight: "Self-Attested" 
             },
-            {
-              no: "04",
-              title: "Pay Application Fee",
-              desc: "₹500 through Online Payment / UPI / Demand Draft in favour of Mewat Engineering College.",
-              icon: <Award className="w-8 h-8" />,
-              highlight: "Non-Refundable"
+            { 
+              no: "04", 
+              title: "Pay Application Fee", 
+              desc: "₹500 through Online / UPI / DD", 
+              highlight: "Non-Refundable" 
             },
-            {
-              no: "05",
-              title: "Submit Your Application",
-              desc: "Submit online or email scanned copy to info@mecw.ac.in",
-              icon: <Send className="w-8 h-8" />,
-              highlight: "Quick Processing"
+            { 
+              no: "05", 
+              title: "Submit Your Application", 
+              desc: "Online or email at info@mecw.ac.in", 
+              highlight: "Quick Processing" 
             },
-            {
-              no: "06",
-              title: "Counseling & Merit List",
-              desc: "Appear for JEE Main counseling or Institute level counseling as per schedule.",
-              icon: <Target className="w-8 h-8" />,
-              highlight: "Merit Based"
+            { 
+              no: "06", 
+              title: "Counseling & Merit List", 
+              desc: "JEE Main or Institute Counseling", 
+              highlight: "Merit Based" 
             },
-            {
-              no: "07",
-              title: "Fee Payment & Seat Confirmation",
-              desc: "Pay the admission fee within the given deadline to confirm your seat.",
-              icon: <ShieldCheck className="w-8 h-8" />,
-              highlight: "Secure Your Future"
+            { 
+              no: "07", 
+              title: "Fee Payment & Seat Confirmation", 
+              desc: "Pay within deadline to confirm seat", 
+              highlight: "Secure Your Seat" 
             },
-            {
-              no: "08",
-              title: "Document Verification & Enrollment",
-              desc: "Visit campus with original documents for final verification and enrollment.",
-              icon: <CheckCircle2 className="w-8 h-8" />,
-              highlight: "Welcome to MEC"
+            { 
+              no: "08", 
+              title: "Document Verification & Enrollment", 
+              desc: "Visit campus with original documents", 
+              highlight: "Welcome to MEC" 
             },
           ].map((step, i) => (
             <div 
               key={i} 
-              className={`group relative bg-white border border-gray-100 hover:border-red-300 rounded-3xl p-10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${i % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}
+              className={`group relative bg-white border border-gray-100 hover:border-red-300 rounded-3xl p-6 md:p-8 transition-all hover:shadow-xl ${i % 2 === 0 ? 'md:pr-20' : 'md:pl-20'}`}
             >
               {/* Step Number */}
-              <div className="absolute -top-6 -left-6 w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-xl group-hover:scale-110 transition-transform z-10">
+              <div className="absolute -top-5 -left-5 md:left-auto md:-right-5 w-12 h-12 bg-red-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg group-hover:scale-110 transition-transform z-10">
                 {step.no}
               </div>
 
-              <div className="flex gap-6 mt-6">
-                <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                  {step.icon}
+              <div className="flex gap-5">
+                <div className="w-14 h-14 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-all">
+                  <CheckCircle2 className="w-7 h-7" />
                 </div>
 
-                <div className="flex-1">
-                  <h4 className="text-3xl font-semibold text-gray-900 group-hover:text-red-700 transition-colors">
+                <div className="flex-1 pt-1">
+                  <h4 className="text-2xl font-semibold text-gray-900 group-hover:text-red-700 transition-colors">
                     {step.title}
                   </h4>
-                  <p className="text-gray-600 text-[17px] leading-relaxed mt-4">
+                  <p className="text-gray-600 mt-2 text-[16px] leading-relaxed">
                     {step.desc}
                   </p>
-                  <div className="mt-6 inline-block text-sm font-medium bg-red-50 text-red-700 px-5 py-2.5 rounded-2xl">
+                  <div className="mt-4 text-sm font-medium inline-block bg-red-50 text-red-700 px-4 py-2 rounded-2xl">
                     {step.highlight}
                   </div>
                 </div>
@@ -547,6 +537,8 @@ const AdmissionPage = () => {
           ))}
         </div>
       </div>
+   
+   
 
       {/* Eligibility + Important Notes */}
       <div className="grid lg:grid-cols-5 gap-10">
@@ -619,103 +611,90 @@ const AdmissionPage = () => {
     programmes: {
   title: 'Programmes Offered',
   content: (
-    <div className="max-w-7xl mx-auto space-y-24">
+    <div className="max-w-6xl mx-auto px-4 space-y-16">
       {/* Hero Header */}
       <div className="text-center">
         <div className="inline-flex items-center gap-3 bg-red-50 text-red-700 px-6 py-3 rounded-full font-medium mb-6">
-          <Award className="w-6 h-6" /> AICTE Approved Programmes
+          <Award className="w-6 h-6" /> AICTE Approved
         </div>
-        <h2 className="text-6xl md:text-7xl font-bold text-gray-900 leading-tight">
+        <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
           Future-Ready <span className="text-red-600">Engineering Programmes</span>
         </h2>
-        <p className="text-2xl text-gray-600 mt-6 max-w-3xl mx-auto">
-          Industry-aligned curriculum with cutting-edge specializations and excellent placement record
+        <p className="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+          Industry-aligned curriculum with excellent placements
         </p>
       </div>
 
       {/* B.Tech Programmes */}
       <div>
-        <div className="flex items-end justify-between mb-12">
-          <h3 className="text-4xl font-bold text-gray-900">B.Tech Programmes <span className="text-red-600">(4 Years)</span></h3>
-          <div className="text-sm text-gray-500">8 Semesters • Full Time</div>
+        <div className="flex items-end justify-between mb-10">
+          <h3 className="text-4xl font-bold text-gray-900">B.Tech Programmes</h3>
+          <div className="text-sm text-gray-500">4 Years • 8 Semesters</div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {[
             {
               name: "Computer Science & Engineering",
               seats: "60",
-              focus: "AI & Machine Learning, Data Science, Cloud Computing, Cybersecurity, Full Stack Development",
-              career: "Google, Microsoft, Amazon, Accenture, Deloitte, Infosys, TCS",
+              focus: "AI/ML, Data Science, Cloud, Cybersecurity",
               icon: "💻",
               color: "from-blue-500 to-cyan-500"
             },
             {
               name: "Electronics & Communication Engineering",
               seats: "30",
-              focus: "IoT, VLSI Design, 5G & Wireless Communication, Embedded Systems, Robotics",
-              career: "Qualcomm, Intel, Samsung, DRDO, ISRO, Ericsson, Nokia",
+              focus: "IoT, VLSI, 5G, Embedded Systems",
               icon: "📡",
               color: "from-purple-500 to-violet-500"
             },
             {
               name: "Electrical & Electronics Engineering",
               seats: "60",
-              focus: "Renewable Energy, Smart Grid, Electric Vehicles, Industrial Automation, Power Systems",
-              career: "Tata Power, Siemens, L&T, Schneider, Adani Power, Havells",
+              focus: "Renewable Energy, EV, Smart Grid",
               icon: "⚡",
               color: "from-amber-500 to-orange-500"
             },
             {
               name: "Mechanical Engineering",
               seats: "60",
-              focus: "Robotics & Automation, EV Technology, CAD/CAM, Thermal Engineering, Product Design",
-              career: "Maruti Suzuki, Hero MotoCorp, JCB, Ashok Leyland, Boeing, Tata Motors",
+              focus: "Robotics, EV, CAD/CAM",
               icon: "🔧",
               color: "from-red-500 to-rose-500"
             },
             {
               name: "Civil Engineering",
               seats: "60",
-              focus: "Sustainable Construction, Smart Cities, Structural Engineering, Transportation, Environmental Engineering",
-              career: "L&T, DLF, Shapoorji Pallonji, Tata Projects, IRCON, HCC",
+              focus: "Smart Cities, Structural & Environmental",
               icon: "🏗️",
               color: "from-emerald-500 to-teal-500"
             }
           ].map((p, i) => (
             <div 
               key={i} 
-              className="group bg-white border border-gray-100 hover:border-red-300 rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
+              className="group bg-white border border-gray-100 hover:border-red-300 rounded-3xl overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2"
             >
               <div className={`h-2 bg-gradient-to-r ${p.color}`} />
               
-              <div className="p-10">
+              <div className="p-8">
                 <div className="flex justify-between items-start mb-6">
-                  <div className="text-5xl transition-transform group-hover:scale-110">{p.icon}</div>
-                  <span className="bg-red-100 text-red-700 px-5 py-2 rounded-2xl text-sm font-semibold">
+                  <div className="text-4xl transition-transform group-hover:scale-110">{p.icon}</div>
+                  <span className="bg-red-100 text-red-700 px-4 py-1.5 rounded-2xl text-sm font-semibold">
                     {p.seats} Seats
                   </span>
                 </div>
 
-                <h4 className="text-3xl font-bold text-gray-900 group-hover:text-red-700 transition-colors leading-tight">
+                <h4 className="text-2xl font-bold text-gray-900 group-hover:text-red-700 transition-colors">
                   {p.name}
                 </h4>
 
-                <div className="mt-8 space-y-6">
-                  <div>
-                    <p className="text-red-600 font-medium text-sm uppercase tracking-widest mb-2">Specializations</p>
-                    <p className="text-gray-700 leading-relaxed">{p.focus}</p>
-                  </div>
-
-                  <div>
-                    <p className="text-red-600 font-medium text-sm uppercase tracking-widest mb-2">Top Recruiters</p>
-                    <p className="text-gray-600">{p.career}</p>
-                  </div>
-                </div>
+                <p className="text-gray-600 mt-4 text-[15px] leading-relaxed">
+                  {p.focus}
+                </p>
               </div>
 
-              <div className="border-t border-gray-100 px-10 py-5 bg-gray-50 flex items-center justify-between text-sm">
-                <span className="font-medium text-gray-500">Duration: 4 Years</span>
+              <div className="border-t border-gray-100 px-8 py-4 bg-gray-50 text-sm flex justify-between items-center">
+                <span className="text-gray-500">4 Years</span>
                 <span className="text-red-600 font-medium group-hover:underline">Learn More →</span>
               </div>
             </div>
@@ -725,58 +704,34 @@ const AdmissionPage = () => {
 
       {/* Vocational Programmes */}
       <div>
-        <h3 className="text-4xl font-bold text-gray-900 mb-12">Vocational Programmes <span className="text-red-600">(Skill-Based)</span></h3>
+        <h3 className="text-4xl font-bold text-gray-900 mb-10">Vocational Programmes</h3>
         
         <div className="grid md:grid-cols-2 gap-8">
           {[
-            {
-              name: "B.Voc - Automobile Servicing",
-              seats: "30",
-              duration: "3 Years",
-              desc: "Hands-on training in modern vehicle technology, diagnostics, EV servicing and workshop management.",
-              level: "Undergraduate"
-            },
-            {
-              name: "B.Voc - Renewable Energy",
-              seats: "30",
-              duration: "3 Years",
-              desc: "Solar, Wind & Bio Energy systems, installation, maintenance and green technology solutions.",
-              level: "Undergraduate"
-            },
-            {
-              name: "D.Voc - Automobile Servicing",
-              seats: "30",
-              duration: "3 Years",
-              desc: "Diploma level program focused on automobile repair, maintenance and service industry skills.",
-              level: "Diploma"
-            },
-            {
-              name: "D.Voc - Software Development",
-              seats: "30",
-              duration: "3 Years",
-              desc: "Practical training in web development, mobile apps, programming and software engineering.",
-              level: "Diploma"
-            }
+            { name: "B.Voc - Automobile Servicing", seats: "30", duration: "3 Years", desc: "EV & Modern Vehicle Technology" },
+            { name: "B.Voc - Renewable Energy", seats: "30", duration: "3 Years", desc: "Solar, Wind & Green Technology" },
+            { name: "D.Voc - Automobile Servicing", seats: "30", duration: "3 Years", desc: "Vehicle Repair & Maintenance" },
+            { name: "D.Voc - Software Development", seats: "30", duration: "3 Years", desc: "Web, App & Software Engineering" },
           ].map((p, i) => (
-            <div key={i} className="bg-white border hover:border-red-300 p-10 rounded-3xl hover:shadow-xl transition-all group">
-              <div className="flex justify-between">
+            <div key={i} className="bg-white border hover:border-red-300 p-8 rounded-3xl hover:shadow-xl transition-all group">
+              <div className="flex justify-between items-start">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-red-600">{p.level}</span>
-                  <h4 className="text-2xl font-semibold mt-3 group-hover:text-red-700 transition-colors">{p.name}</h4>
+                  <span className="text-xs font-bold uppercase text-red-600">{p.name.startsWith('B.Voc') ? 'Undergraduate' : 'Diploma'}</span>
+                  <h4 className="text-xl font-semibold mt-2 group-hover:text-red-700 transition-colors">{p.name}</h4>
                 </div>
-                <span className="text-4xl opacity-20 group-hover:opacity-40 transition-opacity">{p.name.includes('Automobile') ? '🚗' : '💻'}</span>
+                <span className="text-3xl opacity-30">{p.name.includes('Automobile') ? '🚗' : '💻'}</span>
               </div>
 
-              <p className="mt-6 text-gray-600 leading-relaxed">{p.desc}</p>
+              <p className="mt-5 text-gray-600 text-[15px]">{p.desc}</p>
 
-              <div className="mt-8 pt-6 border-t flex items-center justify-between">
+              <div className="mt-6 flex justify-between text-sm">
                 <div>
-                  <p className="text-sm text-gray-500">Duration</p>
-                  <p className="font-semibold">{p.duration}</p>
+                  <span className="text-gray-500">Duration</span><br />
+                  <span className="font-semibold">{p.duration}</span>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-500">Seats</p>
-                  <p className="font-semibold text-red-600">{p.seats}</p>
+                  <span className="text-gray-500">Seats</span><br />
+                  <span className="font-semibold text-red-600">{p.seats}</span>
                 </div>
               </div>
             </div>
@@ -784,23 +739,24 @@ const AdmissionPage = () => {
         </div>
       </div>
 
-      {/* Why Choose MEC Programmes */}
-      <div className="bg-gradient-to-br from-gray-900 to-black text-white rounded-3xl p-14">
-        <div className="grid md:grid-cols-3 gap-10">
+      {/* Why Choose MEC */}
+      <div className="bg-gradient-to-br from-gray-900 to-black text-white rounded-3xl p-10 md:p-12">
+        <h3 className="text-3xl font-bold text-center mb-10">Why Choose MEC Programmes?</h3>
+        <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
           <div>
-            <div className="text-red-500 text-4xl mb-4">01</div>
-            <h4 className="text-2xl font-semibold">Industry Oriented Curriculum</h4>
-            <p className="mt-4 text-gray-400">Regularly updated as per industry requirements with focus on practical learning.</p>
+            <div className="text-red-500 text-4xl mb-3">01</div>
+            <h4 className="font-semibold text-lg">Industry Oriented Curriculum</h4>
+            <p className="text-gray-400 mt-2 text-sm">Practical & updated as per industry needs</p>
           </div>
           <div>
-            <div className="text-red-500 text-4xl mb-4">02</div>
-            <h4 className="text-2xl font-semibold">Excellent Placements</h4>
-            <p className="mt-4 text-gray-400">Dedicated Training & Placement Cell with strong industry connections.</p>
+            <div className="text-red-500 text-4xl mb-3">02</div>
+            <h4 className="font-semibold text-lg">Strong Placements</h4>
+            <p className="text-gray-400 mt-2 text-sm">Dedicated placement cell with top recruiters</p>
           </div>
           <div>
-            <div className="text-red-500 text-4xl mb-4">03</div>
-            <h4 className="text-2xl font-semibold">Experienced Faculty</h4>
-            <p className="mt-4 text-gray-400">Highly qualified teachers with industry and research exposure.</p>
+            <div className="text-red-500 text-4xl mb-3">03</div>
+            <h4 className="font-semibold text-lg">Experienced Faculty</h4>
+            <p className="text-gray-400 mt-2 text-sm">Industry & research experienced teachers</p>
           </div>
         </div>
       </div>
