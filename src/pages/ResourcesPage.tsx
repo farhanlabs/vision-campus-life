@@ -25,7 +25,7 @@ const staticSections: Record<string, { title: string; content: JSX.Element }> = 
           {/* LEFT IMAGE */}
           <div className="group overflow-hidden rounded-2xl shadow-lg">
             <img
-              src="/images/anti-ragging.jpg"
+              src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
               alt="Anti Ragging MEC"
               className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
             />
@@ -158,7 +158,7 @@ const staticSections: Record<string, { title: string; content: JSX.Element }> = 
 
           <div className="group overflow-hidden rounded-2xl shadow-lg">
             <img
-              src="/images/flying-squad.jpg"
+              src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
               alt="Flying Squad MEC"
               className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
             />
@@ -379,7 +379,7 @@ const staticSections: Record<string, { title: string; content: JSX.Element }> = 
           {/* IMAGE */}
           <div className="group overflow-hidden rounded-2xl shadow-lg">
             <img
-              src="/images/sports.jpg"
+              src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
               alt="MEC Sports"
               className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
             />
@@ -495,7 +495,7 @@ const staticSections: Record<string, { title: string; content: JSX.Element }> = 
           {/* IMAGE */}
           <div className="group overflow-hidden rounded-2xl shadow-lg">
             <img
-              src="/images/women-cell.jpg"
+              src="https://res.cloudinary.com/dadqwaqis/image/upload/t_Flip/IMG-20260408-WA0015_pq1kyq.jpg"
               alt="Women Cell MEC"
               className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
             />
