@@ -1,37 +1,47 @@
 import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import PageBanner from '@/components/PageBanner';
 import { Calendar, Download, Award, CreditCard } from 'lucide-react';
 
 const Conference: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
+      
+      {/* Top Banner - Using Your PageBanner Component */}
+      <PageBanner 
+        title="Conference" 
+        subtitle="Online International Conference" 
+      />
 
-      {/* Hero Section - Controlled Heading Size */}
-      <div className="bg-gradient-to-br from-red-700 to-red-800 text-white py-14 md:py-20">
+      {/* Hero Section - Red & White Theme (as per your reference) */}
+      <div className="bg-gradient-to-br from-red-700 via-red-800 to-red-900 text-white py-16 md:py-24 relative overflow-hidden">
         <div className="container max-w-5xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 px-6 py-2 rounded-full mb-6 text-sm font-medium">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-6 py-2 rounded-full mb-6 text-sm font-medium border border-white/30">
             4th Edition • Online Mode
           </div>
-          
-          <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-3">
+         
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
             4th ONLINE INTERNATIONAL CONFERENCE
           </h1>
-          
+         
           <h2 className="text-2xl md:text-3xl font-semibold text-red-100 leading-tight max-w-4xl mx-auto">
             On Recent Trends in Renewable Energy and Advancement in Engineering & Technology (RTREAET-2025)
           </h2>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
-            <div className="bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-2xl">19 - 20 March 2025</div>
-            <div className="bg-white/10 backdrop-blur-md px-6 py-2.5 rounded-2xl">Online International Conference</div>
+          <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm">
+            <div className="bg-white/10 backdrop-blur-md px-8 py-3 rounded-2xl border border-white/20">
+              19 - 20 March 2025
+            </div>
+            <div className="bg-white/10 backdrop-blur-md px-8 py-3 rounded-2xl border border-white/20">
+              Online International Conference
+            </div>
           </div>
         </div>
       </div>
 
       <div className="container max-w-5xl mx-auto px-6 py-12 space-y-16">
-
         {/* Brochure Cards */}
         <div>
           <h3 className="text-2xl font-bold text-center mb-8 flex items-center justify-center gap-3">
@@ -93,7 +103,6 @@ const Conference: React.FC = () => {
         <div className="bg-white rounded-3xl shadow p-10 md:p-14">
           <h3 className="text-3xl font-bold mb-8 text-gray-900">Call for Papers</h3>
           <p className="text-gray-700 mb-8">Original unpublished papers are invited in the following areas:</p>
-
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
             <div>
               <h4 className="font-bold text-red-700 mb-4">Renewable Energy</h4>
@@ -103,7 +112,6 @@ const Conference: React.FC = () => {
                 ))}
               </ul>
             </div>
-
             <div className="space-y-10">
               <div>
                 <h4 className="font-bold text-red-700 mb-4">Soft Computing Technologies</h4>
@@ -113,7 +121,6 @@ const Conference: React.FC = () => {
                   ))}
                 </ul>
               </div>
-
               <div>
                 <h4 className="font-bold text-red-700 mb-4">Mechanical & Aerospace Engineering</h4>
                 <ul className="space-y-2 text-gray-700 text-[15px]">
@@ -200,7 +207,6 @@ const Conference: React.FC = () => {
             </div>
           </div>
         </div>
-
       </div>
 
       <Footer />
